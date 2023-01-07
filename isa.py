@@ -253,7 +253,7 @@ def normalize(code: list[dict]):
             else:
                 normalized_instr["args"] = instr['args']
             normalized_instr['args'] = list(
-                map(lambda arg: int(arg), normalized_instr['args']))
+                map(int, normalized_instr['args']))
 
             normalized_code.append(normalized_instr)
         else:
