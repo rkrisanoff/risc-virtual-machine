@@ -122,11 +122,11 @@ def main(args):
 
     program = translate(source)
 
-    print("source LoC:", len(source.split()), "code instr:",
-          len(program))
-
     write_json_code(target_json, program)
-    write_bin_code(target_bin, program)
+    byte_count = write_bin_code(target_bin, program)
+
+    print(
+        f"source LoC: {len(source.split())} code instr: {len(program)} code bytes: {byte_count}")
 
 
 if __name__ == '__main__':

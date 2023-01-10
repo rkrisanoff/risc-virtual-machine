@@ -21,7 +21,7 @@ lenght: 13
 section text:
     _start:
         addi x2,x0,hello
-        addi x3,x0,9696 # 9696 - OUTPUT
+        addi x3,x0,969 # 969 - OUTPUT
     write:
         lw x1,x2
         beq x1,x0,end # f
@@ -33,18 +33,18 @@ section text:
         post_processed = pre_process(raw)
 
         self.assertEqual(post_processed, "section data: hello: 'Hello, World!',0 lenght: 13 "
-                         "section text: _start: addi x2,x0,hello addi x3,x0,9696 write: lw x1,x2 beq x1,x0,end sw x3,x1 addi x2,x2,1 jmp write end: halt",
+                         "section text: _start: addi x2,x0,hello addi x3,x0,969 write: lw x1,x2 beq x1,x0,end sw x3,x1 addi x2,x2,1 jmp write end: halt",
                          'failed preprocessing')
 
     def test_tokenize(self):
         data_tokens, code_tokens = tokenize(
             "section data: hello: 'Hello, World!',0 lenght: 13\
-             section text: _start: addi x2,x0,hello addi x3,x0,9696 write: lw x1,x2 beq x1,x0,end sw x3,x1 addi x2,x2,1 jmp write end: halt"
+             section text: _start: addi x2,x0,hello addi x3,x0,969 write: lw x1,x2 beq x1,x0,end sw x3,x1 addi x2,x2,1 jmp write end: halt"
         )
 
         self.assertEqual(data_tokens, [('hello',), '72', '101', '108', '108', '111',
                          '44', '32', '87', '111', '114', '108', '100', '33', '0', ('lenght',), '13'])
-        self.assertEqual(code_tokens, [('_start',), 'addi', 'x2', 'x0', 'hello', 'addi', 'x3', 'x0', '9696', ('write',), 'lw',
+        self.assertEqual(code_tokens, [('_start',), 'addi', 'x2', 'x0', 'hello', 'addi', 'x3', 'x0', '969', ('write',), 'lw',
                          'x1', 'x2', 'beq', 'x1', 'x0', 'end', 'sw', 'x3', 'x1', 'addi', 'x2', 'x2', '1', 'jmp', 'write', ('end',), 'halt'])
 
     def test_allocate(self):
@@ -56,13 +56,13 @@ section text:
         self.assertDictEqual(labels, {'hello': 0, 'lenght': 14})
 
     def test_parse(self):
-        tokens = [('_start',), 'addi', 'x2', 'x0', 'hello', 'addi', 'x3', 'x0', '9696', ('write',), 'lw', 'x1', 'x2',
+        tokens = [('_start',), 'addi', 'x2', 'x0', 'hello', 'addi', 'x3', 'x0', '969', ('write',), 'lw', 'x1', 'x2',
                   'beq', 'x1', 'x0', 'end', 'sw', 'x3', 'x1', 'addi', 'x2', 'x2', '1', 'jmp', 'write', ('end',), 'halt']
         code, labels = parse(tokens)
 
         benchmark = [
             {'opcode': 'ADDI', 'args': ['2', '0', 'hello']},
-            {'opcode': 'ADDI', 'args': ['3', '0', '9696']},
+            {'opcode': 'ADDI', 'args': ['3', '0', '969']},
             {'opcode': 'LW', 'args': ['1', '2']},
             {'opcode': 'BEQ', 'args': ['1', '0', 'end']},
             {'opcode': 'SW', 'args': ['3', '1']},
@@ -83,7 +83,7 @@ lenght: 13
 section text:
     _start:
         addi x2,x0,hello
-        addi x3,x0,9696 # 9696 - OUTPUT
+        addi x3,x0,969 # 969 - OUTPUT
     write:
         lw x1,x2
         beq x1,x0,end # f
@@ -112,7 +112,7 @@ buffer: 0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0
 section text:
     _start:
         addi x2,x0,buffer
-        addi x3,x0,6969 # STDIN
+        addi x3,x0,696 # STDIN
     read:
         lw x1,x3
         sw x2,x1
@@ -121,7 +121,7 @@ section text:
         jmp read
     finish_read:
         addi x2,x0,buffer
-        addi x3,x0,9696 # STDOUT
+        addi x3,x0,969 # STDOUT
 
     write:
         lw x1,x2
@@ -134,23 +134,23 @@ section text:
         post_processed = pre_process(raw)
 
         self.assertEqual(post_processed, "section data: buffer: 0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0 "
-                         "section text: _start: addi x2,x0,buffer addi x3,x0,6969 read: lw x1,x3 sw x2,x1 beq x1,x0,finish_read addi x2,x2,1 jmp read "
-                         "finish_read: addi x2,x0,buffer addi x3,x0,9696 write: lw x1,x2 sw x3,x1 beq x1,x0,end addi x2,x2,1 jmp write end: halt",
+                         "section text: _start: addi x2,x0,buffer addi x3,x0,696 read: lw x1,x3 sw x2,x1 beq x1,x0,finish_read addi x2,x2,1 jmp read "
+                         "finish_read: addi x2,x0,buffer addi x3,x0,969 write: lw x1,x2 sw x3,x1 beq x1,x0,end addi x2,x2,1 jmp write end: halt",
                          'failed preprocessing')
 
     def test_tokenize(self):
         data_tokens, code_tokens = tokenize(
             "section data: buffer: 0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0 "
-            "section text: _start: addi 2,0,buffer addi 3,0,6969 read: lw 1,3 sw 2,1 beq 1,0,finish_read addi 2,2,1 jmp read "
-            "finish_read: addi 2,0,buffer addi 3,0,9696 write: lw 1,2 sw 3,1 beq 1,0,end addi 2,2,1 jmp write end: halt"
+            "section text: _start: addi 2,0,buffer addi 3,0,696 read: lw 1,3 sw 2,1 beq 1,0,finish_read addi 2,2,1 jmp read "
+            "finish_read: addi 2,0,buffer addi 3,0,969 write: lw 1,2 sw 3,1 beq 1,0,end addi 2,2,1 jmp write end: halt"
         )
 
         self.assertEqual(data_tokens, [('buffer',), '0', '0', '0', '0', '0', '0', '0', '0', '0', '0', '0',
                          '0', '0', '0', '0', '0', '0', '0', '0', '0', '0', '0', '0', '0', '0', '0', '0', '0', '0', '0', '0'])
         self.assertEqual(code_tokens, [
-            ('_start',), 'addi', '2', '0', 'buffer', 'addi', '3', '0', '6969',
+            ('_start',), 'addi', '2', '0', 'buffer', 'addi', '3', '0', '696',
             ('read',), 'lw', '1', '3', 'sw', '2', '1', 'beq', '1', '0', 'finish_read', 'addi', '2', '2', '1', 'jmp', 'read',
-            ('finish_read',), 'addi', '2', '0', 'buffer', 'addi', '3', '0', '9696',
+            ('finish_read',), 'addi', '2', '0', 'buffer', 'addi', '3', '0', '969',
             ('write',), 'lw', '1', '2', 'sw', '3', '1', 'beq', '1', '0', 'end', 'addi', '2', '2', '1', 'jmp', 'write',
             ('end',), 'halt'
         ])
@@ -165,9 +165,9 @@ section text:
 
     def test_parse(self):
         tokens = [
-            ('_start',), 'addi', '2', '0', 'buffer', 'addi', '3', '0', '6969',
+            ('_start',), 'addi', '2', '0', 'buffer', 'addi', '3', '0', '696',
             ('read',), 'lw', '1', '3', 'sw', '2', '1', 'beq', '1', '0', 'finish_read', 'addi', '2', '2', '1', 'jmp', 'read',
-            ('finish_read',), 'addi', '2', '0', 'buffer', 'addi', '3', '0', '9696',
+            ('finish_read',), 'addi', '2', '0', 'buffer', 'addi', '3', '0', '969',
             ('write',), 'lw', '1', '2', 'sw', '3', '1', 'beq', '1', '0', 'end', 'addi', '2', '2', '1', 'jmp', 'write',
             ('end',), 'halt'
         ]
@@ -175,14 +175,14 @@ section text:
 
         benchmark = [
             {'opcode': 'ADDI', 'args': ['2', '0', 'buffer']},
-            {'opcode': 'ADDI', 'args': ['3', '0', '6969']},
+            {'opcode': 'ADDI', 'args': ['3', '0', '696']},
             {'opcode': 'LW', 'args': ['1', '3']},
             {'opcode': 'SW', 'args': ['2', '1']},
             {'opcode': 'BEQ', 'args': ['1', '0', 'finish_read']},
             {'opcode': 'ADDI', 'args': ['2', '2', '1']},
             {'opcode': 'JMP', 'args': ['read']},
             {'opcode': 'ADDI', 'args': ['2', '0', 'buffer']},
-            {'opcode': 'ADDI', 'args': ['3', '0', '9696']},
+            {'opcode': 'ADDI', 'args': ['3', '0', '969']},
             {'opcode': 'LW', 'args': ['1', '2']},
             {'opcode': 'SW', 'args': ['3', '1']},
             {'opcode': 'BEQ', 'args': ['1', '0', 'end']},
@@ -202,7 +202,7 @@ buffer: 0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0
 section text:
     _start:
         addi 2,0,buffer
-        addi 3,0,6969 # STDIN
+        addi 3,0,696 # STDIN
     read:
         lw 1,3
         sw 2,1
@@ -211,7 +211,7 @@ section text:
         jmp read
     finish_read:
         addi 2,0,buffer
-        addi 3,0,9696 # STDOUT
+        addi 3,0,969 # STDOUT
 
     write:
         lw 1,2

@@ -11,17 +11,17 @@ import json
 from typing import NamedTuple, Tuple
 
 OPCODE_SIZE = 7
-REG_SIZE = 5
-IMM_SIZE = 10
-op_m, op_offs = 0b00000_00000_00000_0000000000_1111111, 0
-rd_m = 0b11111_00000_00000_0000000000_0000000
+REG_SIZE = 3
+IMM_SIZE = 16
+op_m, op_offs = 0b000_000_000_0000000000000000_1111111, 0
+rd_m = 0b111_000_000_0000000000000000_0000000
 rd_offs = REG_SIZE * 2 + IMM_SIZE + OPCODE_SIZE
-rs1_m, rs1_offs = 0b00000_11111_00000_0000000000_0000000, REG_SIZE + \
+rs1_m, rs1_offs = 0b000_111_000_0000000000000000_0000000, REG_SIZE + \
     IMM_SIZE + OPCODE_SIZE
-rs2_m, rs2_offs = 0b00000_00000_11111_0000000000_0000000, IMM_SIZE + OPCODE_SIZE
-imm_m_j, imm_j_offs = 0b11111_11111_11111_1111111111_0000000, OPCODE_SIZE
-imm_m_l, imm_l_offs = 0b00000_11111_11111_1111111111_0000000, OPCODE_SIZE
-imm_m, imm_offs = 0b00000_00000_00000_1111111111_0000000, OPCODE_SIZE
+rs2_m, rs2_offs = 0b000_000_111_0000000000000000_0000000, IMM_SIZE + OPCODE_SIZE
+imm_m_j, imm_j_offs = 0b111_111_111_1111111111111111_0000000, OPCODE_SIZE
+imm_m_l, imm_l_offs = 0b000_111_111_1111111111111111_0000000, OPCODE_SIZE
+imm_m, imm_offs = 0b000_000_000_1111111111111111_0000000, OPCODE_SIZE
 
 
 class Instruction(ABC):
@@ -95,7 +95,6 @@ class Branch(Instruction):
 
     @staticmethod
     def decode(instruct: int) -> tuple[int, int, int, int]:
-        # rd = (instruct & rd_m) >> rd_offs
         rd = 0
         rs1 = (instruct & rs1_m) >> rs1_offs
         rs2 = (instruct & rs2_m) >> rs2_offs
@@ -161,7 +160,6 @@ class Opcode(OpcodeFormat, Enum):
 
 opcodes_by_number = dict([opcode.number, opcode] for opcode in Opcode)
 
-
 ops_args_count = {
     "LW": 2,
     "LWI": 2,
@@ -190,7 +188,6 @@ ops_args_count = {
     "BNL": 3,
     "BNG": 3,
 }
-
 ops_gr = {}
 ops_gr["mem"] = set([
     Opcode.LW,
@@ -291,6 +288,8 @@ def write_bin_code(target, code):
             coded = coded >> 8
     with open(target, "wb") as file:
         file.write(program)
+
+    return len(program)
 
 
 def read_bin_code(target):
