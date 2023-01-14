@@ -56,7 +56,6 @@ class Register(Instruction):
         rs1 = (instruct & rs1_m) >> rs1_offs
         rs2 = (instruct & rs2_m) >> rs2_offs
         imm = 0
-        # opcode = (instruct & op_m)
         return rd, rs1, rs2, imm
 
 
@@ -76,7 +75,6 @@ class Immediate(Instruction):
         rs1 = (instruct & rs1_m) >> rs1_offs
         rs2 = 0
         imm = ((instruct & (imm_m | rs2_m)) >> imm_offs)
-        # opcode = (instruct & op_m)
         return rd, rs1, rs2, imm
 
 
@@ -100,7 +98,6 @@ class Branch(Instruction):
         rs2 = (instruct & rs2_m) >> rs2_offs
         imm = (instruct & imm_m) >> imm_offs
         imm += ((instruct & rd_m) >> (REG_SIZE * 2)) >> imm_offs
-        # opcode = (instruct & op_m)
         return rd, rs1, rs2, imm
 
 
@@ -118,7 +115,6 @@ class Jump(Instruction):
         rs1 = 0
         rs2 = 0
         imm = (instruct & imm_m) >> imm_offs
-        # opcode = (instruct & op_m)
         return rd, rs1, rs2, imm
 
 
@@ -136,14 +132,21 @@ class Opcode(OpcodeFormat, Enum):
     LWI = OpcodeFormat(number=3, instruction_type=Immediate)  # A <- [IMM]
     SWI = OpcodeFormat(number=4, instruction_type=Immediate)  # [A] <- IMM
 
-    JMP = OpcodeFormat(number=5, instruction_type=Jump)  # unconditional transition
+    # unconditional transition
+    JMP = OpcodeFormat(number=5, instruction_type=Jump)
 
-    BEQ = OpcodeFormat(number=7, instruction_type=Branch)  # Branch if EQual (A == B)
-    BNE = OpcodeFormat(number=8,instruction_type= Branch)  # Branch if Not Equal (A != B)
-    BLT = OpcodeFormat(number=9, instruction_type=Branch)  # Branch if Less Than (A < B)
-    BGT = OpcodeFormat(number=10, instruction_type=Branch)  # Branch if greater then (A > B)
-    BNL = OpcodeFormat(number=11, instruction_type=Branch)  # Branch if Not Less than (A >= B)
-    BNG = OpcodeFormat(number=12,instruction_type= Branch)  # Branch if less or equals then (A <= B)
+    # Branch if EQual (A == B)
+    BEQ = OpcodeFormat(number=7, instruction_type=Branch)
+    # Branch if Not Equal (A != B)
+    BNE = OpcodeFormat(number=8, instruction_type=Branch)
+    # Branch if Less Than (A < B)
+    BLT = OpcodeFormat(number=9, instruction_type=Branch)
+    # Branch if greater then (A > B)
+    BGT = OpcodeFormat(number=10, instruction_type=Branch)
+    # Branch if Not Less than (A >= B)
+    BNL = OpcodeFormat(number=11, instruction_type=Branch)
+    # Branch if less or equals then (A <= B)
+    BNG = OpcodeFormat(number=12, instruction_type=Branch)
 
     ADD = OpcodeFormat(number=13, instruction_type=Register)  # t,a,b
     SUB = OpcodeFormat(number=14, instruction_type=Register)
@@ -151,7 +154,7 @@ class Opcode(OpcodeFormat, Enum):
     DIV = OpcodeFormat(number=16, instruction_type=Register)
     REM = OpcodeFormat(number=17, instruction_type=Register)
 
-    ADDI = OpcodeFormat(number=18,instruction_type= Immediate)  # t,a,i
+    ADDI = OpcodeFormat(number=18, instruction_type=Immediate)  # t,a,i
     MULI = OpcodeFormat(number=19, instruction_type=Immediate)
     SUBI = OpcodeFormat(number=20, instruction_type=Immediate)
     DIVI = OpcodeFormat(number=21, instruction_type=Immediate)
@@ -189,54 +192,17 @@ ops_args_count = {
     "BNL": 3,
     "BNG": 3,
 }
-ops_gr = {}
-ops_gr["mem"] = set([
-    Opcode.LW,
-    Opcode.SW,
-    Opcode.LWI,
-    Opcode.SWI
-])
-ops_gr["branch"] = set([
-    Opcode.BEQ,
-    Opcode.BNE,
-    Opcode.BLT,
-    Opcode.BNL,
-    Opcode.BGT,
-    Opcode.BNG
-])
-ops_gr["imm"] = set([
-    Opcode.ADDI,
-    Opcode.SUBI,
-    Opcode.MULI,
-    Opcode.DIVI,
-    Opcode.REMI,
-    Opcode.LWI,
-    Opcode.SWI,
-])
-ops_gr["arith"] = set([
-    Opcode.ADDI,
-    Opcode.SUBI,
-    Opcode.MULI,
-    Opcode.DIVI,
-    Opcode.REMI,
-
-    Opcode.ADD,
-    Opcode.SUB,
-    Opcode.MUL,
-    Opcode.DIV,
-    Opcode.REM,
-])
 
 STDIN, STDOUT = 696, 969
 
 
 def normalize(code: list[dict]):
-    opcodes_by_name = dict((opcode.name, opcode) for opcode in Opcode)
     normalized_code = []
     for instr in code:
         if isinstance(instr, dict):
             opcode = opcodes_by_name[instr["opcode"]]
-            normalized_instr:dict[str,Union[str,list[int]]] = {"opcode": opcode.name}
+            normalized_instr: dict[str, Union[str, list[int]]] = {
+                "opcode": opcode.name}
             if opcode in [Opcode.SW, Opcode.SWI]:
                 destination, source = instr['args']
                 normalized_instr["args"] = [0, destination, source]
@@ -258,6 +224,7 @@ def normalize(code: list[dict]):
             normalized_code.append(instr)
     return normalized_code
 
+
 def encode_instr(instr):
     bin_instr = bytearray()
     opcode = opcodes_by_name[instr["opcode"]]
@@ -268,12 +235,27 @@ def encode_instr(instr):
         coded = coded >> 8
     return bytes(bin_instr)
 
-def decode_instr(instruct:int):
+
+def decode_instr(instruct: int):
     ct = Instruction.decode_opcode(instruct)
     opcode = opcodes_by_number[ct]
     rd, rs1, rs2, imm = opcode.instruction_type.decode(instruct)
     return opcode, rd, rs1, rs2, imm
-    
+
+
+def format_instr(instr):
+    opcode, rd, rs1, rs2, imm = decode_instr(instr)
+    if opcode.instruction_type is Register:
+        return f"{opcode.name} {rd}, {rs1}, {rs2}"
+    if opcode.instruction_type is Immediate:
+        return f"{opcode.name} {rd}, {rs1}, {imm}"
+    if opcode.instruction_type is Branch:
+        return f"{opcode.name} {rs1}, {rs2}, {imm}"
+    if opcode.instruction_type is Jump:
+        return f"{opcode.name} {imm}"
+    return ""
+
+
 def write_bin_code(target, code):
     """Записать машинный код в bin файл."""
     program = bytearray()
@@ -320,6 +302,3 @@ def read_json_code(filename: str) -> Tuple[dict, dict]:
     """Прочесть машинный код из json файла."""
     with open(filename, encoding="utf-8") as file:
         return json.loads(file.read())
-
-
-

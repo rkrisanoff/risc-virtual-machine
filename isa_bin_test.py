@@ -2,16 +2,9 @@
 # pylint: disable=missing-function-docstring
 # pylint: disable=missing-class-docstring
 # pylint: disable=invalid-name
-# pylint: disable=consider-using-f-string
-# pylint: disable=redefined-builtin
-# pylint: disable=unbalanced-tuple-unpacking
-# pylint: disable=too-many-statements
-# pylint: disable=too-many-locals
 # pylint: disable=too-many-branches
 # pylint: disable=missing-module-docstring
 
-import re
-import sys
 import unittest
 
 from isa import normalize, encode_instr, decode_instr
@@ -57,10 +50,10 @@ class TestBinarizator(unittest.TestCase):
         for instr in init:
             encoded = encode_instr(instr)
             opcode, rd, rs1, rs2, imm = decode_instr(
-            int.from_bytes(encoded, "little"))
+                int.from_bytes(encoded, "little"))
 
             self.assertEqual(opcode.name, instr["opcode"])
-            self.assertListEqual([rd,rs1,rs2], instr["args"])
+            self.assertListEqual([rd, rs1, rs2], instr["args"])
             self.assertEqual(imm, 0)
 
     def test_immediate_instruction(self):
@@ -74,11 +67,12 @@ class TestBinarizator(unittest.TestCase):
         for instr in init:
             encoded = encode_instr(instr)
             opcode, rd, rs1, rs2, imm = decode_instr(
-            int.from_bytes(encoded, "little"))
+                int.from_bytes(encoded, "little"))
 
             self.assertEqual(opcode.name, instr["opcode"])
-            self.assertListEqual([rd,rs1,imm], instr["args"])
+            self.assertListEqual([rd, rs1, imm], instr["args"])
             self.assertEqual(rs2, 0)
+
     def test_branch_instruction(self):
         init = [
             {"opcode": "BEQ", "args": [1, 2, 3]},
@@ -92,8 +86,8 @@ class TestBinarizator(unittest.TestCase):
         for instr in init:
             encoded = encode_instr(instr)
             opcode, rd, rs1, rs2, imm = decode_instr(
-            int.from_bytes(encoded, "little"))
+                int.from_bytes(encoded, "little"))
 
             self.assertEqual(opcode.name, instr["opcode"])
-            self.assertListEqual([rs1,rs2,imm], instr["args"])
+            self.assertListEqual([rs1, rs2, imm], instr["args"])
             self.assertEqual(rd, 0)

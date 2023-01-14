@@ -8,7 +8,7 @@
 import unittest
 
 from translator import translate, parse, allocate, pre_process, tokenize
-from isa import read_json_code,STDIN,STDOUT
+from isa import read_json_code, STDIN, STDOUT
 
 
 class TestTranslatatorHello(unittest.TestCase):
@@ -53,7 +53,8 @@ section text:
         data, labels = allocate(tokens)
         self.assertEqual(data, ['72', '101', '108', '108', '111', '44',
                          '32', '87', '111', '114', '108', '100', '33', '0', '13'])
-        self.assertDictEqual(labels, {'STDIN': STDIN, 'STDOUT': STDOUT,'hello': 0, 'lenght': 14})
+        self.assertDictEqual(
+            labels, {'STDIN': STDIN, 'STDOUT': STDOUT, 'hello': 0, 'lenght': 14})
 
     def test_parse(self):
         tokens = [('_start',), 'addi', 'x2', 'x0', 'hello', 'addi', 'x3', 'x0', 'OUTPUT', ('write',), 'lw', 'x1', 'x2',
@@ -147,7 +148,7 @@ section text:
         )
 
         self.assertListEqual(data_tokens, [('buffer',), '0', '0', '0', '0', '0', '0', '0', '0', '0', '0', '0',
-                         '0', '0', '0', '0', '0', '0', '0', '0', '0', '0', '0', '0', '0', '0', '0', '0', '0', '0', '0', '0'])
+                                           '0', '0', '0', '0', '0', '0', '0', '0', '0', '0', '0', '0', '0', '0', '0', '0', '0', '0', '0', '0'])
         self.assertListEqual(code_tokens, [
             ('_start',), 'addi', '2', '0', 'buffer', 'addi', '3', '0', 'STDIN',
             ('read',), 'lw', '1', '3', 'sw', '2', '1', 'beq', '1', '0', 'finish_read', 'addi', '2', '2', '1', 'jmp', 'read',
@@ -161,8 +162,9 @@ section text:
                   '0', '0', '0', '0', '0', '0', '0', '0', '0', '0', '0', '0', '0', '0', '0', '0', '0', '0']
         data, labels = allocate(tokens)
         self.assertListEqual(data, ['0', '0', '0', '0', '0', '0', '0', '0', '0', '0', '0', '0', '0',
-                         '0', '0', '0', '0', '0', '0', '0', '0', '0', '0', '0', '0', '0', '0', '0', '0', '0', '0'])
-        self.assertDictEqual(labels, {'STDIN': STDIN, 'STDOUT': STDOUT,'buffer': 0})
+                                    '0', '0', '0', '0', '0', '0', '0', '0', '0', '0', '0', '0', '0', '0', '0', '0', '0', '0'])
+        self.assertDictEqual(
+            labels, {'STDIN': STDIN, 'STDOUT': STDOUT, 'buffer': 0})
 
     def test_parse(self):
         tokens = [
@@ -228,6 +230,7 @@ section text:
             if isinstance(instr, dict):
                 self.assertEqual(
                     translated[instr_idx]["opcode"], instr["opcode"])
-                self.assertListEqual(translated[instr_idx]["args"], instr["args"])
+                self.assertListEqual(
+                    translated[instr_idx]["args"], instr["args"])
             else:
                 self.assertEqual(translated[instr_idx], instr)

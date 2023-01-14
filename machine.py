@@ -11,8 +11,8 @@ import logging
 from collections import deque
 import sys
 
-from isa import decode_instr, read_bin_code, Opcode,\
-    ops_gr, STDIN, STDOUT
+from isa import decode_instr, read_bin_code, format_instr, Opcode,\
+    STDIN, STDOUT, Branch, Immediate
 
 
 class RegisterUnit:
@@ -149,7 +149,7 @@ class DataPath():
         self.data_address = 0
         self.io = IO([ord(token) for token in input_buffer])
         self.immediately_generator = 0
-        self.current_instruction = Opcode.HALT
+        self.current_instruction = None
         self.current_data = 0
         self.ru = RegisterUnit(5, stack_vertex=len(self.memory) - 1)
         self.alu = ALU()
@@ -254,10 +254,11 @@ class ControlUnit():
         opcode = self.data_path.select_instruction()
         dp = self.data_path
         self.tick()
-
+        if opcode is Opcode.HALT:
+            raise StopIteration()
         if opcode is Opcode.JMP:
             dp.latch_program_counter()
-        elif opcode in ops_gr["branch"]:
+        elif opcode.instruction_type is Branch:
             equals, less = dp.latch_regs_to_bc()
             if any([
                 opcode is Opcode.BEQ and equals,
@@ -269,6 +270,7 @@ class ControlUnit():
             ]):
                 self.tick()
                 dp.latch_program_counter()
+        # operation with memory
         elif opcode is Opcode.LWI:
             dp.latch_address_to_memory_from_imm()
             self.tick()
@@ -281,18 +283,20 @@ class ControlUnit():
             dp.store_data_to_memory_from_reg()
         elif opcode is Opcode.SWI:
             dp.store_data_to_memory_from_imm()
-        elif opcode in ops_gr["arith"]:
-            if opcode in ops_gr["imm"]:
-                dp.latch_imm_to_alu()
-            else:
-                dp.latch_rs2_to_alu()
+
+        # arithmetic
+        elif opcode.instruction_type is Immediate:
+            dp.latch_imm_to_alu()
             dp.latch_rs1_to_alu()
             dp.compute_ALU(opcode=opcode)
             self.tick()
             dp.latch_rd_from_alu()
-
-        elif opcode is Opcode.HALT:
-            raise StopIteration()
+        else:
+            dp.latch_rs2_to_alu()
+            dp.latch_rs1_to_alu()
+            dp.compute_ALU(opcode=opcode)
+            self.tick()
+            dp.latch_rd_from_alu()
 
         self.tick()
 
@@ -330,15 +334,14 @@ def show_memory(memory):
         address_br = (10 - len(address_br)) * "0" + address_br
         if isinstance(cell, (int, str)):
             cell = int(cell)
-            # binary representation == br
             cell_br = bin(cell)[2:]
             cell_br = (32 - len(cell_br)) * "0" + cell_br
             data_memory_state += f"({address:5})\
-        [{address_br:10}]  -> [{cell_br:32}] = ({cell:10})\n"
-        elif isinstance(cell, dict):
-            data_memory_state += f"({address:5})\
-        [{address_br:10}]  -> [{'0'*32}] = ({cell['opcode']}\
-             {','.join([str(arg) for arg in cell['args']])})\n"
+        [{address_br:10}]  -> [{cell_br:32}] = ({cell:10})"
+        try:
+            data_memory_state += f" ~ {format_instr(cell):20}\n"
+        except KeyError:
+            data_memory_state += "\n"
     return data_memory_state
 
 
