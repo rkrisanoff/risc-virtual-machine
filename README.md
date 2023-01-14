@@ -321,7 +321,7 @@ lab3:
   script:
     - python3-coverage run -m pytest --verbose
     - find . -type f -name "*.py" | xargs -t python3-coverage report
-    - find . -type f -name "*.py" | xargs -t pycodestyle --ignore=E501
+    - find . -type f -name "*.py" | xargs -t pycodestyle --ignore=E501,W291
     - find . -type f -name "*.py" | xargs -t pylint
 
 ```
