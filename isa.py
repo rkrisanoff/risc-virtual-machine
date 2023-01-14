@@ -21,6 +21,7 @@ rs1_m, rs1_offs = 0b000_111_000_000000000000000000_00000, REG_SIZE + \
 rs2_m, rs2_offs = 0b000_000_111_000000000000000000_00000, IMM_SIZE + OPCODE_SIZE
 imm_m, imm_offs = 0b000_000_000_111111111111111111_00000, OPCODE_SIZE
 
+
 class Instruction(ABC):
     @staticmethod
     @abstractmethod
