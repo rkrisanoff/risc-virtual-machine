@@ -2,7 +2,7 @@
 
 ### Вариант ###
 
-`asm | risc  | neum   | hw | tick  | struct  | stream | mem | prob5`
+`asm | risc  | neum   | hw | tick  | bin  | stream | mem | prob5`
 
 | Особенность             |     |
 |-------------------------|--------|
