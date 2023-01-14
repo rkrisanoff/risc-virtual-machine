@@ -11,7 +11,7 @@ import logging
 from collections import deque
 import sys
 
-from isa import encode_instruct, read_bin_code, Opcode,\
+from isa import decode_instr, read_bin_code, Opcode,\
     ops_gr, STDIN, STDOUT
 
 
@@ -158,7 +158,7 @@ class DataPath():
     def select_instruction(self) -> Opcode:
         self.current_instruction = self.memory[self.program_counter]
         self.program_counter += 1
-        opcode, rd, rs1, rs2, imm = encode_instruct(self.current_instruction)
+        opcode, rd, rs1, rs2, imm = decode_instr(self.current_instruction)
         self.ru.rd = rd
         self.ru.rs1 = rs1
         self.ru.rs2 = rs2
@@ -312,7 +312,7 @@ class ControlUnit():
             f"[{' '.join([str(reg) for reg in self.data_path.ru.registers])}]"
         )
 
-        opcode, rd, rs1, rs2, imm = encode_instruct(
+        opcode, rd, rs1, rs2, imm = decode_instr(
             self.data_path.current_instruction)
         action = "{} {}".format(
             opcode.name, f"[{' '.join([str(arg) for arg in [rd, rs1, rs2, imm]])}]")

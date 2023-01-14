@@ -8,41 +8,41 @@ from abc import ABC, abstractmethod
 
 from enum import Enum
 import json
-from typing import NamedTuple, Tuple
+from typing import NamedTuple, Tuple, Union
 
-OPCODE_SIZE = 7
+OPCODE_SIZE = 5
 REG_SIZE = 3
-IMM_SIZE = 16
-op_m, op_offs = 0b000_000_000_0000000000000000_1111111, 0
+IMM_SIZE = 18
+op_m, op_offs = 0b000_000_000_000000000000000000_11111, 0
 rd_m = 0b111_000_000_0000000000000000_0000000
 rd_offs = REG_SIZE * 2 + IMM_SIZE + OPCODE_SIZE
-rs1_m, rs1_offs = 0b000_111_000_0000000000000000_0000000, REG_SIZE + \
+rs1_m, rs1_offs = 0b000_111_000_000000000000000000_00000, REG_SIZE + \
     IMM_SIZE + OPCODE_SIZE
-rs2_m, rs2_offs = 0b000_000_111_0000000000000000_0000000, IMM_SIZE + OPCODE_SIZE
-imm_m_j, imm_j_offs = 0b111_111_111_1111111111111111_0000000, OPCODE_SIZE
-imm_m_l, imm_l_offs = 0b000_111_111_1111111111111111_0000000, OPCODE_SIZE
-imm_m, imm_offs = 0b000_000_000_1111111111111111_0000000, OPCODE_SIZE
+rs2_m, rs2_offs = 0b000_000_111_000000000000000000_00000, IMM_SIZE + OPCODE_SIZE
+imm_m_j, imm_j_offs = 0b111_111_111_111111111111111111_00000, OPCODE_SIZE
+imm_m_l, imm_l_offs = 0b000_111_111_111111111111111111_00000, OPCODE_SIZE
+imm_m, imm_offs = 0b000_000_000_111111111111111111_00000, OPCODE_SIZE
 
 
 class Instruction(ABC):
     @staticmethod
     @abstractmethod
-    def code(opcode: int, args: list[int]) -> int:
+    def encode(opcode: int, args: list[int]) -> int:
         pass
 
     @staticmethod
     @abstractmethod
-    def decode(instruct: int):
+    def decode(instruct: int) -> tuple[int, int, int, int]:
         pass
 
     @staticmethod
-    def decode_opcode(instr: int):
+    def decode_opcode(instr: int) -> int:
         return instr & op_m
 
 
 class Register(Instruction):
     @staticmethod
-    def code(opcode: int, args: list[int]) -> int:
+    def encode(opcode: int, args: list[int]) -> int:
         instruct = 0
         instruct += (opcode << 0) & (op_m)
         instruct += (args[0] << rd_offs) & (rd_m)
@@ -62,7 +62,7 @@ class Register(Instruction):
 
 class Immediate(Instruction):
     @staticmethod
-    def code(opcode: int, args: list[int]) -> int:
+    def encode(opcode: int, args: list[int]) -> int:
         instruct = 0
         instruct += (opcode << 0) & (op_m)
         instruct += (args[0] << rd_offs) & (rd_m)
@@ -82,7 +82,7 @@ class Immediate(Instruction):
 
 class Branch(Instruction):
     @staticmethod
-    def code(opcode: int, args: list[int]) -> int:
+    def encode(opcode: int, args: list[int]) -> int:
         instruct = 0
         instruct += (opcode << 0) & (op_m)
         instruct += (args[0] << rs1_offs) & (rs1_m)
@@ -106,7 +106,7 @@ class Branch(Instruction):
 
 class Jump(Instruction):
     @staticmethod
-    def code(opcode: int, args: list[int]) -> int:
+    def encode(opcode: int, args: list[int]) -> int:
         instruct = 0
         instruct += (opcode << 0) & (op_m)
         instruct += (args[0] << imm_offs) & (imm_m)
@@ -129,36 +129,37 @@ class OpcodeFormat(NamedTuple):
 
 class Opcode(OpcodeFormat, Enum):
 
-    HALT = OpcodeFormat(0, Jump)
+    HALT = OpcodeFormat(number=0, instruction_type=Jump)
 
-    LW = OpcodeFormat(1, Register)  # A <- [B]
-    SW = OpcodeFormat(2, Register)  # [A] <- B
-    LWI = OpcodeFormat(3, Immediate)  # A <- [IMM]
-    SWI = OpcodeFormat(4, Immediate)  # [A] <- IMM
+    LW = OpcodeFormat(number=1, instruction_type=Register)  # A <- [B]
+    SW = OpcodeFormat(number=2, instruction_type=Register)  # [A] <- B
+    LWI = OpcodeFormat(number=3, instruction_type=Immediate)  # A <- [IMM]
+    SWI = OpcodeFormat(number=4, instruction_type=Immediate)  # [A] <- IMM
 
-    JMP = OpcodeFormat(5, Jump)  # unconditional transition
+    JMP = OpcodeFormat(number=5, instruction_type=Jump)  # unconditional transition
 
-    BEQ = OpcodeFormat(7, Branch)  # Branch if EQual (A == B)
-    BNE = OpcodeFormat(8, Branch)  # Branch if Not Equal (A != B)
-    BLT = OpcodeFormat(9, Branch)  # Branch if Less Than (A < B)
-    BGT = OpcodeFormat(10, Branch)  # Branch if greater then (A > B)
-    BNL = OpcodeFormat(11, Branch)  # Branch if Not Less than (A >= B)
-    BNG = OpcodeFormat(12, Branch)  # Branch if less or equals then (A <= B)
+    BEQ = OpcodeFormat(number=7, instruction_type=Branch)  # Branch if EQual (A == B)
+    BNE = OpcodeFormat(number=8,instruction_type= Branch)  # Branch if Not Equal (A != B)
+    BLT = OpcodeFormat(number=9, instruction_type=Branch)  # Branch if Less Than (A < B)
+    BGT = OpcodeFormat(number=10, instruction_type=Branch)  # Branch if greater then (A > B)
+    BNL = OpcodeFormat(number=11, instruction_type=Branch)  # Branch if Not Less than (A >= B)
+    BNG = OpcodeFormat(number=12,instruction_type= Branch)  # Branch if less or equals then (A <= B)
 
-    ADD = OpcodeFormat(13, Register)  # t,a,b
-    SUB = OpcodeFormat(14, Register)
-    MUL = OpcodeFormat(15, Register)
-    DIV = OpcodeFormat(16, Register)
-    REM = OpcodeFormat(17, Register)
+    ADD = OpcodeFormat(number=13, instruction_type=Register)  # t,a,b
+    SUB = OpcodeFormat(number=14, instruction_type=Register)
+    MUL = OpcodeFormat(number=15, instruction_type=Register)
+    DIV = OpcodeFormat(number=16, instruction_type=Register)
+    REM = OpcodeFormat(number=17, instruction_type=Register)
 
-    ADDI = OpcodeFormat(18, Immediate)  # t,a,i
-    MULI = OpcodeFormat(19, Immediate)
-    SUBI = OpcodeFormat(20, Immediate)
-    DIVI = OpcodeFormat(21, Immediate)
-    REMI = OpcodeFormat(22, Immediate)
+    ADDI = OpcodeFormat(number=18,instruction_type= Immediate)  # t,a,i
+    MULI = OpcodeFormat(number=19, instruction_type=Immediate)
+    SUBI = OpcodeFormat(number=20, instruction_type=Immediate)
+    DIVI = OpcodeFormat(number=21, instruction_type=Immediate)
+    REMI = OpcodeFormat(number=22, instruction_type=Immediate)
 
 
-opcodes_by_number = dict([opcode.number, opcode] for opcode in Opcode)
+opcodes_by_number = dict((opcode.number, opcode) for opcode in Opcode)
+opcodes_by_name = dict(map(lambda opcode: (opcode.name, opcode), Opcode))
 
 ops_args_count = {
     "LW": 2,
@@ -230,12 +231,12 @@ STDIN, STDOUT = 696, 969
 
 
 def normalize(code: list[dict]):
-    opcodes_by_name = dict(map(lambda opcode: [opcode.name, opcode], Opcode))
+    opcodes_by_name = dict((opcode.name, opcode) for opcode in Opcode)
     normalized_code = []
     for instr in code:
         if isinstance(instr, dict):
             opcode = opcodes_by_name[instr["opcode"]]
-            normalized_instr = {"opcode": opcode.name}
+            normalized_instr:dict[str,Union[str,list[int]]] = {"opcode": opcode.name}
             if opcode in [Opcode.SW, Opcode.SWI]:
                 destination, source = instr['args']
                 normalized_instr["args"] = [0, destination, source]
@@ -257,7 +258,22 @@ def normalize(code: list[dict]):
             normalized_code.append(instr)
     return normalized_code
 
+def encode_instr(instr):
+    bin_instr = bytearray()
+    opcode = opcodes_by_name[instr["opcode"]]
+    args = [int(arg) for arg in instr["args"]]
+    coded = opcode.instruction_type.encode(opcode.number, args)
+    for _ in range(4):
+        bin_instr.append(coded & 255)
+        coded = coded >> 8
+    return bytes(bin_instr)
 
+def decode_instr(instruct:int):
+    ct = Instruction.decode_opcode(instruct)
+    opcode = opcodes_by_number[ct]
+    rd, rs1, rs2, imm = opcode.instruction_type.decode(instruct)
+    return opcode, rd, rs1, rs2, imm
+    
 def write_bin_code(target, code):
     """Записать машинный код в bin файл."""
     program = bytearray()
@@ -278,14 +294,8 @@ def write_bin_code(target, code):
     program_start.append((_start >> 24) & 255)
 
     program = bytearray(program_start + program)
-    opcodes_by_name = dict(map(lambda opcode: [opcode.name, opcode], Opcode))
     for instr in normalized[_start:]:
-        opcode = opcodes_by_name[instr["opcode"]]
-        args = [int(arg) for arg in instr["args"]]
-        coded = opcode.instruction_type.code(opcode.number, args)
-        for _ in range(4):
-            program.append(coded & 255)
-            coded = coded >> 8
+        program.extend(encode_instr(instr))
     with open(target, "wb") as file:
         file.write(program)
 
@@ -293,7 +303,6 @@ def write_bin_code(target, code):
 
 
 def read_bin_code(target):
-    """Записать машинный код в bin файл."""
     memory = []
     with open(target, "rb") as file:
         while (bytes4 := file.read(4)):
@@ -313,8 +322,4 @@ def read_json_code(filename: str) -> Tuple[dict, dict]:
         return json.loads(file.read())
 
 
-def encode_instruct(instruct):
-    ct = Instruction.decode_opcode(instruct)
-    opcode = opcodes_by_number[ct]
-    rd, rs1, rs2, imm = opcode.instruction_type.decode(instruct)
-    return opcode, rd, rs1, rs2, imm
+

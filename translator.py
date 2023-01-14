@@ -1,8 +1,8 @@
 #!/usr/bin/python3
-# pylint: disable=missing-function-docstring  # чтобы не быть Капитаном Очевидностью
-# pylint: disable=missing-class-docstring  # чтобы не быть Капитаном Очевидностью
-# pylint: disable=invalid-name                # сохраним традиционные наименования сигналов
-# pylint: disable=consider-using-f-string     # избыточный синтаксис
+# pylint: disable=missing-function-docstring
+# pylint: disable=missing-class-docstring
+# pylint: disable=invalid-name
+# pylint: disable=consider-using-f-string
 # pylint: disable=redefined-builtin
 # pylint: disable=unbalanced-tuple-unpacking
 # pylint: disable=too-many-statements
@@ -13,7 +13,8 @@
 import re
 import sys
 
-from isa import write_bin_code, write_json_code, ops_args_count
+from isa import write_bin_code, write_json_code,\
+    ops_args_count, STDIN, STDOUT
 
 
 def pre_process(raw: str) -> str:
@@ -61,7 +62,7 @@ def tokenize(text):
 
 def allocate(tokens):
     data = []
-    labels = {}
+    labels = {"STDIN": STDIN, "STDOUT": STDOUT}
     for token in tokens:
         if isinstance(token, tuple):
             labels[token[0]] = len(data)

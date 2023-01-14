@@ -30,7 +30,7 @@ class TestCases(unittest.TestCase):
                 translator.main([source, target, target])
                 machine.main([target, input_stream])
             self.assertEqual(stdout.getvalue(),
-                             'source LoC: 46 code instr: 46 code bytes: 188\n'
+                             'source LoC: 40 code instr: 46 code bytes: 188\n'
                              'Output is `Arhitecture of Computer\x00`\n'
                              'instr_counter: 240 ticks: 581\n'
                              )
@@ -86,7 +86,7 @@ class TestCases(unittest.TestCase):
                 machine.main([target, input_stream])
             print(stdout.getvalue())
             self.assertEqual(stdout.getvalue(),
-                             'source LoC: 33 code instr: 23 code bytes: 96\n'
+                             'source LoC: 27 code instr: 23 code bytes: 96\n'
                              'Output is `Hello, World!`\n'
                              'instr_counter: 69 ticks: 169\n'
                              )

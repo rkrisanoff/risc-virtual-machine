@@ -3,23 +3,23 @@ buffer: 0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0
 
 section text:
     _start:
-        addi 2,0,buffer
-        addi 3,0,696 # STDIN
+        addi x2,x0,buffer
+        addi x3,x0,STDIN
     read:
-        lw 1,3
-        sw 2,1
-        beq 1,0,finish_read
-        addi 2,2,1
+        lw x1,x3
+        sw x2,x1
+        beq x1,x0,finish_read
+        addi x2,x2,1
         jmp read
     finish_read:
-        addi 2,0,buffer
-        addi 3,0,969 # STDOUT
+        addi x2,x0,buffer
+        addi x3,x0,STDOUT
 
     write:
-        lw 1,2
-        sw 3,1
-        beq 1,0,end # f
-        addi 2,2,1
+        lw x1,x2
+        sw x3,x1
+        beq x1,x0,end
+        addi x2,x2,1
         jmp write
     end:
         halt

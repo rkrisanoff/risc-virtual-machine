@@ -4,13 +4,13 @@ lenght: 13
 
 section text:
     _start:
-        addi 2,0,hello
-        addi 3,0,969 # 969 - OUTPUT
+        addi x2,x0,hello
+        addi x3,x0,STDOUT
     write:
-        lw 1,2
-        beq 1,0,end # f
-        sw 3,1
-        addi 2,2,1
+        lw x1,x2
+        beq x1,x0,end
+        sw x3,x1
+        addi x2,x2,1
         jmp write
     end:
         halt
