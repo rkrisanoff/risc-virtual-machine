@@ -153,15 +153,7 @@ class ControlUnit():
 
         self.equals, self.less = False, False
 
-    def tick_by_tick(self):
-        # [
-        #     self.fetch_instruction,
-        #     self.decoding,
-        #     self.execute,
-        #     self.memory_access,
-        #     self.write_back
-        # ][self.stage.value]()
-
+    def complete_stage(self):
         if self.stage is InstructionStage.FETCH_INSTRUCTION:
             self.fetch_instruction()
             logging.debug(" <== %s ==> ", format_instr(self.instr))
@@ -304,7 +296,7 @@ def simulation(data: list[int], code: list[int], input_tokens, data_memory_size,
             if not limit > tick_counter:
                 print("too long execution, increase limit!")
                 break
-            control_unit.tick_by_tick()
+            control_unit.complete_stage()
             tick_counter += 1
 
     except EOFError:
