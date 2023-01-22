@@ -26,10 +26,10 @@ class DataPath():
     instruction: int
     registers: list[int]
 
-    def __init__(self, data: list[int], code: list[int], data_memory_size: int, input_buffer: list):
+    def __init__(self, data: list[int], code: list[int], input_buffer: list):
         self.program_counter = 0
         self.imem = code
-        self.dmem = data + [0] * data_memory_size
+        self.dmem = data
         self.data_address = 0
         self.imm_gen = 0
         self.current_data = 0
@@ -156,7 +156,7 @@ class ControlUnit():
     def complete_stage(self):
         if self.stage is InstructionStage.FETCH_INSTRUCTION:
             self.fetch_instruction()
-            logging.debug(" <== %s ==> ", format_instr(self.instr))
+            logging.debug(" <== %s ==> [%s]", format_instr(self.instr),bin(self.instr))
         elif self.stage is InstructionStage.DECODE_INSTRUCTION:
             self.decoding()
         elif self.stage is InstructionStage.EXECUTE:
@@ -213,6 +213,13 @@ class ControlUnit():
             self.data_path.store_data_to_memory_from_reg()
         elif self.opcode is Opcode.SWI:
             self.data_path.store_data_to_memory_from_imm()
+
+    def write_back(self):
+        if self.opcode in (Opcode.LW, Opcode.LWI):
+            self.data_path.latch_rd_from_memory()
+        elif self.opcode.instruction_type in (Immediate, Register)\
+                and self.opcode not in (Opcode.LW, Opcode.SW):
+            self.data_path.latch_rd_from_alu()
         elif any([
             self.opcode is Opcode.JMP,
             self.opcode is Opcode.BEQ and self.equals,
@@ -223,13 +230,6 @@ class ControlUnit():
             self.opcode is Opcode.BNG and (self.less or self.equals)
         ]):
             self.data_path.latch_program_counter()
-
-    def write_back(self):
-        if self.opcode in (Opcode.LW, Opcode.LWI):
-            self.data_path.latch_rd_from_memory()
-        elif self.opcode.instruction_type in (Immediate, Register)\
-                and self.opcode not in (Opcode.LW, Opcode.SW):
-            self.data_path.latch_rd_from_alu()
 
     def __repr__(self):
         state = f"{{TICK: {self._tick_}"\
@@ -244,7 +244,7 @@ class ControlUnit():
 
         alu = f"ALU [a:{self.data_path.a} b:{self.data_path.b} computed:{self.data_path.computed}]"
 
-        return f"{state} {registers} {alu} {format_instr(self.instr)}"
+        return f"{state} {registers} {alu}"
 
 
 def show_data_memory(memory):
@@ -277,7 +277,7 @@ def show_instr_memory(memory):
     return instr_memory_state
 
 
-def simulation(data: list[int], code: list[int], input_tokens, data_memory_size, limit):
+def simulation(data: list[int], code: list[int], input_tokens, limit):
     """Запуск симуляции процессора.
 
     Длительность моделирования ограничена количеством выполненных инструкций.
@@ -288,7 +288,7 @@ def simulation(data: list[int], code: list[int], input_tokens, data_memory_size,
     dmem, imem = show_data_memory(data), show_instr_memory(code)
     logging.debug("%s", f"Instruction memory map is\n{imem}")
     logging.debug("%s", f"Data memory map is\n{dmem}")
-    data_path = DataPath(data, code, data_memory_size, input_tokens)
+    data_path = DataPath(data, code, input_tokens)
     control_unit = ControlUnit(data_path)
     tick_counter = 0
     try:
@@ -303,6 +303,11 @@ def simulation(data: list[int], code: list[int], input_tokens, data_memory_size,
         logging.warning('Input buffer is empty!')
     except StopIteration:
         pass
+
+    finally:
+        dmem = show_data_memory(data_path.dmem)
+        logging.debug("%s", f"Data memory map is\n{dmem}")
+
     return ''.join(data_path.output_buffer), tick_counter // 5,\
         control_unit.current_tick()
 
@@ -321,7 +326,6 @@ def main(args):
     output, instr_counter, ticks = simulation(
         data, code,
         input_tokens=input_tokens,
-        data_memory_size=100,
         limit=20000
     )
 
