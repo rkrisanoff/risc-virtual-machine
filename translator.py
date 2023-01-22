@@ -1,27 +1,19 @@
 #!/usr/bin/python3
 # pylint: disable=missing-function-docstring
 # pylint: disable=missing-class-docstring
-# pylint: disable=invalid-name
-# pylint: disable=consider-using-f-string
-# pylint: disable=redefined-builtin
-# pylint: disable=unbalanced-tuple-unpacking
-# pylint: disable=too-many-statements
-# pylint: disable=too-many-locals
-# pylint: disable=too-many-branches
 # pylint: disable=missing-module-docstring
 
 import re
 import sys
 
-from isa import write_bin_code, write_json_code,\
-    ops_args_count, STDIN, STDOUT
+from isa import write_bin_code, write_json_code, INPUT, OUTPUT
 
 
-def pre_process(raw: str) -> str:
+def preprocess(raw: str) -> str:
     lines = []
     for line in raw.split("\n"):
         # remove comments
-        comment_idx = line.find("#")
+        comment_idx = line.find(";")
         if comment_idx != -1:
             line = line[:comment_idx]
         # remove leading spaces
@@ -30,8 +22,6 @@ def pre_process(raw: str) -> str:
         lines.append(line)
 
     text = " ".join(lines)
-    # text = raw.replace("\n", " ")
-    # избавляется от лишних пробелов и символов перехода строки
     text = re.sub("[ ][ ]*", " ", text)
 
     return text
@@ -62,7 +52,7 @@ def tokenize(text):
 
 def allocate(tokens):
     data = []
-    labels = {"STDIN": STDIN, "STDOUT": STDOUT}
+    labels = {"INPUT": INPUT, "OUTPUT": OUTPUT}
     for token in tokens:
         if isinstance(token, tuple):
             labels[token[0]] = len(data)
@@ -81,35 +71,40 @@ def parse(tokens):
             labels[token[0]] = len(code)
         else:
             token_upper = token.upper()
-            if token_upper in ops_args_count:
-                code.append({"opcode": token_upper, "args": []})
-                args_count = ops_args_count[token_upper]
-            elif args_count > 0:
+            if args_count > 0:
                 if args_count != 0 and token[0] == 'x' and token[1:].isdigit():
                     token = token[1:]
                 code[-1]["args"].append(token)
                 args_count -= 1
+            else:
+                code.append({"opcode": token_upper, "args": []})
+                if token_upper == 'HALT':
+                    args_count = 0
+                elif token_upper == 'JMP':
+                    args_count = 1
+                elif token_upper in ["SW", "SWI", "LW", "LWI"]:
+                    args_count = 2
+                else:
+                    args_count = 3
     return code, labels
 
 
 def translate(text):
-    processed_text = pre_process(text)
+    processed_text = preprocess(text)
     data_tokens, text_tokens = tokenize(processed_text)
     labels = {}
     data, data_labels = allocate(data_tokens)
     code, code_labels = parse(text_tokens)
     labels = data_labels.copy()
-    code_start_label = len(data)
     for key, value in code_labels.items():
-        labels[key] = value + code_start_label
-    program = data + code
-    for word_idx, word in enumerate(program):
+        labels[key] = value
+    for word_idx, word in enumerate(code):
         if isinstance(word, dict):
             for arg_idx, arg in enumerate(word["args"]):
                 if arg in labels:
-                    program[word_idx]["args"][arg_idx] = labels[arg]
+                    code[word_idx]["args"][arg_idx] = labels[arg]
 
-    return program
+    return data, code
 
 
 def main(args):
@@ -118,16 +113,16 @@ def main(args):
 
     source, target_json, target_bin = args
 
-    with open(source, "rt", encoding="utf-8") as f:
-        source = f.read()
+    with open(source, "rt", encoding="utf-8") as file:
+        source = file.read()
 
-    program = translate(source)
+    data, code = translate(source)
 
-    write_json_code(target_json, program)
-    byte_count = write_bin_code(target_bin, program)
+    write_json_code(target_json, data, code)
+    byte_count = write_bin_code(target_bin, data, code)
 
     print(
-        f"source LoC: {len(source.split())} code instr: {len(program)} code bytes: {byte_count}")
+        f"source LoC: {len(source.split())} code instr: {len(code)} code bytes: {byte_count}")
 
 
 if __name__ == '__main__':

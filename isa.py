@@ -1,41 +1,54 @@
 # pylint: disable=invalid-name
-# pylint: disable=consider-using-f-string
 # pylint: disable=missing-function-docstring
 # pylint: disable=missing-class-docstring
 # pylint: disable=missing-module-docstring
-
-from abc import ABC, abstractmethod
 
 from enum import Enum
 import json
 from typing import NamedTuple, Tuple, Union
 
 OPCODE_SIZE = 5
-REG_SIZE = 3
-IMM_SIZE = 18
-op_m, op_offs = 0b000_000_000_000000000000000000_11111, 0
-rd_m = 0b111_000_000_0000000000000000_0000000
+REG_SIZE = 2
+IMM_SIZE = 21
+
+rd_m = 0b11_00_00_000000000000000000000_00000
+rs1_m = 0b00_11_00_000000000000000000000_00000
+rs2_m = 0b00_00_11_000000000000000000000_00000
+imm_m = 0b00_00_00_111111111111111111111_00000
+op_m = 0b00_00_00_000000000000000000000_11111
+
 rd_offs = REG_SIZE * 2 + IMM_SIZE + OPCODE_SIZE
-rs1_m, rs1_offs = 0b000_111_000_000000000000000000_00000, REG_SIZE + \
-    IMM_SIZE + OPCODE_SIZE
-rs2_m, rs2_offs = 0b000_000_111_000000000000000000_00000, IMM_SIZE + OPCODE_SIZE
-imm_m, imm_offs = 0b000_000_000_111111111111111111_00000, OPCODE_SIZE
+rs1_offs = REG_SIZE + IMM_SIZE + OPCODE_SIZE
+rs2_offs = IMM_SIZE + OPCODE_SIZE
+imm_offs = OPCODE_SIZE
+op_offs = 0
 
 
-class Instruction(ABC):
+class Instruction():
     @staticmethod
-    @abstractmethod
     def encode(opcode: int, args: list[int]) -> int:
-        pass
+        args.clear()
+        return opcode
 
     @staticmethod
-    @abstractmethod
-    def decode(instruct: int) -> tuple[int, int, int, int]:
-        pass
-
-    @staticmethod
-    def decode_opcode(instr: int) -> int:
+    def fetch_opcode(instr: int) -> int:
         return instr & op_m
+
+    @staticmethod
+    def fetch_rd(instr: int) -> int:
+        return (instr & rd_m) >> rd_offs
+
+    @staticmethod
+    def fetch_rs1(instr: int) -> int:
+        return (instr & rs1_m) >> rs1_offs
+
+    @staticmethod
+    def fetch_rs2(instr: int) -> int:
+        return (instr & rs2_m) >> rs2_offs
+
+    @staticmethod
+    def fetch_imm(instr: int) -> int:
+        return instr
 
 
 class Register(Instruction):
@@ -47,14 +60,6 @@ class Register(Instruction):
         instruct += (args[1] << rs1_offs) & (rs1_m)
         instruct += (args[2] << rs2_offs) & (rs2_m)
         return instruct
-
-    @staticmethod
-    def decode(instruct: int) -> tuple[int, int, int, int]:
-        rd = (instruct & rd_m) >> rd_offs
-        rs1 = (instruct & rs1_m) >> rs1_offs
-        rs2 = (instruct & rs2_m) >> rs2_offs
-        imm = 0
-        return rd, rs1, rs2, imm
 
 
 class Immediate(Instruction):
@@ -68,12 +73,8 @@ class Immediate(Instruction):
         return instruct
 
     @staticmethod
-    def decode(instruct: int) -> tuple[int, int, int, int]:
-        rd = (instruct & rd_m) >> rd_offs
-        rs1 = (instruct & rs1_m) >> rs1_offs
-        rs2 = 0
-        imm = ((instruct & (imm_m | rs2_m)) >> imm_offs)
-        return rd, rs1, rs2, imm
+    def fetch_imm(instr: int) -> int:
+        return ((instr & (imm_m | rs2_m)) >> imm_offs)
 
 
 class Branch(Instruction):
@@ -90,30 +91,26 @@ class Branch(Instruction):
         return instruct
 
     @staticmethod
-    def decode(instruct: int) -> tuple[int, int, int, int]:
-        rd = 0
-        rs1 = (instruct & rs1_m) >> rs1_offs
-        rs2 = (instruct & rs2_m) >> rs2_offs
-        imm = (instruct & imm_m) >> imm_offs
-        imm += ((instruct & rd_m) >> (REG_SIZE * 2)) >> imm_offs
-        return rd, rs1, rs2, imm
+    def fetch_rd(instr: int) -> int:
+        return (instr & rd_m) >> rd_offs
+
+    @staticmethod
+    def fetch_imm(instr: int) -> int:
+        imm = (instr & imm_m) >> imm_offs
+        imm += ((instr & rd_m) >> (REG_SIZE * 2)) >> imm_offs
+        return imm
 
 
 class Jump(Instruction):
     @staticmethod
     def encode(opcode: int, args: list[int]) -> int:
-        instruct = 0
-        instruct += (opcode << 0) & (op_m)
+        instruct = (opcode << 0) & (op_m)
         instruct += (args[0] << imm_offs) & (imm_m)
         return instruct
 
     @staticmethod
-    def decode(instruct: int) -> tuple[int, int, int, int]:
-        rd = 0
-        rs1 = 0
-        rs2 = 0
-        imm = (instruct & imm_m) >> imm_offs
-        return rd, rs1, rs2, imm
+    def fetch_imm(instr: int) -> int:
+        return (instr & imm_m) >> imm_offs
 
 
 class OpcodeFormat(NamedTuple):
@@ -123,36 +120,29 @@ class OpcodeFormat(NamedTuple):
 
 class Opcode(OpcodeFormat, Enum):
 
-    HALT = OpcodeFormat(number=0, instruction_type=Jump)
+    HALT = OpcodeFormat(number=0, instruction_type=Instruction)
 
-    LW = OpcodeFormat(number=1, instruction_type=Register)  # A <- [B]
-    SW = OpcodeFormat(number=2, instruction_type=Register)  # [A] <- B
-    LWI = OpcodeFormat(number=3, instruction_type=Immediate)  # A <- [IMM]
-    SWI = OpcodeFormat(number=4, instruction_type=Immediate)  # [A] <- IMM
+    LW = OpcodeFormat(number=1, instruction_type=Register)
+    SW = OpcodeFormat(number=2, instruction_type=Register)
+    LWI = OpcodeFormat(number=3, instruction_type=Immediate)
+    SWI = OpcodeFormat(number=4, instruction_type=Immediate)
 
-    # unconditional transition
     JMP = OpcodeFormat(number=5, instruction_type=Jump)
 
-    # Branch if EQual (A == B)
     BEQ = OpcodeFormat(number=7, instruction_type=Branch)
-    # Branch if Not Equal (A != B)
     BNE = OpcodeFormat(number=8, instruction_type=Branch)
-    # Branch if Less Than (A < B)
     BLT = OpcodeFormat(number=9, instruction_type=Branch)
-    # Branch if greater then (A > B)
     BGT = OpcodeFormat(number=10, instruction_type=Branch)
-    # Branch if Not Less than (A >= B)
     BNL = OpcodeFormat(number=11, instruction_type=Branch)
-    # Branch if less or equals then (A <= B)
     BNG = OpcodeFormat(number=12, instruction_type=Branch)
 
-    ADD = OpcodeFormat(number=13, instruction_type=Register)  # t,a,b
+    ADD = OpcodeFormat(number=13, instruction_type=Register)
     SUB = OpcodeFormat(number=14, instruction_type=Register)
     MUL = OpcodeFormat(number=15, instruction_type=Register)
     DIV = OpcodeFormat(number=16, instruction_type=Register)
     REM = OpcodeFormat(number=17, instruction_type=Register)
 
-    ADDI = OpcodeFormat(number=18, instruction_type=Immediate)  # t,a,i
+    ADDI = OpcodeFormat(number=18, instruction_type=Immediate)
     MULI = OpcodeFormat(number=19, instruction_type=Immediate)
     SUBI = OpcodeFormat(number=20, instruction_type=Immediate)
     DIVI = OpcodeFormat(number=21, instruction_type=Immediate)
@@ -160,66 +150,32 @@ class Opcode(OpcodeFormat, Enum):
 
 
 opcodes_by_number = dict((opcode.number, opcode) for opcode in Opcode)
-opcodes_by_name = dict(map(lambda opcode: (opcode.name, opcode), Opcode))
+opcodes_by_name = dict((opcode.name, opcode) for opcode in Opcode)
 
-ops_args_count = {
-    "LW": 2,
-    "LWI": 2,
-    "SW": 2,
-    "SWI": 2,
-
-    "JMP": 1,
-    "HALT": 0,
-
-    "ADD": 3,
-    "SUB": 3,
-    "MUL": 3,
-    "DIV": 3,
-    "REM": 3,
-
-    "ADDI": 3,
-    "SUBI": 3,
-    "MULI": 3,
-    "DIVI": 3,
-    "REMI": 3,
-
-    "BEQ": 3,
-    "BNE": 3,
-    "BLT": 3,
-    "BGT": 3,
-    "BNL": 3,
-    "BNG": 3,
-}
-
-STDIN, STDOUT = 696, 969
+INPUT, OUTPUT = 696, 969
 
 
 def normalize(code: list[dict]):
     normalized_code = []
     for instr in code:
-        if isinstance(instr, dict):
-            opcode = opcodes_by_name[instr["opcode"]]
-            normalized_instr: dict[str, Union[str, list[int]]] = {
-                "opcode": opcode.name}
-            if opcode in [Opcode.SW, Opcode.SWI]:
-                destination, source = instr['args']
-                normalized_instr["args"] = [0, destination, source]
-            elif opcode is Opcode.LW:
-                destination, source = instr['args']
-                normalized_instr["args"] = [destination, source, 0]
-            elif opcode is Opcode.LWI:
-                destination, source = instr['args']
-                normalized_instr["args"] = [destination, 0, source]
-            elif opcode is Opcode.HALT:
-                normalized_instr["args"] = [0]
-            else:
-                normalized_instr["args"] = instr['args']
-            normalized_instr['args'] = list(
-                map(int, normalized_instr['args']))
-
-            normalized_code.append(normalized_instr)
+        opcode = opcodes_by_name[instr["opcode"]]
+        normalized_instr: dict[str, Union[str, list[int]]] = {
+            "opcode": opcode.name}
+        if opcode in [Opcode.SW, Opcode.SWI]:
+            destination, source = instr['args']
+            normalized_instr["args"] = [0, destination, source]
+        elif opcode is Opcode.LW:
+            destination, source = instr['args']
+            normalized_instr["args"] = [destination, source, 0]
+        elif opcode is Opcode.LWI:
+            destination, source = instr['args']
+            normalized_instr["args"] = [destination, 0, source]
         else:
-            normalized_code.append(instr)
+            normalized_instr["args"] = instr['args']
+        normalized_instr['args'] = list(
+            map(int, normalized_instr['args']))
+
+        normalized_code.append(normalized_instr)
     return normalized_code
 
 
@@ -234,15 +190,20 @@ def encode_instr(instr):
     return bytes(bin_instr)
 
 
-def decode_instr(instruct: int):
-    ct = Instruction.decode_opcode(instruct)
-    opcode = opcodes_by_number[ct]
-    rd, rs1, rs2, imm = opcode.instruction_type.decode(instruct)
-    return opcode, rd, rs1, rs2, imm
+def decode_opcode(instr: int) -> Opcode:
+    return opcodes_by_number[Instruction.fetch_opcode(instr)]
+
+
+def fetch_imm(instr: int) -> int:
+    return decode_opcode(instr).instruction_type.fetch_imm(instr)
 
 
 def format_instr(instr):
-    opcode, rd, rs1, rs2, imm = decode_instr(instr)
+    opcode = decode_opcode(instr)
+    rd = Instruction.fetch_rd(instr)
+    rs1 = Instruction.fetch_rs1(instr)
+    rs2 = Instruction.fetch_rs2(instr)
+    imm = fetch_imm(instr)
     if opcode.instruction_type is Register:
         return f"{opcode.name} {rd}, {rs1}, {rs2}"
     if opcode.instruction_type is Immediate:
@@ -254,27 +215,25 @@ def format_instr(instr):
     return ""
 
 
-def write_bin_code(target, code):
+def write_bin_code(target: str, data: list, code: list):
     """Записать машинный код в bin файл."""
-    program = bytearray()
     normalized = normalize(code)
-    _start = 0
+    code = bytearray()
     # record section data
-    while not isinstance(normalized[_start], dict):
-        cell = int(normalized[_start])
-        for _ in range(4):
-            program.append(cell & 255)
-            cell = cell >> 8
-        _start += 1
+    _start = len(data)
     # record section code
     program_start = bytearray()
     program_start.append(_start & 255)
     program_start.append((_start >> 8) & 255)
-    program_start.append((_start >> 16) & 16)
+    program_start.append((_start >> 16) & 255)
     program_start.append((_start >> 24) & 255)
 
-    program = bytearray(program_start + program)
-    for instr in normalized[_start:]:
+    program = bytearray(program_start)
+    for value in map(int, data):
+        for _ in range(4):
+            program.append(value & 255)
+            value = value >> 8
+    for instr in normalized:
         program.extend(encode_instr(instr))
     with open(target, "wb") as file:
         file.write(program)
@@ -287,16 +246,19 @@ def read_bin_code(target):
     with open(target, "rb") as file:
         while (bytes4 := file.read(4)):
             memory.append(int.from_bytes(bytes4, "little"))
-    return memory
+    data = memory[1:memory[0] + 1]
+    code = memory[memory[0] + 1:]
+    return data, code
 
 
-def write_json_code(filename: str, program: list):
+def write_json_code(filename: str, data: list, code: list):
     """Записать машинный код в json файл."""
     with open(filename, "w", encoding="utf-8") as file:
-        file.write(json.dumps(program, indent=4))
+        file.write(json.dumps({"data": data, "code": code}, indent=4))
 
 
 def read_json_code(filename: str) -> Tuple[dict, dict]:
     """Прочесть машинный код из json файла."""
     with open(filename, encoding="utf-8") as file:
-        return json.loads(file.read())
+        program = json.loads(file.read())
+        return program["data"], program["code"]

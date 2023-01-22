@@ -7,5 +7,3 @@ RUN apt-get update && apt-get install -qy \
 
 WORKDIR /data
 VOLUME ["/data"]
-
-# docker build --tag python-tools .

@@ -1,11 +1,10 @@
 section data:
 hello: 'Hello, World!',0
-lenght: 13
 
 section text:
     _start:
         addi x2,x0,hello
-        addi x3,x0,STDOUT
+        addi x3,x0,OUTPUT
     write:
         lw x1,x2
         beq x1,x0,end

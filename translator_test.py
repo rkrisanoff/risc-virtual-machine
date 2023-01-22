@@ -3,17 +3,16 @@
 # pylint: disable=missing-module-docstring
 # pylint: disable=missing-class-docstring
 # pylint: disable=invalid-name
-# pylint: disable=consider-using-f-string
 # pylint: disable=line-too-long
 import unittest
 
-from translator import translate, parse, allocate, pre_process, tokenize
-from isa import read_json_code, STDIN, STDOUT
+from translator import translate, parse, allocate, preprocess, tokenize
+from isa import read_json_code, INPUT, OUTPUT
 
 
 class TestTranslatatorHello(unittest.TestCase):
 
-    def test_pre_process(self):
+    def test_preprocess(self):
         raw = '''section data:
 hello: 'Hello, World!',0
 lenght: 13
@@ -30,7 +29,7 @@ section text:
         jmp write
     end:
         halt'''
-        post_processed = pre_process(raw)
+        post_processed = preprocess(raw)
 
         self.assertEqual(post_processed, "section data: hello: 'Hello, World!',0 lenght: 13 "
                          "section text: _start: addi x2,x0,hello addi x3,x0,OUTPUT write: lw x1,x2 beq x1,x0,end sw x3,x1 addi x2,x2,1 jmp write end: halt",
@@ -54,7 +53,7 @@ section text:
         self.assertEqual(data, ['72', '101', '108', '108', '111', '44',
                          '32', '87', '111', '114', '108', '100', '33', '0', '13'])
         self.assertDictEqual(
-            labels, {'STDIN': STDIN, 'STDOUT': STDOUT, 'hello': 0, 'lenght': 14})
+            labels, {'INPUT': INPUT, 'OUTPUT': OUTPUT, 'hello': 0, 'lenght': 14})
 
     def test_parse(self):
         tokens = [('_start',), 'addi', 'x2', 'x0', 'hello', 'addi', 'x3', 'x0', 'OUTPUT', ('write',), 'lw', 'x1', 'x2',
@@ -79,12 +78,11 @@ section text:
     def test_translate(self):
         source = '''section data:
 hello: 'Hello, World!',0
-lenght: 13
 
 section text:
     _start:
         addi x2,x0,hello
-        addi x3,x0,STDOUT
+        addi x3,x0,OUTPUT
     write:
         lw x1,x2
         beq x1,x0,end
@@ -93,28 +91,27 @@ section text:
         jmp write
     end:
         halt'''
-        translated = translate(source)
-        print(translated)
-        cat = read_json_code("./tests/correct/hello.json")
-        for instr_idx, instr in enumerate(cat):
-            if isinstance(instr, dict):
-                self.assertEqual(
-                    translated[instr_idx]["opcode"], instr["opcode"])
-                self.assertEqual(translated[instr_idx]["args"], instr["args"])
-            else:
-                self.assertEqual(translated[instr_idx], instr)
+        data, code = translate(source)
+        data_correct, code_correct = read_json_code(
+            "./tests/correct/hello.json")
+        for instr_idx, instr in enumerate(code_correct):
+            self.assertEqual(
+                code[instr_idx]["opcode"], instr["opcode"])
+            self.assertEqual(code[instr_idx]["args"], instr["args"])
+        for instr_idx, instr in enumerate(data_correct):
+            self.assertEqual(data[instr_idx], instr)
 
 
 class TestTranslatatorCat(unittest.TestCase):
 
-    def test_pre_process(self):
+    def test_preprocess(self):
         raw = '''section data:
 buffer: 0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0
 
 section text:
     _start:
         addi x2,x0,buffer
-        addi x3,x0,STDIN
+        addi x3,x0,INPUT
     read:
         lw x1,x3
         sw x2,x1
@@ -123,36 +120,36 @@ section text:
         jmp read
     finish_read:
         addi x2,x0,buffer
-        addi x3,x0,STDOUT
+        addi x3,x0,OUTPUT
 
     write:
         lw x1,x2
         sw x3,x1
-        beq x1,x0,end # f
+        beq x1,x0,end
         addi x2,x2,1
         jmp write
     end:
         halt'''
-        post_processed = pre_process(raw)
+        post_processed = preprocess(raw)
 
         self.assertEqual(post_processed, "section data: buffer: 0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0 "
-                         "section text: _start: addi x2,x0,buffer addi x3,x0,STDIN read: lw x1,x3 sw x2,x1 beq x1,x0,finish_read addi x2,x2,1 jmp read "
-                         "finish_read: addi x2,x0,buffer addi x3,x0,STDOUT write: lw x1,x2 sw x3,x1 beq x1,x0,end addi x2,x2,1 jmp write end: halt",
+                         "section text: _start: addi x2,x0,buffer addi x3,x0,INPUT read: lw x1,x3 sw x2,x1 beq x1,x0,finish_read addi x2,x2,1 jmp read "
+                         "finish_read: addi x2,x0,buffer addi x3,x0,OUTPUT write: lw x1,x2 sw x3,x1 beq x1,x0,end addi x2,x2,1 jmp write end: halt",
                          'failed preprocessing')
 
     def test_tokenize(self):
         data_tokens, code_tokens = tokenize(
             "section data: buffer: 0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0 "
-            "section text: _start: addi 2,0,buffer addi 3,0,STDIN read: lw 1,3 sw 2,1 beq 1,0,finish_read addi 2,2,1 jmp read "
-            "finish_read: addi 2,0,buffer addi 3,0,STDOUT write: lw 1,2 sw 3,1 beq 1,0,end addi 2,2,1 jmp write end: halt"
+            "section text: _start: addi 2,0,buffer addi 3,0,INPUT read: lw 1,3 sw 2,1 beq 1,0,finish_read addi 2,2,1 jmp read "
+            "finish_read: addi 2,0,buffer addi 3,0,OUTPUT write: lw 1,2 sw 3,1 beq 1,0,end addi 2,2,1 jmp write end: halt"
         )
 
         self.assertListEqual(data_tokens, [('buffer',), '0', '0', '0', '0', '0', '0', '0', '0', '0', '0', '0',
                                            '0', '0', '0', '0', '0', '0', '0', '0', '0', '0', '0', '0', '0', '0', '0', '0', '0', '0', '0', '0'])
         self.assertListEqual(code_tokens, [
-            ('_start',), 'addi', '2', '0', 'buffer', 'addi', '3', '0', 'STDIN',
+            ('_start',), 'addi', '2', '0', 'buffer', 'addi', '3', '0', 'INPUT',
             ('read',), 'lw', '1', '3', 'sw', '2', '1', 'beq', '1', '0', 'finish_read', 'addi', '2', '2', '1', 'jmp', 'read',
-            ('finish_read',), 'addi', '2', '0', 'buffer', 'addi', '3', '0', 'STDOUT',
+            ('finish_read',), 'addi', '2', '0', 'buffer', 'addi', '3', '0', 'OUTPUT',
             ('write',), 'lw', '1', '2', 'sw', '3', '1', 'beq', '1', '0', 'end', 'addi', '2', '2', '1', 'jmp', 'write',
             ('end',), 'halt'
         ])
@@ -164,13 +161,13 @@ section text:
         self.assertListEqual(data, ['0', '0', '0', '0', '0', '0', '0', '0', '0', '0', '0', '0', '0',
                                     '0', '0', '0', '0', '0', '0', '0', '0', '0', '0', '0', '0', '0', '0', '0', '0', '0', '0'])
         self.assertDictEqual(
-            labels, {'STDIN': STDIN, 'STDOUT': STDOUT, 'buffer': 0})
+            labels, {'INPUT': INPUT, 'OUTPUT': OUTPUT, 'buffer': 0})
 
     def test_parse(self):
         tokens = [
-            ('_start',), 'addi', '2', '0', 'buffer', 'addi', '3', '0', 'STDIN',
+            ('_start',), 'addi', '2', '0', 'buffer', 'addi', '3', '0', 'INPUT',
             ('read',), 'lw', '1', '3', 'sw', '2', '1', 'beq', '1', '0', 'finish_read', 'addi', '2', '2', '1', 'jmp', 'read',
-            ('finish_read',), 'addi', '2', '0', 'buffer', 'addi', '3', '0', 'STDOUT',
+            ('finish_read',), 'addi', '2', '0', 'buffer', 'addi', '3', '0', 'OUTPUT',
             ('write',), 'lw', '1', '2', 'sw', '3', '1', 'beq', '1', '0', 'end', 'addi', '2', '2', '1', 'jmp', 'write',
             ('end',), 'halt'
         ]
@@ -178,14 +175,14 @@ section text:
 
         benchmark = [
             {'opcode': 'ADDI', 'args': ['2', '0', 'buffer']},
-            {'opcode': 'ADDI', 'args': ['3', '0', 'STDIN']},
+            {'opcode': 'ADDI', 'args': ['3', '0', 'INPUT']},
             {'opcode': 'LW', 'args': ['1', '3']},
             {'opcode': 'SW', 'args': ['2', '1']},
             {'opcode': 'BEQ', 'args': ['1', '0', 'finish_read']},
             {'opcode': 'ADDI', 'args': ['2', '2', '1']},
             {'opcode': 'JMP', 'args': ['read']},
             {'opcode': 'ADDI', 'args': ['2', '0', 'buffer']},
-            {'opcode': 'ADDI', 'args': ['3', '0', 'STDOUT']},
+            {'opcode': 'ADDI', 'args': ['3', '0', 'OUTPUT']},
             {'opcode': 'LW', 'args': ['1', '2']},
             {'opcode': 'SW', 'args': ['3', '1']},
             {'opcode': 'BEQ', 'args': ['1', '0', 'end']},
@@ -205,7 +202,7 @@ buffer: 0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0
 section text:
     _start:
         addi 2,0,buffer
-        addi 3,0,STDIN
+        addi 3,0,INPUT
     read:
         lw 1,3
         sw 2,1
@@ -214,7 +211,7 @@ section text:
         jmp read
     finish_read:
         addi 2,0,buffer
-        addi 3,0,STDOUT
+        addi 3,0,OUTPUT
 
     write:
         lw 1,2

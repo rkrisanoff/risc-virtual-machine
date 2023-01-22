@@ -4,7 +4,7 @@ buffer: 0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0
 section text:
     _start:
         addi x2,x0,buffer
-        addi x3,x0,STDIN
+        addi x3,x0,INPUT
     read:
         lw x1,x3
         sw x2,x1
@@ -13,7 +13,7 @@ section text:
         jmp read
     finish_read:
         addi x2,x0,buffer
-        addi x3,x0,STDOUT
+        addi x3,x0,OUTPUT
 
     write:
         lw x1,x2
