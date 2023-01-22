@@ -1,0 +1,446 @@
+INFO:root:{ INPUT MESSAGE } [ `Good news, everyone!` ]
+INFO:root:{ INPUT TOKENS  } [ 71,111,111,100,32,110,101,119,115,44,32,101,118,101,114,121,111,110,101,33 ]
+DEBUG:root:Instruction memory map is
+(    7)        [0000000111]  -> [00000000000000000000000000000000] ~                     
+(    6)        [0000000110]  -> [00000000000000000000000001000101] ~ JMP 2               
+(    5)        [0000000101]  -> [10100000000000000000000000110010] ~ ADDI 2, 2, 1        
+(    4)        [0000000100]  -> [00110100000000000000000000000010] ~ SW 0, 3, 1          
+(    3)        [0000000011]  -> [00010000000000000000000011100111] ~ BEQ 1, 0, 7         
+(    2)        [0000000010]  -> [01100000000000000000000000000001] ~ LW 1, 2, 0          
+(    1)        [0000000001]  -> [11000000000000000111100100110010] ~ ADDI 3, 0, 969      
+(    0)        [0000000000]  -> [10000000000000000000000000010010] ~ ADDI 2, 0, 0        
+
+DEBUG:root:Data memory map is
+(   13)        [0000001101]  -> [00000000000000000000000000000000] = (         0)
+(   12)        [0000001100]  -> [00000000000000000000000000100001] = (        33)
+(   11)        [0000001011]  -> [00000000000000000000000001100100] = (       100)
+(   10)        [0000001010]  -> [00000000000000000000000001101100] = (       108)
+(    9)        [0000001001]  -> [00000000000000000000000001110010] = (       114)
+(    8)        [0000001000]  -> [00000000000000000000000001101111] = (       111)
+(    7)        [0000000111]  -> [00000000000000000000000001010111] = (        87)
+(    6)        [0000000110]  -> [00000000000000000000000000100000] = (        32)
+(    5)        [0000000101]  -> [00000000000000000000000000101100] = (        44)
+(    4)        [0000000100]  -> [00000000000000000000000001101111] = (       111)
+(    3)        [0000000011]  -> [00000000000000000000000001101100] = (       108)
+(    2)        [0000000010]  -> [00000000000000000000000001101100] = (       108)
+(    1)        [0000000001]  -> [00000000000000000000000001100101] = (       101)
+(    0)        [0000000000]  -> [00000000000000000000000001001000] = (        72)
+
+DEBUG:root: <== ADDI 2, 0, 0 ==> 
+DEBUG:root:{TICK: 0 PC: 1 ADDR: 0} {[rd: 2, rs1: 0, rs2: 0, imm: 0] Regs [0 0 0 0] } ALU [a:0 b:0 computed:0] ADDI 2, 0, 0
+DEBUG:root:{TICK: 1 PC: 1 ADDR: 0} {[rd: 2, rs1: 0, rs2: 0, imm: 0] Regs [0 0 0 0] } ALU [a:0 b:0 computed:0] ADDI 2, 0, 0
+DEBUG:root:{TICK: 2 PC: 1 ADDR: 0} {[rd: 2, rs1: 0, rs2: 0, imm: 0] Regs [0 0 0 0] } ALU [a:0 b:0 computed:0] ADDI 2, 0, 0
+DEBUG:root:{TICK: 3 PC: 1 ADDR: 0} {[rd: 2, rs1: 0, rs2: 0, imm: 0] Regs [0 0 0 0] } ALU [a:0 b:0 computed:0] ADDI 2, 0, 0
+DEBUG:root:{TICK: 4 PC: 1 ADDR: 0} {[rd: 2, rs1: 0, rs2: 0, imm: 0] Regs [0 0 0 0] } ALU [a:0 b:0 computed:0] ADDI 2, 0, 0
+DEBUG:root: <== ADDI 3, 0, 969 ==> 
+DEBUG:root:{TICK: 5 PC: 2 ADDR: 0} {[rd: 3, rs1: 0, rs2: 0, imm: 0] Regs [0 0 0 0] } ALU [a:0 b:0 computed:0] ADDI 3, 0, 969
+DEBUG:root:{TICK: 6 PC: 2 ADDR: 0} {[rd: 3, rs1: 0, rs2: 0, imm: 969] Regs [0 0 0 0] } ALU [a:0 b:0 computed:0] ADDI 3, 0, 969
+DEBUG:root:{TICK: 7 PC: 2 ADDR: 0} {[rd: 3, rs1: 0, rs2: 0, imm: 969] Regs [0 0 0 0] } ALU [a:0 b:969 computed:969] ADDI 3, 0, 969
+DEBUG:root:{TICK: 8 PC: 2 ADDR: 0} {[rd: 3, rs1: 0, rs2: 0, imm: 969] Regs [0 0 0 0] } ALU [a:0 b:969 computed:969] ADDI 3, 0, 969
+DEBUG:root:{TICK: 9 PC: 2 ADDR: 0} {[rd: 3, rs1: 0, rs2: 0, imm: 969] Regs [0 0 0 969] } ALU [a:0 b:969 computed:969] ADDI 3, 0, 969
+DEBUG:root: <== LW 1, 2, 0 ==> 
+DEBUG:root:{TICK: 10 PC: 3 ADDR: 0} {[rd: 1, rs1: 2, rs2: 0, imm: 969] Regs [0 0 0 969] } ALU [a:0 b:969 computed:969] LW 1, 2, 0
+DEBUG:root:{TICK: 11 PC: 3 ADDR: 0} {[rd: 1, rs1: 2, rs2: 0, imm: 1610612737] Regs [0 0 0 969] } ALU [a:0 b:969 computed:969] LW 1, 2, 0
+DEBUG:root:{TICK: 12 PC: 3 ADDR: 0} {[rd: 1, rs1: 2, rs2: 0, imm: 1610612737] Regs [0 0 0 969] } ALU [a:0 b:0 computed:969] LW 1, 2, 0
+DEBUG:root:{TICK: 13 PC: 3 ADDR: 0} {[rd: 1, rs1: 2, rs2: 0, imm: 1610612737] Regs [0 0 0 969] } ALU [a:0 b:0 computed:969] LW 1, 2, 0
+DEBUG:root:{TICK: 14 PC: 3 ADDR: 0} {[rd: 1, rs1: 2, rs2: 0, imm: 1610612737] Regs [0 72 0 969] } ALU [a:0 b:0 computed:969] LW 1, 2, 0
+DEBUG:root: <== BEQ 1, 0, 7 ==> 
+DEBUG:root:{TICK: 15 PC: 4 ADDR: 0} {[rd: 0, rs1: 1, rs2: 0, imm: 1610612737] Regs [0 72 0 969] } ALU [a:0 b:0 computed:969] BEQ 1, 0, 7
+DEBUG:root:{TICK: 16 PC: 4 ADDR: 0} {[rd: 0, rs1: 1, rs2: 0, imm: 7] Regs [0 72 0 969] } ALU [a:0 b:0 computed:969] BEQ 1, 0, 7
+DEBUG:root:{TICK: 17 PC: 4 ADDR: 0} {[rd: 0, rs1: 1, rs2: 0, imm: 7] Regs [0 72 0 969] } ALU [a:72 b:0 computed:969] BEQ 1, 0, 7
+DEBUG:root:{TICK: 18 PC: 4 ADDR: 0} {[rd: 0, rs1: 1, rs2: 0, imm: 7] Regs [0 72 0 969] } ALU [a:72 b:0 computed:969] BEQ 1, 0, 7
+DEBUG:root:{TICK: 19 PC: 4 ADDR: 0} {[rd: 0, rs1: 1, rs2: 0, imm: 7] Regs [0 72 0 969] } ALU [a:72 b:0 computed:969] BEQ 1, 0, 7
+DEBUG:root: <== SW 0, 3, 1 ==> 
+DEBUG:root:{TICK: 20 PC: 5 ADDR: 0} {[rd: 0, rs1: 3, rs2: 1, imm: 7] Regs [0 72 0 969] } ALU [a:72 b:0 computed:969] SW 0, 3, 1
+DEBUG:root:{TICK: 21 PC: 5 ADDR: 0} {[rd: 0, rs1: 3, rs2: 1, imm: 872415234] Regs [0 72 0 969] } ALU [a:72 b:0 computed:969] SW 0, 3, 1
+DEBUG:root:{TICK: 22 PC: 5 ADDR: 0} {[rd: 0, rs1: 3, rs2: 1, imm: 872415234] Regs [0 72 0 969] } ALU [a:969 b:72 computed:969] SW 0, 3, 1
+DEBUG:root:{TICK: 23 PC: 5 ADDR: 0} {[rd: 0, rs1: 3, rs2: 1, imm: 872415234] Regs [0 72 0 969] } ALU [a:969 b:72 computed:969] SW 0, 3, 1
+DEBUG:root:{TICK: 24 PC: 5 ADDR: 0} {[rd: 0, rs1: 3, rs2: 1, imm: 872415234] Regs [0 72 0 969] } ALU [a:969 b:72 computed:969] SW 0, 3, 1
+DEBUG:root: <== ADDI 2, 2, 1 ==> 
+DEBUG:root:{TICK: 25 PC: 6 ADDR: 0} {[rd: 2, rs1: 2, rs2: 0, imm: 872415234] Regs [0 72 0 969] } ALU [a:969 b:72 computed:969] ADDI 2, 2, 1
+DEBUG:root:{TICK: 26 PC: 6 ADDR: 0} {[rd: 2, rs1: 2, rs2: 0, imm: 1] Regs [0 72 0 969] } ALU [a:969 b:72 computed:969] ADDI 2, 2, 1
+DEBUG:root:{TICK: 27 PC: 6 ADDR: 0} {[rd: 2, rs1: 2, rs2: 0, imm: 1] Regs [0 72 0 969] } ALU [a:0 b:1 computed:1] ADDI 2, 2, 1
+DEBUG:root:{TICK: 28 PC: 6 ADDR: 0} {[rd: 2, rs1: 2, rs2: 0, imm: 1] Regs [0 72 0 969] } ALU [a:0 b:1 computed:1] ADDI 2, 2, 1
+DEBUG:root:{TICK: 29 PC: 6 ADDR: 0} {[rd: 2, rs1: 2, rs2: 0, imm: 1] Regs [0 72 1 969] } ALU [a:0 b:1 computed:1] ADDI 2, 2, 1
+DEBUG:root: <== JMP 2 ==> 
+DEBUG:root:{TICK: 30 PC: 7 ADDR: 0} {[rd: 0, rs1: 0, rs2: 0, imm: 1] Regs [0 72 1 969] } ALU [a:0 b:1 computed:1] JMP 2
+DEBUG:root:{TICK: 31 PC: 7 ADDR: 0} {[rd: 0, rs1: 0, rs2: 0, imm: 2] Regs [0 72 1 969] } ALU [a:0 b:1 computed:1] JMP 2
+DEBUG:root:{TICK: 32 PC: 7 ADDR: 0} {[rd: 0, rs1: 0, rs2: 0, imm: 2] Regs [0 72 1 969] } ALU [a:0 b:1 computed:1] JMP 2
+DEBUG:root:{TICK: 33 PC: 2 ADDR: 0} {[rd: 0, rs1: 0, rs2: 0, imm: 2] Regs [0 72 1 969] } ALU [a:0 b:1 computed:1] JMP 2
+DEBUG:root:{TICK: 34 PC: 2 ADDR: 0} {[rd: 0, rs1: 0, rs2: 0, imm: 2] Regs [0 72 1 969] } ALU [a:0 b:1 computed:1] JMP 2
+DEBUG:root: <== LW 1, 2, 0 ==> 
+DEBUG:root:{TICK: 35 PC: 3 ADDR: 0} {[rd: 1, rs1: 2, rs2: 0, imm: 2] Regs [0 72 1 969] } ALU [a:0 b:1 computed:1] LW 1, 2, 0
+DEBUG:root:{TICK: 36 PC: 3 ADDR: 0} {[rd: 1, rs1: 2, rs2: 0, imm: 1610612737] Regs [0 72 1 969] } ALU [a:0 b:1 computed:1] LW 1, 2, 0
+DEBUG:root:{TICK: 37 PC: 3 ADDR: 0} {[rd: 1, rs1: 2, rs2: 0, imm: 1610612737] Regs [0 72 1 969] } ALU [a:1 b:0 computed:1] LW 1, 2, 0
+DEBUG:root:{TICK: 38 PC: 3 ADDR: 1} {[rd: 1, rs1: 2, rs2: 0, imm: 1610612737] Regs [0 72 1 969] } ALU [a:1 b:0 computed:1] LW 1, 2, 0
+DEBUG:root:{TICK: 39 PC: 3 ADDR: 1} {[rd: 1, rs1: 2, rs2: 0, imm: 1610612737] Regs [0 101 1 969] } ALU [a:1 b:0 computed:1] LW 1, 2, 0
+DEBUG:root: <== BEQ 1, 0, 7 ==> 
+DEBUG:root:{TICK: 40 PC: 4 ADDR: 1} {[rd: 0, rs1: 1, rs2: 0, imm: 1610612737] Regs [0 101 1 969] } ALU [a:1 b:0 computed:1] BEQ 1, 0, 7
+DEBUG:root:{TICK: 41 PC: 4 ADDR: 1} {[rd: 0, rs1: 1, rs2: 0, imm: 7] Regs [0 101 1 969] } ALU [a:1 b:0 computed:1] BEQ 1, 0, 7
+DEBUG:root:{TICK: 42 PC: 4 ADDR: 1} {[rd: 0, rs1: 1, rs2: 0, imm: 7] Regs [0 101 1 969] } ALU [a:101 b:0 computed:1] BEQ 1, 0, 7
+DEBUG:root:{TICK: 43 PC: 4 ADDR: 1} {[rd: 0, rs1: 1, rs2: 0, imm: 7] Regs [0 101 1 969] } ALU [a:101 b:0 computed:1] BEQ 1, 0, 7
+DEBUG:root:{TICK: 44 PC: 4 ADDR: 1} {[rd: 0, rs1: 1, rs2: 0, imm: 7] Regs [0 101 1 969] } ALU [a:101 b:0 computed:1] BEQ 1, 0, 7
+DEBUG:root: <== SW 0, 3, 1 ==> 
+DEBUG:root:{TICK: 45 PC: 5 ADDR: 1} {[rd: 0, rs1: 3, rs2: 1, imm: 7] Regs [0 101 1 969] } ALU [a:101 b:0 computed:1] SW 0, 3, 1
+DEBUG:root:{TICK: 46 PC: 5 ADDR: 1} {[rd: 0, rs1: 3, rs2: 1, imm: 872415234] Regs [0 101 1 969] } ALU [a:101 b:0 computed:1] SW 0, 3, 1
+DEBUG:root:{TICK: 47 PC: 5 ADDR: 1} {[rd: 0, rs1: 3, rs2: 1, imm: 872415234] Regs [0 101 1 969] } ALU [a:969 b:101 computed:1] SW 0, 3, 1
+DEBUG:root:{TICK: 48 PC: 5 ADDR: 1} {[rd: 0, rs1: 3, rs2: 1, imm: 872415234] Regs [0 101 1 969] } ALU [a:969 b:101 computed:1] SW 0, 3, 1
+DEBUG:root:{TICK: 49 PC: 5 ADDR: 1} {[rd: 0, rs1: 3, rs2: 1, imm: 872415234] Regs [0 101 1 969] } ALU [a:969 b:101 computed:1] SW 0, 3, 1
+DEBUG:root: <== ADDI 2, 2, 1 ==> 
+DEBUG:root:{TICK: 50 PC: 6 ADDR: 1} {[rd: 2, rs1: 2, rs2: 0, imm: 872415234] Regs [0 101 1 969] } ALU [a:969 b:101 computed:1] ADDI 2, 2, 1
+DEBUG:root:{TICK: 51 PC: 6 ADDR: 1} {[rd: 2, rs1: 2, rs2: 0, imm: 1] Regs [0 101 1 969] } ALU [a:969 b:101 computed:1] ADDI 2, 2, 1
+DEBUG:root:{TICK: 52 PC: 6 ADDR: 1} {[rd: 2, rs1: 2, rs2: 0, imm: 1] Regs [0 101 1 969] } ALU [a:1 b:1 computed:2] ADDI 2, 2, 1
+DEBUG:root:{TICK: 53 PC: 6 ADDR: 1} {[rd: 2, rs1: 2, rs2: 0, imm: 1] Regs [0 101 1 969] } ALU [a:1 b:1 computed:2] ADDI 2, 2, 1
+DEBUG:root:{TICK: 54 PC: 6 ADDR: 1} {[rd: 2, rs1: 2, rs2: 0, imm: 1] Regs [0 101 2 969] } ALU [a:1 b:1 computed:2] ADDI 2, 2, 1
+DEBUG:root: <== JMP 2 ==> 
+DEBUG:root:{TICK: 55 PC: 7 ADDR: 1} {[rd: 0, rs1: 0, rs2: 0, imm: 1] Regs [0 101 2 969] } ALU [a:1 b:1 computed:2] JMP 2
+DEBUG:root:{TICK: 56 PC: 7 ADDR: 1} {[rd: 0, rs1: 0, rs2: 0, imm: 2] Regs [0 101 2 969] } ALU [a:1 b:1 computed:2] JMP 2
+DEBUG:root:{TICK: 57 PC: 7 ADDR: 1} {[rd: 0, rs1: 0, rs2: 0, imm: 2] Regs [0 101 2 969] } ALU [a:0 b:1 computed:2] JMP 2
+DEBUG:root:{TICK: 58 PC: 2 ADDR: 1} {[rd: 0, rs1: 0, rs2: 0, imm: 2] Regs [0 101 2 969] } ALU [a:0 b:1 computed:2] JMP 2
+DEBUG:root:{TICK: 59 PC: 2 ADDR: 1} {[rd: 0, rs1: 0, rs2: 0, imm: 2] Regs [0 101 2 969] } ALU [a:0 b:1 computed:2] JMP 2
+DEBUG:root: <== LW 1, 2, 0 ==> 
+DEBUG:root:{TICK: 60 PC: 3 ADDR: 1} {[rd: 1, rs1: 2, rs2: 0, imm: 2] Regs [0 101 2 969] } ALU [a:0 b:1 computed:2] LW 1, 2, 0
+DEBUG:root:{TICK: 61 PC: 3 ADDR: 1} {[rd: 1, rs1: 2, rs2: 0, imm: 1610612737] Regs [0 101 2 969] } ALU [a:0 b:1 computed:2] LW 1, 2, 0
+DEBUG:root:{TICK: 62 PC: 3 ADDR: 1} {[rd: 1, rs1: 2, rs2: 0, imm: 1610612737] Regs [0 101 2 969] } ALU [a:2 b:0 computed:2] LW 1, 2, 0
+DEBUG:root:{TICK: 63 PC: 3 ADDR: 2} {[rd: 1, rs1: 2, rs2: 0, imm: 1610612737] Regs [0 101 2 969] } ALU [a:2 b:0 computed:2] LW 1, 2, 0
+DEBUG:root:{TICK: 64 PC: 3 ADDR: 2} {[rd: 1, rs1: 2, rs2: 0, imm: 1610612737] Regs [0 108 2 969] } ALU [a:2 b:0 computed:2] LW 1, 2, 0
+DEBUG:root: <== BEQ 1, 0, 7 ==> 
+DEBUG:root:{TICK: 65 PC: 4 ADDR: 2} {[rd: 0, rs1: 1, rs2: 0, imm: 1610612737] Regs [0 108 2 969] } ALU [a:2 b:0 computed:2] BEQ 1, 0, 7
+DEBUG:root:{TICK: 66 PC: 4 ADDR: 2} {[rd: 0, rs1: 1, rs2: 0, imm: 7] Regs [0 108 2 969] } ALU [a:2 b:0 computed:2] BEQ 1, 0, 7
+DEBUG:root:{TICK: 67 PC: 4 ADDR: 2} {[rd: 0, rs1: 1, rs2: 0, imm: 7] Regs [0 108 2 969] } ALU [a:108 b:0 computed:2] BEQ 1, 0, 7
+DEBUG:root:{TICK: 68 PC: 4 ADDR: 2} {[rd: 0, rs1: 1, rs2: 0, imm: 7] Regs [0 108 2 969] } ALU [a:108 b:0 computed:2] BEQ 1, 0, 7
+DEBUG:root:{TICK: 69 PC: 4 ADDR: 2} {[rd: 0, rs1: 1, rs2: 0, imm: 7] Regs [0 108 2 969] } ALU [a:108 b:0 computed:2] BEQ 1, 0, 7
+DEBUG:root: <== SW 0, 3, 1 ==> 
+DEBUG:root:{TICK: 70 PC: 5 ADDR: 2} {[rd: 0, rs1: 3, rs2: 1, imm: 7] Regs [0 108 2 969] } ALU [a:108 b:0 computed:2] SW 0, 3, 1
+DEBUG:root:{TICK: 71 PC: 5 ADDR: 2} {[rd: 0, rs1: 3, rs2: 1, imm: 872415234] Regs [0 108 2 969] } ALU [a:108 b:0 computed:2] SW 0, 3, 1
+DEBUG:root:{TICK: 72 PC: 5 ADDR: 2} {[rd: 0, rs1: 3, rs2: 1, imm: 872415234] Regs [0 108 2 969] } ALU [a:969 b:108 computed:2] SW 0, 3, 1
+DEBUG:root:{TICK: 73 PC: 5 ADDR: 2} {[rd: 0, rs1: 3, rs2: 1, imm: 872415234] Regs [0 108 2 969] } ALU [a:969 b:108 computed:2] SW 0, 3, 1
+DEBUG:root:{TICK: 74 PC: 5 ADDR: 2} {[rd: 0, rs1: 3, rs2: 1, imm: 872415234] Regs [0 108 2 969] } ALU [a:969 b:108 computed:2] SW 0, 3, 1
+DEBUG:root: <== ADDI 2, 2, 1 ==> 
+DEBUG:root:{TICK: 75 PC: 6 ADDR: 2} {[rd: 2, rs1: 2, rs2: 0, imm: 872415234] Regs [0 108 2 969] } ALU [a:969 b:108 computed:2] ADDI 2, 2, 1
+DEBUG:root:{TICK: 76 PC: 6 ADDR: 2} {[rd: 2, rs1: 2, rs2: 0, imm: 1] Regs [0 108 2 969] } ALU [a:969 b:108 computed:2] ADDI 2, 2, 1
+DEBUG:root:{TICK: 77 PC: 6 ADDR: 2} {[rd: 2, rs1: 2, rs2: 0, imm: 1] Regs [0 108 2 969] } ALU [a:2 b:1 computed:3] ADDI 2, 2, 1
+DEBUG:root:{TICK: 78 PC: 6 ADDR: 2} {[rd: 2, rs1: 2, rs2: 0, imm: 1] Regs [0 108 2 969] } ALU [a:2 b:1 computed:3] ADDI 2, 2, 1
+DEBUG:root:{TICK: 79 PC: 6 ADDR: 2} {[rd: 2, rs1: 2, rs2: 0, imm: 1] Regs [0 108 3 969] } ALU [a:2 b:1 computed:3] ADDI 2, 2, 1
+DEBUG:root: <== JMP 2 ==> 
+DEBUG:root:{TICK: 80 PC: 7 ADDR: 2} {[rd: 0, rs1: 0, rs2: 0, imm: 1] Regs [0 108 3 969] } ALU [a:2 b:1 computed:3] JMP 2
+DEBUG:root:{TICK: 81 PC: 7 ADDR: 2} {[rd: 0, rs1: 0, rs2: 0, imm: 2] Regs [0 108 3 969] } ALU [a:2 b:1 computed:3] JMP 2
+DEBUG:root:{TICK: 82 PC: 7 ADDR: 2} {[rd: 0, rs1: 0, rs2: 0, imm: 2] Regs [0 108 3 969] } ALU [a:0 b:1 computed:3] JMP 2
+DEBUG:root:{TICK: 83 PC: 2 ADDR: 2} {[rd: 0, rs1: 0, rs2: 0, imm: 2] Regs [0 108 3 969] } ALU [a:0 b:1 computed:3] JMP 2
+DEBUG:root:{TICK: 84 PC: 2 ADDR: 2} {[rd: 0, rs1: 0, rs2: 0, imm: 2] Regs [0 108 3 969] } ALU [a:0 b:1 computed:3] JMP 2
+DEBUG:root: <== LW 1, 2, 0 ==> 
+DEBUG:root:{TICK: 85 PC: 3 ADDR: 2} {[rd: 1, rs1: 2, rs2: 0, imm: 2] Regs [0 108 3 969] } ALU [a:0 b:1 computed:3] LW 1, 2, 0
+DEBUG:root:{TICK: 86 PC: 3 ADDR: 2} {[rd: 1, rs1: 2, rs2: 0, imm: 1610612737] Regs [0 108 3 969] } ALU [a:0 b:1 computed:3] LW 1, 2, 0
+DEBUG:root:{TICK: 87 PC: 3 ADDR: 2} {[rd: 1, rs1: 2, rs2: 0, imm: 1610612737] Regs [0 108 3 969] } ALU [a:3 b:0 computed:3] LW 1, 2, 0
+DEBUG:root:{TICK: 88 PC: 3 ADDR: 3} {[rd: 1, rs1: 2, rs2: 0, imm: 1610612737] Regs [0 108 3 969] } ALU [a:3 b:0 computed:3] LW 1, 2, 0
+DEBUG:root:{TICK: 89 PC: 3 ADDR: 3} {[rd: 1, rs1: 2, rs2: 0, imm: 1610612737] Regs [0 108 3 969] } ALU [a:3 b:0 computed:3] LW 1, 2, 0
+DEBUG:root: <== BEQ 1, 0, 7 ==> 
+DEBUG:root:{TICK: 90 PC: 4 ADDR: 3} {[rd: 0, rs1: 1, rs2: 0, imm: 1610612737] Regs [0 108 3 969] } ALU [a:3 b:0 computed:3] BEQ 1, 0, 7
+DEBUG:root:{TICK: 91 PC: 4 ADDR: 3} {[rd: 0, rs1: 1, rs2: 0, imm: 7] Regs [0 108 3 969] } ALU [a:3 b:0 computed:3] BEQ 1, 0, 7
+DEBUG:root:{TICK: 92 PC: 4 ADDR: 3} {[rd: 0, rs1: 1, rs2: 0, imm: 7] Regs [0 108 3 969] } ALU [a:108 b:0 computed:3] BEQ 1, 0, 7
+DEBUG:root:{TICK: 93 PC: 4 ADDR: 3} {[rd: 0, rs1: 1, rs2: 0, imm: 7] Regs [0 108 3 969] } ALU [a:108 b:0 computed:3] BEQ 1, 0, 7
+DEBUG:root:{TICK: 94 PC: 4 ADDR: 3} {[rd: 0, rs1: 1, rs2: 0, imm: 7] Regs [0 108 3 969] } ALU [a:108 b:0 computed:3] BEQ 1, 0, 7
+DEBUG:root: <== SW 0, 3, 1 ==> 
+DEBUG:root:{TICK: 95 PC: 5 ADDR: 3} {[rd: 0, rs1: 3, rs2: 1, imm: 7] Regs [0 108 3 969] } ALU [a:108 b:0 computed:3] SW 0, 3, 1
+DEBUG:root:{TICK: 96 PC: 5 ADDR: 3} {[rd: 0, rs1: 3, rs2: 1, imm: 872415234] Regs [0 108 3 969] } ALU [a:108 b:0 computed:3] SW 0, 3, 1
+DEBUG:root:{TICK: 97 PC: 5 ADDR: 3} {[rd: 0, rs1: 3, rs2: 1, imm: 872415234] Regs [0 108 3 969] } ALU [a:969 b:108 computed:3] SW 0, 3, 1
+DEBUG:root:{TICK: 98 PC: 5 ADDR: 3} {[rd: 0, rs1: 3, rs2: 1, imm: 872415234] Regs [0 108 3 969] } ALU [a:969 b:108 computed:3] SW 0, 3, 1
+DEBUG:root:{TICK: 99 PC: 5 ADDR: 3} {[rd: 0, rs1: 3, rs2: 1, imm: 872415234] Regs [0 108 3 969] } ALU [a:969 b:108 computed:3] SW 0, 3, 1
+DEBUG:root: <== ADDI 2, 2, 1 ==> 
+DEBUG:root:{TICK: 100 PC: 6 ADDR: 3} {[rd: 2, rs1: 2, rs2: 0, imm: 872415234] Regs [0 108 3 969] } ALU [a:969 b:108 computed:3] ADDI 2, 2, 1
+DEBUG:root:{TICK: 101 PC: 6 ADDR: 3} {[rd: 2, rs1: 2, rs2: 0, imm: 1] Regs [0 108 3 969] } ALU [a:969 b:108 computed:3] ADDI 2, 2, 1
+DEBUG:root:{TICK: 102 PC: 6 ADDR: 3} {[rd: 2, rs1: 2, rs2: 0, imm: 1] Regs [0 108 3 969] } ALU [a:3 b:1 computed:4] ADDI 2, 2, 1
+DEBUG:root:{TICK: 103 PC: 6 ADDR: 3} {[rd: 2, rs1: 2, rs2: 0, imm: 1] Regs [0 108 3 969] } ALU [a:3 b:1 computed:4] ADDI 2, 2, 1
+DEBUG:root:{TICK: 104 PC: 6 ADDR: 3} {[rd: 2, rs1: 2, rs2: 0, imm: 1] Regs [0 108 4 969] } ALU [a:3 b:1 computed:4] ADDI 2, 2, 1
+DEBUG:root: <== JMP 2 ==> 
+DEBUG:root:{TICK: 105 PC: 7 ADDR: 3} {[rd: 0, rs1: 0, rs2: 0, imm: 1] Regs [0 108 4 969] } ALU [a:3 b:1 computed:4] JMP 2
+DEBUG:root:{TICK: 106 PC: 7 ADDR: 3} {[rd: 0, rs1: 0, rs2: 0, imm: 2] Regs [0 108 4 969] } ALU [a:3 b:1 computed:4] JMP 2
+DEBUG:root:{TICK: 107 PC: 7 ADDR: 3} {[rd: 0, rs1: 0, rs2: 0, imm: 2] Regs [0 108 4 969] } ALU [a:0 b:1 computed:4] JMP 2
+DEBUG:root:{TICK: 108 PC: 2 ADDR: 3} {[rd: 0, rs1: 0, rs2: 0, imm: 2] Regs [0 108 4 969] } ALU [a:0 b:1 computed:4] JMP 2
+DEBUG:root:{TICK: 109 PC: 2 ADDR: 3} {[rd: 0, rs1: 0, rs2: 0, imm: 2] Regs [0 108 4 969] } ALU [a:0 b:1 computed:4] JMP 2
+DEBUG:root: <== LW 1, 2, 0 ==> 
+DEBUG:root:{TICK: 110 PC: 3 ADDR: 3} {[rd: 1, rs1: 2, rs2: 0, imm: 2] Regs [0 108 4 969] } ALU [a:0 b:1 computed:4] LW 1, 2, 0
+DEBUG:root:{TICK: 111 PC: 3 ADDR: 3} {[rd: 1, rs1: 2, rs2: 0, imm: 1610612737] Regs [0 108 4 969] } ALU [a:0 b:1 computed:4] LW 1, 2, 0
+DEBUG:root:{TICK: 112 PC: 3 ADDR: 3} {[rd: 1, rs1: 2, rs2: 0, imm: 1610612737] Regs [0 108 4 969] } ALU [a:4 b:0 computed:4] LW 1, 2, 0
+DEBUG:root:{TICK: 113 PC: 3 ADDR: 4} {[rd: 1, rs1: 2, rs2: 0, imm: 1610612737] Regs [0 108 4 969] } ALU [a:4 b:0 computed:4] LW 1, 2, 0
+DEBUG:root:{TICK: 114 PC: 3 ADDR: 4} {[rd: 1, rs1: 2, rs2: 0, imm: 1610612737] Regs [0 111 4 969] } ALU [a:4 b:0 computed:4] LW 1, 2, 0
+DEBUG:root: <== BEQ 1, 0, 7 ==> 
+DEBUG:root:{TICK: 115 PC: 4 ADDR: 4} {[rd: 0, rs1: 1, rs2: 0, imm: 1610612737] Regs [0 111 4 969] } ALU [a:4 b:0 computed:4] BEQ 1, 0, 7
+DEBUG:root:{TICK: 116 PC: 4 ADDR: 4} {[rd: 0, rs1: 1, rs2: 0, imm: 7] Regs [0 111 4 969] } ALU [a:4 b:0 computed:4] BEQ 1, 0, 7
+DEBUG:root:{TICK: 117 PC: 4 ADDR: 4} {[rd: 0, rs1: 1, rs2: 0, imm: 7] Regs [0 111 4 969] } ALU [a:111 b:0 computed:4] BEQ 1, 0, 7
+DEBUG:root:{TICK: 118 PC: 4 ADDR: 4} {[rd: 0, rs1: 1, rs2: 0, imm: 7] Regs [0 111 4 969] } ALU [a:111 b:0 computed:4] BEQ 1, 0, 7
+DEBUG:root:{TICK: 119 PC: 4 ADDR: 4} {[rd: 0, rs1: 1, rs2: 0, imm: 7] Regs [0 111 4 969] } ALU [a:111 b:0 computed:4] BEQ 1, 0, 7
+DEBUG:root: <== SW 0, 3, 1 ==> 
+DEBUG:root:{TICK: 120 PC: 5 ADDR: 4} {[rd: 0, rs1: 3, rs2: 1, imm: 7] Regs [0 111 4 969] } ALU [a:111 b:0 computed:4] SW 0, 3, 1
+DEBUG:root:{TICK: 121 PC: 5 ADDR: 4} {[rd: 0, rs1: 3, rs2: 1, imm: 872415234] Regs [0 111 4 969] } ALU [a:111 b:0 computed:4] SW 0, 3, 1
+DEBUG:root:{TICK: 122 PC: 5 ADDR: 4} {[rd: 0, rs1: 3, rs2: 1, imm: 872415234] Regs [0 111 4 969] } ALU [a:969 b:111 computed:4] SW 0, 3, 1
+DEBUG:root:{TICK: 123 PC: 5 ADDR: 4} {[rd: 0, rs1: 3, rs2: 1, imm: 872415234] Regs [0 111 4 969] } ALU [a:969 b:111 computed:4] SW 0, 3, 1
+DEBUG:root:{TICK: 124 PC: 5 ADDR: 4} {[rd: 0, rs1: 3, rs2: 1, imm: 872415234] Regs [0 111 4 969] } ALU [a:969 b:111 computed:4] SW 0, 3, 1
+DEBUG:root: <== ADDI 2, 2, 1 ==> 
+DEBUG:root:{TICK: 125 PC: 6 ADDR: 4} {[rd: 2, rs1: 2, rs2: 0, imm: 872415234] Regs [0 111 4 969] } ALU [a:969 b:111 computed:4] ADDI 2, 2, 1
+DEBUG:root:{TICK: 126 PC: 6 ADDR: 4} {[rd: 2, rs1: 2, rs2: 0, imm: 1] Regs [0 111 4 969] } ALU [a:969 b:111 computed:4] ADDI 2, 2, 1
+DEBUG:root:{TICK: 127 PC: 6 ADDR: 4} {[rd: 2, rs1: 2, rs2: 0, imm: 1] Regs [0 111 4 969] } ALU [a:4 b:1 computed:5] ADDI 2, 2, 1
+DEBUG:root:{TICK: 128 PC: 6 ADDR: 4} {[rd: 2, rs1: 2, rs2: 0, imm: 1] Regs [0 111 4 969] } ALU [a:4 b:1 computed:5] ADDI 2, 2, 1
+DEBUG:root:{TICK: 129 PC: 6 ADDR: 4} {[rd: 2, rs1: 2, rs2: 0, imm: 1] Regs [0 111 5 969] } ALU [a:4 b:1 computed:5] ADDI 2, 2, 1
+DEBUG:root: <== JMP 2 ==> 
+DEBUG:root:{TICK: 130 PC: 7 ADDR: 4} {[rd: 0, rs1: 0, rs2: 0, imm: 1] Regs [0 111 5 969] } ALU [a:4 b:1 computed:5] JMP 2
+DEBUG:root:{TICK: 131 PC: 7 ADDR: 4} {[rd: 0, rs1: 0, rs2: 0, imm: 2] Regs [0 111 5 969] } ALU [a:4 b:1 computed:5] JMP 2
+DEBUG:root:{TICK: 132 PC: 7 ADDR: 4} {[rd: 0, rs1: 0, rs2: 0, imm: 2] Regs [0 111 5 969] } ALU [a:0 b:1 computed:5] JMP 2
+DEBUG:root:{TICK: 133 PC: 2 ADDR: 4} {[rd: 0, rs1: 0, rs2: 0, imm: 2] Regs [0 111 5 969] } ALU [a:0 b:1 computed:5] JMP 2
+DEBUG:root:{TICK: 134 PC: 2 ADDR: 4} {[rd: 0, rs1: 0, rs2: 0, imm: 2] Regs [0 111 5 969] } ALU [a:0 b:1 computed:5] JMP 2
+DEBUG:root: <== LW 1, 2, 0 ==> 
+DEBUG:root:{TICK: 135 PC: 3 ADDR: 4} {[rd: 1, rs1: 2, rs2: 0, imm: 2] Regs [0 111 5 969] } ALU [a:0 b:1 computed:5] LW 1, 2, 0
+DEBUG:root:{TICK: 136 PC: 3 ADDR: 4} {[rd: 1, rs1: 2, rs2: 0, imm: 1610612737] Regs [0 111 5 969] } ALU [a:0 b:1 computed:5] LW 1, 2, 0
+DEBUG:root:{TICK: 137 PC: 3 ADDR: 4} {[rd: 1, rs1: 2, rs2: 0, imm: 1610612737] Regs [0 111 5 969] } ALU [a:5 b:0 computed:5] LW 1, 2, 0
+DEBUG:root:{TICK: 138 PC: 3 ADDR: 5} {[rd: 1, rs1: 2, rs2: 0, imm: 1610612737] Regs [0 111 5 969] } ALU [a:5 b:0 computed:5] LW 1, 2, 0
+DEBUG:root:{TICK: 139 PC: 3 ADDR: 5} {[rd: 1, rs1: 2, rs2: 0, imm: 1610612737] Regs [0 44 5 969] } ALU [a:5 b:0 computed:5] LW 1, 2, 0
+DEBUG:root: <== BEQ 1, 0, 7 ==> 
+DEBUG:root:{TICK: 140 PC: 4 ADDR: 5} {[rd: 0, rs1: 1, rs2: 0, imm: 1610612737] Regs [0 44 5 969] } ALU [a:5 b:0 computed:5] BEQ 1, 0, 7
+DEBUG:root:{TICK: 141 PC: 4 ADDR: 5} {[rd: 0, rs1: 1, rs2: 0, imm: 7] Regs [0 44 5 969] } ALU [a:5 b:0 computed:5] BEQ 1, 0, 7
+DEBUG:root:{TICK: 142 PC: 4 ADDR: 5} {[rd: 0, rs1: 1, rs2: 0, imm: 7] Regs [0 44 5 969] } ALU [a:44 b:0 computed:5] BEQ 1, 0, 7
+DEBUG:root:{TICK: 143 PC: 4 ADDR: 5} {[rd: 0, rs1: 1, rs2: 0, imm: 7] Regs [0 44 5 969] } ALU [a:44 b:0 computed:5] BEQ 1, 0, 7
+DEBUG:root:{TICK: 144 PC: 4 ADDR: 5} {[rd: 0, rs1: 1, rs2: 0, imm: 7] Regs [0 44 5 969] } ALU [a:44 b:0 computed:5] BEQ 1, 0, 7
+DEBUG:root: <== SW 0, 3, 1 ==> 
+DEBUG:root:{TICK: 145 PC: 5 ADDR: 5} {[rd: 0, rs1: 3, rs2: 1, imm: 7] Regs [0 44 5 969] } ALU [a:44 b:0 computed:5] SW 0, 3, 1
+DEBUG:root:{TICK: 146 PC: 5 ADDR: 5} {[rd: 0, rs1: 3, rs2: 1, imm: 872415234] Regs [0 44 5 969] } ALU [a:44 b:0 computed:5] SW 0, 3, 1
+DEBUG:root:{TICK: 147 PC: 5 ADDR: 5} {[rd: 0, rs1: 3, rs2: 1, imm: 872415234] Regs [0 44 5 969] } ALU [a:969 b:44 computed:5] SW 0, 3, 1
+DEBUG:root:{TICK: 148 PC: 5 ADDR: 5} {[rd: 0, rs1: 3, rs2: 1, imm: 872415234] Regs [0 44 5 969] } ALU [a:969 b:44 computed:5] SW 0, 3, 1
+DEBUG:root:{TICK: 149 PC: 5 ADDR: 5} {[rd: 0, rs1: 3, rs2: 1, imm: 872415234] Regs [0 44 5 969] } ALU [a:969 b:44 computed:5] SW 0, 3, 1
+DEBUG:root: <== ADDI 2, 2, 1 ==> 
+DEBUG:root:{TICK: 150 PC: 6 ADDR: 5} {[rd: 2, rs1: 2, rs2: 0, imm: 872415234] Regs [0 44 5 969] } ALU [a:969 b:44 computed:5] ADDI 2, 2, 1
+DEBUG:root:{TICK: 151 PC: 6 ADDR: 5} {[rd: 2, rs1: 2, rs2: 0, imm: 1] Regs [0 44 5 969] } ALU [a:969 b:44 computed:5] ADDI 2, 2, 1
+DEBUG:root:{TICK: 152 PC: 6 ADDR: 5} {[rd: 2, rs1: 2, rs2: 0, imm: 1] Regs [0 44 5 969] } ALU [a:5 b:1 computed:6] ADDI 2, 2, 1
+DEBUG:root:{TICK: 153 PC: 6 ADDR: 5} {[rd: 2, rs1: 2, rs2: 0, imm: 1] Regs [0 44 5 969] } ALU [a:5 b:1 computed:6] ADDI 2, 2, 1
+DEBUG:root:{TICK: 154 PC: 6 ADDR: 5} {[rd: 2, rs1: 2, rs2: 0, imm: 1] Regs [0 44 6 969] } ALU [a:5 b:1 computed:6] ADDI 2, 2, 1
+DEBUG:root: <== JMP 2 ==> 
+DEBUG:root:{TICK: 155 PC: 7 ADDR: 5} {[rd: 0, rs1: 0, rs2: 0, imm: 1] Regs [0 44 6 969] } ALU [a:5 b:1 computed:6] JMP 2
+DEBUG:root:{TICK: 156 PC: 7 ADDR: 5} {[rd: 0, rs1: 0, rs2: 0, imm: 2] Regs [0 44 6 969] } ALU [a:5 b:1 computed:6] JMP 2
+DEBUG:root:{TICK: 157 PC: 7 ADDR: 5} {[rd: 0, rs1: 0, rs2: 0, imm: 2] Regs [0 44 6 969] } ALU [a:0 b:1 computed:6] JMP 2
+DEBUG:root:{TICK: 158 PC: 2 ADDR: 5} {[rd: 0, rs1: 0, rs2: 0, imm: 2] Regs [0 44 6 969] } ALU [a:0 b:1 computed:6] JMP 2
+DEBUG:root:{TICK: 159 PC: 2 ADDR: 5} {[rd: 0, rs1: 0, rs2: 0, imm: 2] Regs [0 44 6 969] } ALU [a:0 b:1 computed:6] JMP 2
+DEBUG:root: <== LW 1, 2, 0 ==> 
+DEBUG:root:{TICK: 160 PC: 3 ADDR: 5} {[rd: 1, rs1: 2, rs2: 0, imm: 2] Regs [0 44 6 969] } ALU [a:0 b:1 computed:6] LW 1, 2, 0
+DEBUG:root:{TICK: 161 PC: 3 ADDR: 5} {[rd: 1, rs1: 2, rs2: 0, imm: 1610612737] Regs [0 44 6 969] } ALU [a:0 b:1 computed:6] LW 1, 2, 0
+DEBUG:root:{TICK: 162 PC: 3 ADDR: 5} {[rd: 1, rs1: 2, rs2: 0, imm: 1610612737] Regs [0 44 6 969] } ALU [a:6 b:0 computed:6] LW 1, 2, 0
+DEBUG:root:{TICK: 163 PC: 3 ADDR: 6} {[rd: 1, rs1: 2, rs2: 0, imm: 1610612737] Regs [0 44 6 969] } ALU [a:6 b:0 computed:6] LW 1, 2, 0
+DEBUG:root:{TICK: 164 PC: 3 ADDR: 6} {[rd: 1, rs1: 2, rs2: 0, imm: 1610612737] Regs [0 32 6 969] } ALU [a:6 b:0 computed:6] LW 1, 2, 0
+DEBUG:root: <== BEQ 1, 0, 7 ==> 
+DEBUG:root:{TICK: 165 PC: 4 ADDR: 6} {[rd: 0, rs1: 1, rs2: 0, imm: 1610612737] Regs [0 32 6 969] } ALU [a:6 b:0 computed:6] BEQ 1, 0, 7
+DEBUG:root:{TICK: 166 PC: 4 ADDR: 6} {[rd: 0, rs1: 1, rs2: 0, imm: 7] Regs [0 32 6 969] } ALU [a:6 b:0 computed:6] BEQ 1, 0, 7
+DEBUG:root:{TICK: 167 PC: 4 ADDR: 6} {[rd: 0, rs1: 1, rs2: 0, imm: 7] Regs [0 32 6 969] } ALU [a:32 b:0 computed:6] BEQ 1, 0, 7
+DEBUG:root:{TICK: 168 PC: 4 ADDR: 6} {[rd: 0, rs1: 1, rs2: 0, imm: 7] Regs [0 32 6 969] } ALU [a:32 b:0 computed:6] BEQ 1, 0, 7
+DEBUG:root:{TICK: 169 PC: 4 ADDR: 6} {[rd: 0, rs1: 1, rs2: 0, imm: 7] Regs [0 32 6 969] } ALU [a:32 b:0 computed:6] BEQ 1, 0, 7
+DEBUG:root: <== SW 0, 3, 1 ==> 
+DEBUG:root:{TICK: 170 PC: 5 ADDR: 6} {[rd: 0, rs1: 3, rs2: 1, imm: 7] Regs [0 32 6 969] } ALU [a:32 b:0 computed:6] SW 0, 3, 1
+DEBUG:root:{TICK: 171 PC: 5 ADDR: 6} {[rd: 0, rs1: 3, rs2: 1, imm: 872415234] Regs [0 32 6 969] } ALU [a:32 b:0 computed:6] SW 0, 3, 1
+DEBUG:root:{TICK: 172 PC: 5 ADDR: 6} {[rd: 0, rs1: 3, rs2: 1, imm: 872415234] Regs [0 32 6 969] } ALU [a:969 b:32 computed:6] SW 0, 3, 1
+DEBUG:root:{TICK: 173 PC: 5 ADDR: 6} {[rd: 0, rs1: 3, rs2: 1, imm: 872415234] Regs [0 32 6 969] } ALU [a:969 b:32 computed:6] SW 0, 3, 1
+DEBUG:root:{TICK: 174 PC: 5 ADDR: 6} {[rd: 0, rs1: 3, rs2: 1, imm: 872415234] Regs [0 32 6 969] } ALU [a:969 b:32 computed:6] SW 0, 3, 1
+DEBUG:root: <== ADDI 2, 2, 1 ==> 
+DEBUG:root:{TICK: 175 PC: 6 ADDR: 6} {[rd: 2, rs1: 2, rs2: 0, imm: 872415234] Regs [0 32 6 969] } ALU [a:969 b:32 computed:6] ADDI 2, 2, 1
+DEBUG:root:{TICK: 176 PC: 6 ADDR: 6} {[rd: 2, rs1: 2, rs2: 0, imm: 1] Regs [0 32 6 969] } ALU [a:969 b:32 computed:6] ADDI 2, 2, 1
+DEBUG:root:{TICK: 177 PC: 6 ADDR: 6} {[rd: 2, rs1: 2, rs2: 0, imm: 1] Regs [0 32 6 969] } ALU [a:6 b:1 computed:7] ADDI 2, 2, 1
+DEBUG:root:{TICK: 178 PC: 6 ADDR: 6} {[rd: 2, rs1: 2, rs2: 0, imm: 1] Regs [0 32 6 969] } ALU [a:6 b:1 computed:7] ADDI 2, 2, 1
+DEBUG:root:{TICK: 179 PC: 6 ADDR: 6} {[rd: 2, rs1: 2, rs2: 0, imm: 1] Regs [0 32 7 969] } ALU [a:6 b:1 computed:7] ADDI 2, 2, 1
+DEBUG:root: <== JMP 2 ==> 
+DEBUG:root:{TICK: 180 PC: 7 ADDR: 6} {[rd: 0, rs1: 0, rs2: 0, imm: 1] Regs [0 32 7 969] } ALU [a:6 b:1 computed:7] JMP 2
+DEBUG:root:{TICK: 181 PC: 7 ADDR: 6} {[rd: 0, rs1: 0, rs2: 0, imm: 2] Regs [0 32 7 969] } ALU [a:6 b:1 computed:7] JMP 2
+DEBUG:root:{TICK: 182 PC: 7 ADDR: 6} {[rd: 0, rs1: 0, rs2: 0, imm: 2] Regs [0 32 7 969] } ALU [a:0 b:1 computed:7] JMP 2
+DEBUG:root:{TICK: 183 PC: 2 ADDR: 6} {[rd: 0, rs1: 0, rs2: 0, imm: 2] Regs [0 32 7 969] } ALU [a:0 b:1 computed:7] JMP 2
+DEBUG:root:{TICK: 184 PC: 2 ADDR: 6} {[rd: 0, rs1: 0, rs2: 0, imm: 2] Regs [0 32 7 969] } ALU [a:0 b:1 computed:7] JMP 2
+DEBUG:root: <== LW 1, 2, 0 ==> 
+DEBUG:root:{TICK: 185 PC: 3 ADDR: 6} {[rd: 1, rs1: 2, rs2: 0, imm: 2] Regs [0 32 7 969] } ALU [a:0 b:1 computed:7] LW 1, 2, 0
+DEBUG:root:{TICK: 186 PC: 3 ADDR: 6} {[rd: 1, rs1: 2, rs2: 0, imm: 1610612737] Regs [0 32 7 969] } ALU [a:0 b:1 computed:7] LW 1, 2, 0
+DEBUG:root:{TICK: 187 PC: 3 ADDR: 6} {[rd: 1, rs1: 2, rs2: 0, imm: 1610612737] Regs [0 32 7 969] } ALU [a:7 b:0 computed:7] LW 1, 2, 0
+DEBUG:root:{TICK: 188 PC: 3 ADDR: 7} {[rd: 1, rs1: 2, rs2: 0, imm: 1610612737] Regs [0 32 7 969] } ALU [a:7 b:0 computed:7] LW 1, 2, 0
+DEBUG:root:{TICK: 189 PC: 3 ADDR: 7} {[rd: 1, rs1: 2, rs2: 0, imm: 1610612737] Regs [0 87 7 969] } ALU [a:7 b:0 computed:7] LW 1, 2, 0
+DEBUG:root: <== BEQ 1, 0, 7 ==> 
+DEBUG:root:{TICK: 190 PC: 4 ADDR: 7} {[rd: 0, rs1: 1, rs2: 0, imm: 1610612737] Regs [0 87 7 969] } ALU [a:7 b:0 computed:7] BEQ 1, 0, 7
+DEBUG:root:{TICK: 191 PC: 4 ADDR: 7} {[rd: 0, rs1: 1, rs2: 0, imm: 7] Regs [0 87 7 969] } ALU [a:7 b:0 computed:7] BEQ 1, 0, 7
+DEBUG:root:{TICK: 192 PC: 4 ADDR: 7} {[rd: 0, rs1: 1, rs2: 0, imm: 7] Regs [0 87 7 969] } ALU [a:87 b:0 computed:7] BEQ 1, 0, 7
+DEBUG:root:{TICK: 193 PC: 4 ADDR: 7} {[rd: 0, rs1: 1, rs2: 0, imm: 7] Regs [0 87 7 969] } ALU [a:87 b:0 computed:7] BEQ 1, 0, 7
+DEBUG:root:{TICK: 194 PC: 4 ADDR: 7} {[rd: 0, rs1: 1, rs2: 0, imm: 7] Regs [0 87 7 969] } ALU [a:87 b:0 computed:7] BEQ 1, 0, 7
+DEBUG:root: <== SW 0, 3, 1 ==> 
+DEBUG:root:{TICK: 195 PC: 5 ADDR: 7} {[rd: 0, rs1: 3, rs2: 1, imm: 7] Regs [0 87 7 969] } ALU [a:87 b:0 computed:7] SW 0, 3, 1
+DEBUG:root:{TICK: 196 PC: 5 ADDR: 7} {[rd: 0, rs1: 3, rs2: 1, imm: 872415234] Regs [0 87 7 969] } ALU [a:87 b:0 computed:7] SW 0, 3, 1
+DEBUG:root:{TICK: 197 PC: 5 ADDR: 7} {[rd: 0, rs1: 3, rs2: 1, imm: 872415234] Regs [0 87 7 969] } ALU [a:969 b:87 computed:7] SW 0, 3, 1
+DEBUG:root:{TICK: 198 PC: 5 ADDR: 7} {[rd: 0, rs1: 3, rs2: 1, imm: 872415234] Regs [0 87 7 969] } ALU [a:969 b:87 computed:7] SW 0, 3, 1
+DEBUG:root:{TICK: 199 PC: 5 ADDR: 7} {[rd: 0, rs1: 3, rs2: 1, imm: 872415234] Regs [0 87 7 969] } ALU [a:969 b:87 computed:7] SW 0, 3, 1
+DEBUG:root: <== ADDI 2, 2, 1 ==> 
+DEBUG:root:{TICK: 200 PC: 6 ADDR: 7} {[rd: 2, rs1: 2, rs2: 0, imm: 872415234] Regs [0 87 7 969] } ALU [a:969 b:87 computed:7] ADDI 2, 2, 1
+DEBUG:root:{TICK: 201 PC: 6 ADDR: 7} {[rd: 2, rs1: 2, rs2: 0, imm: 1] Regs [0 87 7 969] } ALU [a:969 b:87 computed:7] ADDI 2, 2, 1
+DEBUG:root:{TICK: 202 PC: 6 ADDR: 7} {[rd: 2, rs1: 2, rs2: 0, imm: 1] Regs [0 87 7 969] } ALU [a:7 b:1 computed:8] ADDI 2, 2, 1
+DEBUG:root:{TICK: 203 PC: 6 ADDR: 7} {[rd: 2, rs1: 2, rs2: 0, imm: 1] Regs [0 87 7 969] } ALU [a:7 b:1 computed:8] ADDI 2, 2, 1
+DEBUG:root:{TICK: 204 PC: 6 ADDR: 7} {[rd: 2, rs1: 2, rs2: 0, imm: 1] Regs [0 87 8 969] } ALU [a:7 b:1 computed:8] ADDI 2, 2, 1
+DEBUG:root: <== JMP 2 ==> 
+DEBUG:root:{TICK: 205 PC: 7 ADDR: 7} {[rd: 0, rs1: 0, rs2: 0, imm: 1] Regs [0 87 8 969] } ALU [a:7 b:1 computed:8] JMP 2
+DEBUG:root:{TICK: 206 PC: 7 ADDR: 7} {[rd: 0, rs1: 0, rs2: 0, imm: 2] Regs [0 87 8 969] } ALU [a:7 b:1 computed:8] JMP 2
+DEBUG:root:{TICK: 207 PC: 7 ADDR: 7} {[rd: 0, rs1: 0, rs2: 0, imm: 2] Regs [0 87 8 969] } ALU [a:0 b:1 computed:8] JMP 2
+DEBUG:root:{TICK: 208 PC: 2 ADDR: 7} {[rd: 0, rs1: 0, rs2: 0, imm: 2] Regs [0 87 8 969] } ALU [a:0 b:1 computed:8] JMP 2
+DEBUG:root:{TICK: 209 PC: 2 ADDR: 7} {[rd: 0, rs1: 0, rs2: 0, imm: 2] Regs [0 87 8 969] } ALU [a:0 b:1 computed:8] JMP 2
+DEBUG:root: <== LW 1, 2, 0 ==> 
+DEBUG:root:{TICK: 210 PC: 3 ADDR: 7} {[rd: 1, rs1: 2, rs2: 0, imm: 2] Regs [0 87 8 969] } ALU [a:0 b:1 computed:8] LW 1, 2, 0
+DEBUG:root:{TICK: 211 PC: 3 ADDR: 7} {[rd: 1, rs1: 2, rs2: 0, imm: 1610612737] Regs [0 87 8 969] } ALU [a:0 b:1 computed:8] LW 1, 2, 0
+DEBUG:root:{TICK: 212 PC: 3 ADDR: 7} {[rd: 1, rs1: 2, rs2: 0, imm: 1610612737] Regs [0 87 8 969] } ALU [a:8 b:0 computed:8] LW 1, 2, 0
+DEBUG:root:{TICK: 213 PC: 3 ADDR: 8} {[rd: 1, rs1: 2, rs2: 0, imm: 1610612737] Regs [0 87 8 969] } ALU [a:8 b:0 computed:8] LW 1, 2, 0
+DEBUG:root:{TICK: 214 PC: 3 ADDR: 8} {[rd: 1, rs1: 2, rs2: 0, imm: 1610612737] Regs [0 111 8 969] } ALU [a:8 b:0 computed:8] LW 1, 2, 0
+DEBUG:root: <== BEQ 1, 0, 7 ==> 
+DEBUG:root:{TICK: 215 PC: 4 ADDR: 8} {[rd: 0, rs1: 1, rs2: 0, imm: 1610612737] Regs [0 111 8 969] } ALU [a:8 b:0 computed:8] BEQ 1, 0, 7
+DEBUG:root:{TICK: 216 PC: 4 ADDR: 8} {[rd: 0, rs1: 1, rs2: 0, imm: 7] Regs [0 111 8 969] } ALU [a:8 b:0 computed:8] BEQ 1, 0, 7
+DEBUG:root:{TICK: 217 PC: 4 ADDR: 8} {[rd: 0, rs1: 1, rs2: 0, imm: 7] Regs [0 111 8 969] } ALU [a:111 b:0 computed:8] BEQ 1, 0, 7
+DEBUG:root:{TICK: 218 PC: 4 ADDR: 8} {[rd: 0, rs1: 1, rs2: 0, imm: 7] Regs [0 111 8 969] } ALU [a:111 b:0 computed:8] BEQ 1, 0, 7
+DEBUG:root:{TICK: 219 PC: 4 ADDR: 8} {[rd: 0, rs1: 1, rs2: 0, imm: 7] Regs [0 111 8 969] } ALU [a:111 b:0 computed:8] BEQ 1, 0, 7
+DEBUG:root: <== SW 0, 3, 1 ==> 
+DEBUG:root:{TICK: 220 PC: 5 ADDR: 8} {[rd: 0, rs1: 3, rs2: 1, imm: 7] Regs [0 111 8 969] } ALU [a:111 b:0 computed:8] SW 0, 3, 1
+DEBUG:root:{TICK: 221 PC: 5 ADDR: 8} {[rd: 0, rs1: 3, rs2: 1, imm: 872415234] Regs [0 111 8 969] } ALU [a:111 b:0 computed:8] SW 0, 3, 1
+DEBUG:root:{TICK: 222 PC: 5 ADDR: 8} {[rd: 0, rs1: 3, rs2: 1, imm: 872415234] Regs [0 111 8 969] } ALU [a:969 b:111 computed:8] SW 0, 3, 1
+DEBUG:root:{TICK: 223 PC: 5 ADDR: 8} {[rd: 0, rs1: 3, rs2: 1, imm: 872415234] Regs [0 111 8 969] } ALU [a:969 b:111 computed:8] SW 0, 3, 1
+DEBUG:root:{TICK: 224 PC: 5 ADDR: 8} {[rd: 0, rs1: 3, rs2: 1, imm: 872415234] Regs [0 111 8 969] } ALU [a:969 b:111 computed:8] SW 0, 3, 1
+DEBUG:root: <== ADDI 2, 2, 1 ==> 
+DEBUG:root:{TICK: 225 PC: 6 ADDR: 8} {[rd: 2, rs1: 2, rs2: 0, imm: 872415234] Regs [0 111 8 969] } ALU [a:969 b:111 computed:8] ADDI 2, 2, 1
+DEBUG:root:{TICK: 226 PC: 6 ADDR: 8} {[rd: 2, rs1: 2, rs2: 0, imm: 1] Regs [0 111 8 969] } ALU [a:969 b:111 computed:8] ADDI 2, 2, 1
+DEBUG:root:{TICK: 227 PC: 6 ADDR: 8} {[rd: 2, rs1: 2, rs2: 0, imm: 1] Regs [0 111 8 969] } ALU [a:8 b:1 computed:9] ADDI 2, 2, 1
+DEBUG:root:{TICK: 228 PC: 6 ADDR: 8} {[rd: 2, rs1: 2, rs2: 0, imm: 1] Regs [0 111 8 969] } ALU [a:8 b:1 computed:9] ADDI 2, 2, 1
+DEBUG:root:{TICK: 229 PC: 6 ADDR: 8} {[rd: 2, rs1: 2, rs2: 0, imm: 1] Regs [0 111 9 969] } ALU [a:8 b:1 computed:9] ADDI 2, 2, 1
+DEBUG:root: <== JMP 2 ==> 
+DEBUG:root:{TICK: 230 PC: 7 ADDR: 8} {[rd: 0, rs1: 0, rs2: 0, imm: 1] Regs [0 111 9 969] } ALU [a:8 b:1 computed:9] JMP 2
+DEBUG:root:{TICK: 231 PC: 7 ADDR: 8} {[rd: 0, rs1: 0, rs2: 0, imm: 2] Regs [0 111 9 969] } ALU [a:8 b:1 computed:9] JMP 2
+DEBUG:root:{TICK: 232 PC: 7 ADDR: 8} {[rd: 0, rs1: 0, rs2: 0, imm: 2] Regs [0 111 9 969] } ALU [a:0 b:1 computed:9] JMP 2
+DEBUG:root:{TICK: 233 PC: 2 ADDR: 8} {[rd: 0, rs1: 0, rs2: 0, imm: 2] Regs [0 111 9 969] } ALU [a:0 b:1 computed:9] JMP 2
+DEBUG:root:{TICK: 234 PC: 2 ADDR: 8} {[rd: 0, rs1: 0, rs2: 0, imm: 2] Regs [0 111 9 969] } ALU [a:0 b:1 computed:9] JMP 2
+DEBUG:root: <== LW 1, 2, 0 ==> 
+DEBUG:root:{TICK: 235 PC: 3 ADDR: 8} {[rd: 1, rs1: 2, rs2: 0, imm: 2] Regs [0 111 9 969] } ALU [a:0 b:1 computed:9] LW 1, 2, 0
+DEBUG:root:{TICK: 236 PC: 3 ADDR: 8} {[rd: 1, rs1: 2, rs2: 0, imm: 1610612737] Regs [0 111 9 969] } ALU [a:0 b:1 computed:9] LW 1, 2, 0
+DEBUG:root:{TICK: 237 PC: 3 ADDR: 8} {[rd: 1, rs1: 2, rs2: 0, imm: 1610612737] Regs [0 111 9 969] } ALU [a:9 b:0 computed:9] LW 1, 2, 0
+DEBUG:root:{TICK: 238 PC: 3 ADDR: 9} {[rd: 1, rs1: 2, rs2: 0, imm: 1610612737] Regs [0 111 9 969] } ALU [a:9 b:0 computed:9] LW 1, 2, 0
+DEBUG:root:{TICK: 239 PC: 3 ADDR: 9} {[rd: 1, rs1: 2, rs2: 0, imm: 1610612737] Regs [0 114 9 969] } ALU [a:9 b:0 computed:9] LW 1, 2, 0
+DEBUG:root: <== BEQ 1, 0, 7 ==> 
+DEBUG:root:{TICK: 240 PC: 4 ADDR: 9} {[rd: 0, rs1: 1, rs2: 0, imm: 1610612737] Regs [0 114 9 969] } ALU [a:9 b:0 computed:9] BEQ 1, 0, 7
+DEBUG:root:{TICK: 241 PC: 4 ADDR: 9} {[rd: 0, rs1: 1, rs2: 0, imm: 7] Regs [0 114 9 969] } ALU [a:9 b:0 computed:9] BEQ 1, 0, 7
+DEBUG:root:{TICK: 242 PC: 4 ADDR: 9} {[rd: 0, rs1: 1, rs2: 0, imm: 7] Regs [0 114 9 969] } ALU [a:114 b:0 computed:9] BEQ 1, 0, 7
+DEBUG:root:{TICK: 243 PC: 4 ADDR: 9} {[rd: 0, rs1: 1, rs2: 0, imm: 7] Regs [0 114 9 969] } ALU [a:114 b:0 computed:9] BEQ 1, 0, 7
+DEBUG:root:{TICK: 244 PC: 4 ADDR: 9} {[rd: 0, rs1: 1, rs2: 0, imm: 7] Regs [0 114 9 969] } ALU [a:114 b:0 computed:9] BEQ 1, 0, 7
+DEBUG:root: <== SW 0, 3, 1 ==> 
+DEBUG:root:{TICK: 245 PC: 5 ADDR: 9} {[rd: 0, rs1: 3, rs2: 1, imm: 7] Regs [0 114 9 969] } ALU [a:114 b:0 computed:9] SW 0, 3, 1
+DEBUG:root:{TICK: 246 PC: 5 ADDR: 9} {[rd: 0, rs1: 3, rs2: 1, imm: 872415234] Regs [0 114 9 969] } ALU [a:114 b:0 computed:9] SW 0, 3, 1
+DEBUG:root:{TICK: 247 PC: 5 ADDR: 9} {[rd: 0, rs1: 3, rs2: 1, imm: 872415234] Regs [0 114 9 969] } ALU [a:969 b:114 computed:9] SW 0, 3, 1
+DEBUG:root:{TICK: 248 PC: 5 ADDR: 9} {[rd: 0, rs1: 3, rs2: 1, imm: 872415234] Regs [0 114 9 969] } ALU [a:969 b:114 computed:9] SW 0, 3, 1
+DEBUG:root:{TICK: 249 PC: 5 ADDR: 9} {[rd: 0, rs1: 3, rs2: 1, imm: 872415234] Regs [0 114 9 969] } ALU [a:969 b:114 computed:9] SW 0, 3, 1
+DEBUG:root: <== ADDI 2, 2, 1 ==> 
+DEBUG:root:{TICK: 250 PC: 6 ADDR: 9} {[rd: 2, rs1: 2, rs2: 0, imm: 872415234] Regs [0 114 9 969] } ALU [a:969 b:114 computed:9] ADDI 2, 2, 1
+DEBUG:root:{TICK: 251 PC: 6 ADDR: 9} {[rd: 2, rs1: 2, rs2: 0, imm: 1] Regs [0 114 9 969] } ALU [a:969 b:114 computed:9] ADDI 2, 2, 1
+DEBUG:root:{TICK: 252 PC: 6 ADDR: 9} {[rd: 2, rs1: 2, rs2: 0, imm: 1] Regs [0 114 9 969] } ALU [a:9 b:1 computed:10] ADDI 2, 2, 1
+DEBUG:root:{TICK: 253 PC: 6 ADDR: 9} {[rd: 2, rs1: 2, rs2: 0, imm: 1] Regs [0 114 9 969] } ALU [a:9 b:1 computed:10] ADDI 2, 2, 1
+DEBUG:root:{TICK: 254 PC: 6 ADDR: 9} {[rd: 2, rs1: 2, rs2: 0, imm: 1] Regs [0 114 10 969] } ALU [a:9 b:1 computed:10] ADDI 2, 2, 1
+DEBUG:root: <== JMP 2 ==> 
+DEBUG:root:{TICK: 255 PC: 7 ADDR: 9} {[rd: 0, rs1: 0, rs2: 0, imm: 1] Regs [0 114 10 969] } ALU [a:9 b:1 computed:10] JMP 2
+DEBUG:root:{TICK: 256 PC: 7 ADDR: 9} {[rd: 0, rs1: 0, rs2: 0, imm: 2] Regs [0 114 10 969] } ALU [a:9 b:1 computed:10] JMP 2
+DEBUG:root:{TICK: 257 PC: 7 ADDR: 9} {[rd: 0, rs1: 0, rs2: 0, imm: 2] Regs [0 114 10 969] } ALU [a:0 b:1 computed:10] JMP 2
+DEBUG:root:{TICK: 258 PC: 2 ADDR: 9} {[rd: 0, rs1: 0, rs2: 0, imm: 2] Regs [0 114 10 969] } ALU [a:0 b:1 computed:10] JMP 2
+DEBUG:root:{TICK: 259 PC: 2 ADDR: 9} {[rd: 0, rs1: 0, rs2: 0, imm: 2] Regs [0 114 10 969] } ALU [a:0 b:1 computed:10] JMP 2
+DEBUG:root: <== LW 1, 2, 0 ==> 
+DEBUG:root:{TICK: 260 PC: 3 ADDR: 9} {[rd: 1, rs1: 2, rs2: 0, imm: 2] Regs [0 114 10 969] } ALU [a:0 b:1 computed:10] LW 1, 2, 0
+DEBUG:root:{TICK: 261 PC: 3 ADDR: 9} {[rd: 1, rs1: 2, rs2: 0, imm: 1610612737] Regs [0 114 10 969] } ALU [a:0 b:1 computed:10] LW 1, 2, 0
+DEBUG:root:{TICK: 262 PC: 3 ADDR: 9} {[rd: 1, rs1: 2, rs2: 0, imm: 1610612737] Regs [0 114 10 969] } ALU [a:10 b:0 computed:10] LW 1, 2, 0
+DEBUG:root:{TICK: 263 PC: 3 ADDR: 10} {[rd: 1, rs1: 2, rs2: 0, imm: 1610612737] Regs [0 114 10 969] } ALU [a:10 b:0 computed:10] LW 1, 2, 0
+DEBUG:root:{TICK: 264 PC: 3 ADDR: 10} {[rd: 1, rs1: 2, rs2: 0, imm: 1610612737] Regs [0 108 10 969] } ALU [a:10 b:0 computed:10] LW 1, 2, 0
+DEBUG:root: <== BEQ 1, 0, 7 ==> 
+DEBUG:root:{TICK: 265 PC: 4 ADDR: 10} {[rd: 0, rs1: 1, rs2: 0, imm: 1610612737] Regs [0 108 10 969] } ALU [a:10 b:0 computed:10] BEQ 1, 0, 7
+DEBUG:root:{TICK: 266 PC: 4 ADDR: 10} {[rd: 0, rs1: 1, rs2: 0, imm: 7] Regs [0 108 10 969] } ALU [a:10 b:0 computed:10] BEQ 1, 0, 7
+DEBUG:root:{TICK: 267 PC: 4 ADDR: 10} {[rd: 0, rs1: 1, rs2: 0, imm: 7] Regs [0 108 10 969] } ALU [a:108 b:0 computed:10] BEQ 1, 0, 7
+DEBUG:root:{TICK: 268 PC: 4 ADDR: 10} {[rd: 0, rs1: 1, rs2: 0, imm: 7] Regs [0 108 10 969] } ALU [a:108 b:0 computed:10] BEQ 1, 0, 7
+DEBUG:root:{TICK: 269 PC: 4 ADDR: 10} {[rd: 0, rs1: 1, rs2: 0, imm: 7] Regs [0 108 10 969] } ALU [a:108 b:0 computed:10] BEQ 1, 0, 7
+DEBUG:root: <== SW 0, 3, 1 ==> 
+DEBUG:root:{TICK: 270 PC: 5 ADDR: 10} {[rd: 0, rs1: 3, rs2: 1, imm: 7] Regs [0 108 10 969] } ALU [a:108 b:0 computed:10] SW 0, 3, 1
+DEBUG:root:{TICK: 271 PC: 5 ADDR: 10} {[rd: 0, rs1: 3, rs2: 1, imm: 872415234] Regs [0 108 10 969] } ALU [a:108 b:0 computed:10] SW 0, 3, 1
+DEBUG:root:{TICK: 272 PC: 5 ADDR: 10} {[rd: 0, rs1: 3, rs2: 1, imm: 872415234] Regs [0 108 10 969] } ALU [a:969 b:108 computed:10] SW 0, 3, 1
+DEBUG:root:{TICK: 273 PC: 5 ADDR: 10} {[rd: 0, rs1: 3, rs2: 1, imm: 872415234] Regs [0 108 10 969] } ALU [a:969 b:108 computed:10] SW 0, 3, 1
+DEBUG:root:{TICK: 274 PC: 5 ADDR: 10} {[rd: 0, rs1: 3, rs2: 1, imm: 872415234] Regs [0 108 10 969] } ALU [a:969 b:108 computed:10] SW 0, 3, 1
+DEBUG:root: <== ADDI 2, 2, 1 ==> 
+DEBUG:root:{TICK: 275 PC: 6 ADDR: 10} {[rd: 2, rs1: 2, rs2: 0, imm: 872415234] Regs [0 108 10 969] } ALU [a:969 b:108 computed:10] ADDI 2, 2, 1
+DEBUG:root:{TICK: 276 PC: 6 ADDR: 10} {[rd: 2, rs1: 2, rs2: 0, imm: 1] Regs [0 108 10 969] } ALU [a:969 b:108 computed:10] ADDI 2, 2, 1
+DEBUG:root:{TICK: 277 PC: 6 ADDR: 10} {[rd: 2, rs1: 2, rs2: 0, imm: 1] Regs [0 108 10 969] } ALU [a:10 b:1 computed:11] ADDI 2, 2, 1
+DEBUG:root:{TICK: 278 PC: 6 ADDR: 10} {[rd: 2, rs1: 2, rs2: 0, imm: 1] Regs [0 108 10 969] } ALU [a:10 b:1 computed:11] ADDI 2, 2, 1
+DEBUG:root:{TICK: 279 PC: 6 ADDR: 10} {[rd: 2, rs1: 2, rs2: 0, imm: 1] Regs [0 108 11 969] } ALU [a:10 b:1 computed:11] ADDI 2, 2, 1
+DEBUG:root: <== JMP 2 ==> 
+DEBUG:root:{TICK: 280 PC: 7 ADDR: 10} {[rd: 0, rs1: 0, rs2: 0, imm: 1] Regs [0 108 11 969] } ALU [a:10 b:1 computed:11] JMP 2
+DEBUG:root:{TICK: 281 PC: 7 ADDR: 10} {[rd: 0, rs1: 0, rs2: 0, imm: 2] Regs [0 108 11 969] } ALU [a:10 b:1 computed:11] JMP 2
+DEBUG:root:{TICK: 282 PC: 7 ADDR: 10} {[rd: 0, rs1: 0, rs2: 0, imm: 2] Regs [0 108 11 969] } ALU [a:0 b:1 computed:11] JMP 2
+DEBUG:root:{TICK: 283 PC: 2 ADDR: 10} {[rd: 0, rs1: 0, rs2: 0, imm: 2] Regs [0 108 11 969] } ALU [a:0 b:1 computed:11] JMP 2
+DEBUG:root:{TICK: 284 PC: 2 ADDR: 10} {[rd: 0, rs1: 0, rs2: 0, imm: 2] Regs [0 108 11 969] } ALU [a:0 b:1 computed:11] JMP 2
+DEBUG:root: <== LW 1, 2, 0 ==> 
+DEBUG:root:{TICK: 285 PC: 3 ADDR: 10} {[rd: 1, rs1: 2, rs2: 0, imm: 2] Regs [0 108 11 969] } ALU [a:0 b:1 computed:11] LW 1, 2, 0
+DEBUG:root:{TICK: 286 PC: 3 ADDR: 10} {[rd: 1, rs1: 2, rs2: 0, imm: 1610612737] Regs [0 108 11 969] } ALU [a:0 b:1 computed:11] LW 1, 2, 0
+DEBUG:root:{TICK: 287 PC: 3 ADDR: 10} {[rd: 1, rs1: 2, rs2: 0, imm: 1610612737] Regs [0 108 11 969] } ALU [a:11 b:0 computed:11] LW 1, 2, 0
+DEBUG:root:{TICK: 288 PC: 3 ADDR: 11} {[rd: 1, rs1: 2, rs2: 0, imm: 1610612737] Regs [0 108 11 969] } ALU [a:11 b:0 computed:11] LW 1, 2, 0
+DEBUG:root:{TICK: 289 PC: 3 ADDR: 11} {[rd: 1, rs1: 2, rs2: 0, imm: 1610612737] Regs [0 100 11 969] } ALU [a:11 b:0 computed:11] LW 1, 2, 0
+DEBUG:root: <== BEQ 1, 0, 7 ==> 
+DEBUG:root:{TICK: 290 PC: 4 ADDR: 11} {[rd: 0, rs1: 1, rs2: 0, imm: 1610612737] Regs [0 100 11 969] } ALU [a:11 b:0 computed:11] BEQ 1, 0, 7
+DEBUG:root:{TICK: 291 PC: 4 ADDR: 11} {[rd: 0, rs1: 1, rs2: 0, imm: 7] Regs [0 100 11 969] } ALU [a:11 b:0 computed:11] BEQ 1, 0, 7
+DEBUG:root:{TICK: 292 PC: 4 ADDR: 11} {[rd: 0, rs1: 1, rs2: 0, imm: 7] Regs [0 100 11 969] } ALU [a:100 b:0 computed:11] BEQ 1, 0, 7
+DEBUG:root:{TICK: 293 PC: 4 ADDR: 11} {[rd: 0, rs1: 1, rs2: 0, imm: 7] Regs [0 100 11 969] } ALU [a:100 b:0 computed:11] BEQ 1, 0, 7
+DEBUG:root:{TICK: 294 PC: 4 ADDR: 11} {[rd: 0, rs1: 1, rs2: 0, imm: 7] Regs [0 100 11 969] } ALU [a:100 b:0 computed:11] BEQ 1, 0, 7
+DEBUG:root: <== SW 0, 3, 1 ==> 
+DEBUG:root:{TICK: 295 PC: 5 ADDR: 11} {[rd: 0, rs1: 3, rs2: 1, imm: 7] Regs [0 100 11 969] } ALU [a:100 b:0 computed:11] SW 0, 3, 1
+DEBUG:root:{TICK: 296 PC: 5 ADDR: 11} {[rd: 0, rs1: 3, rs2: 1, imm: 872415234] Regs [0 100 11 969] } ALU [a:100 b:0 computed:11] SW 0, 3, 1
+DEBUG:root:{TICK: 297 PC: 5 ADDR: 11} {[rd: 0, rs1: 3, rs2: 1, imm: 872415234] Regs [0 100 11 969] } ALU [a:969 b:100 computed:11] SW 0, 3, 1
+DEBUG:root:{TICK: 298 PC: 5 ADDR: 11} {[rd: 0, rs1: 3, rs2: 1, imm: 872415234] Regs [0 100 11 969] } ALU [a:969 b:100 computed:11] SW 0, 3, 1
+DEBUG:root:{TICK: 299 PC: 5 ADDR: 11} {[rd: 0, rs1: 3, rs2: 1, imm: 872415234] Regs [0 100 11 969] } ALU [a:969 b:100 computed:11] SW 0, 3, 1
+DEBUG:root: <== ADDI 2, 2, 1 ==> 
+DEBUG:root:{TICK: 300 PC: 6 ADDR: 11} {[rd: 2, rs1: 2, rs2: 0, imm: 872415234] Regs [0 100 11 969] } ALU [a:969 b:100 computed:11] ADDI 2, 2, 1
+DEBUG:root:{TICK: 301 PC: 6 ADDR: 11} {[rd: 2, rs1: 2, rs2: 0, imm: 1] Regs [0 100 11 969] } ALU [a:969 b:100 computed:11] ADDI 2, 2, 1
+DEBUG:root:{TICK: 302 PC: 6 ADDR: 11} {[rd: 2, rs1: 2, rs2: 0, imm: 1] Regs [0 100 11 969] } ALU [a:11 b:1 computed:12] ADDI 2, 2, 1
+DEBUG:root:{TICK: 303 PC: 6 ADDR: 11} {[rd: 2, rs1: 2, rs2: 0, imm: 1] Regs [0 100 11 969] } ALU [a:11 b:1 computed:12] ADDI 2, 2, 1
+DEBUG:root:{TICK: 304 PC: 6 ADDR: 11} {[rd: 2, rs1: 2, rs2: 0, imm: 1] Regs [0 100 12 969] } ALU [a:11 b:1 computed:12] ADDI 2, 2, 1
+DEBUG:root: <== JMP 2 ==> 
+DEBUG:root:{TICK: 305 PC: 7 ADDR: 11} {[rd: 0, rs1: 0, rs2: 0, imm: 1] Regs [0 100 12 969] } ALU [a:11 b:1 computed:12] JMP 2
+DEBUG:root:{TICK: 306 PC: 7 ADDR: 11} {[rd: 0, rs1: 0, rs2: 0, imm: 2] Regs [0 100 12 969] } ALU [a:11 b:1 computed:12] JMP 2
+DEBUG:root:{TICK: 307 PC: 7 ADDR: 11} {[rd: 0, rs1: 0, rs2: 0, imm: 2] Regs [0 100 12 969] } ALU [a:0 b:1 computed:12] JMP 2
+DEBUG:root:{TICK: 308 PC: 2 ADDR: 11} {[rd: 0, rs1: 0, rs2: 0, imm: 2] Regs [0 100 12 969] } ALU [a:0 b:1 computed:12] JMP 2
+DEBUG:root:{TICK: 309 PC: 2 ADDR: 11} {[rd: 0, rs1: 0, rs2: 0, imm: 2] Regs [0 100 12 969] } ALU [a:0 b:1 computed:12] JMP 2
+DEBUG:root: <== LW 1, 2, 0 ==> 
+DEBUG:root:{TICK: 310 PC: 3 ADDR: 11} {[rd: 1, rs1: 2, rs2: 0, imm: 2] Regs [0 100 12 969] } ALU [a:0 b:1 computed:12] LW 1, 2, 0
+DEBUG:root:{TICK: 311 PC: 3 ADDR: 11} {[rd: 1, rs1: 2, rs2: 0, imm: 1610612737] Regs [0 100 12 969] } ALU [a:0 b:1 computed:12] LW 1, 2, 0
+DEBUG:root:{TICK: 312 PC: 3 ADDR: 11} {[rd: 1, rs1: 2, rs2: 0, imm: 1610612737] Regs [0 100 12 969] } ALU [a:12 b:0 computed:12] LW 1, 2, 0
+DEBUG:root:{TICK: 313 PC: 3 ADDR: 12} {[rd: 1, rs1: 2, rs2: 0, imm: 1610612737] Regs [0 100 12 969] } ALU [a:12 b:0 computed:12] LW 1, 2, 0
+DEBUG:root:{TICK: 314 PC: 3 ADDR: 12} {[rd: 1, rs1: 2, rs2: 0, imm: 1610612737] Regs [0 33 12 969] } ALU [a:12 b:0 computed:12] LW 1, 2, 0
+DEBUG:root: <== BEQ 1, 0, 7 ==> 
+DEBUG:root:{TICK: 315 PC: 4 ADDR: 12} {[rd: 0, rs1: 1, rs2: 0, imm: 1610612737] Regs [0 33 12 969] } ALU [a:12 b:0 computed:12] BEQ 1, 0, 7
+DEBUG:root:{TICK: 316 PC: 4 ADDR: 12} {[rd: 0, rs1: 1, rs2: 0, imm: 7] Regs [0 33 12 969] } ALU [a:12 b:0 computed:12] BEQ 1, 0, 7
+DEBUG:root:{TICK: 317 PC: 4 ADDR: 12} {[rd: 0, rs1: 1, rs2: 0, imm: 7] Regs [0 33 12 969] } ALU [a:33 b:0 computed:12] BEQ 1, 0, 7
+DEBUG:root:{TICK: 318 PC: 4 ADDR: 12} {[rd: 0, rs1: 1, rs2: 0, imm: 7] Regs [0 33 12 969] } ALU [a:33 b:0 computed:12] BEQ 1, 0, 7
+DEBUG:root:{TICK: 319 PC: 4 ADDR: 12} {[rd: 0, rs1: 1, rs2: 0, imm: 7] Regs [0 33 12 969] } ALU [a:33 b:0 computed:12] BEQ 1, 0, 7
+DEBUG:root: <== SW 0, 3, 1 ==> 
+DEBUG:root:{TICK: 320 PC: 5 ADDR: 12} {[rd: 0, rs1: 3, rs2: 1, imm: 7] Regs [0 33 12 969] } ALU [a:33 b:0 computed:12] SW 0, 3, 1
+DEBUG:root:{TICK: 321 PC: 5 ADDR: 12} {[rd: 0, rs1: 3, rs2: 1, imm: 872415234] Regs [0 33 12 969] } ALU [a:33 b:0 computed:12] SW 0, 3, 1
+DEBUG:root:{TICK: 322 PC: 5 ADDR: 12} {[rd: 0, rs1: 3, rs2: 1, imm: 872415234] Regs [0 33 12 969] } ALU [a:969 b:33 computed:12] SW 0, 3, 1
+DEBUG:root:{TICK: 323 PC: 5 ADDR: 12} {[rd: 0, rs1: 3, rs2: 1, imm: 872415234] Regs [0 33 12 969] } ALU [a:969 b:33 computed:12] SW 0, 3, 1
+DEBUG:root:{TICK: 324 PC: 5 ADDR: 12} {[rd: 0, rs1: 3, rs2: 1, imm: 872415234] Regs [0 33 12 969] } ALU [a:969 b:33 computed:12] SW 0, 3, 1
+DEBUG:root: <== ADDI 2, 2, 1 ==> 
+DEBUG:root:{TICK: 325 PC: 6 ADDR: 12} {[rd: 2, rs1: 2, rs2: 0, imm: 872415234] Regs [0 33 12 969] } ALU [a:969 b:33 computed:12] ADDI 2, 2, 1
+DEBUG:root:{TICK: 326 PC: 6 ADDR: 12} {[rd: 2, rs1: 2, rs2: 0, imm: 1] Regs [0 33 12 969] } ALU [a:969 b:33 computed:12] ADDI 2, 2, 1
+DEBUG:root:{TICK: 327 PC: 6 ADDR: 12} {[rd: 2, rs1: 2, rs2: 0, imm: 1] Regs [0 33 12 969] } ALU [a:12 b:1 computed:13] ADDI 2, 2, 1
+DEBUG:root:{TICK: 328 PC: 6 ADDR: 12} {[rd: 2, rs1: 2, rs2: 0, imm: 1] Regs [0 33 12 969] } ALU [a:12 b:1 computed:13] ADDI 2, 2, 1
+DEBUG:root:{TICK: 329 PC: 6 ADDR: 12} {[rd: 2, rs1: 2, rs2: 0, imm: 1] Regs [0 33 13 969] } ALU [a:12 b:1 computed:13] ADDI 2, 2, 1
+DEBUG:root: <== JMP 2 ==> 
+DEBUG:root:{TICK: 330 PC: 7 ADDR: 12} {[rd: 0, rs1: 0, rs2: 0, imm: 1] Regs [0 33 13 969] } ALU [a:12 b:1 computed:13] JMP 2
+DEBUG:root:{TICK: 331 PC: 7 ADDR: 12} {[rd: 0, rs1: 0, rs2: 0, imm: 2] Regs [0 33 13 969] } ALU [a:12 b:1 computed:13] JMP 2
+DEBUG:root:{TICK: 332 PC: 7 ADDR: 12} {[rd: 0, rs1: 0, rs2: 0, imm: 2] Regs [0 33 13 969] } ALU [a:0 b:1 computed:13] JMP 2
+DEBUG:root:{TICK: 333 PC: 2 ADDR: 12} {[rd: 0, rs1: 0, rs2: 0, imm: 2] Regs [0 33 13 969] } ALU [a:0 b:1 computed:13] JMP 2
+DEBUG:root:{TICK: 334 PC: 2 ADDR: 12} {[rd: 0, rs1: 0, rs2: 0, imm: 2] Regs [0 33 13 969] } ALU [a:0 b:1 computed:13] JMP 2
+DEBUG:root: <== LW 1, 2, 0 ==> 
+DEBUG:root:{TICK: 335 PC: 3 ADDR: 12} {[rd: 1, rs1: 2, rs2: 0, imm: 2] Regs [0 33 13 969] } ALU [a:0 b:1 computed:13] LW 1, 2, 0
+DEBUG:root:{TICK: 336 PC: 3 ADDR: 12} {[rd: 1, rs1: 2, rs2: 0, imm: 1610612737] Regs [0 33 13 969] } ALU [a:0 b:1 computed:13] LW 1, 2, 0
+DEBUG:root:{TICK: 337 PC: 3 ADDR: 12} {[rd: 1, rs1: 2, rs2: 0, imm: 1610612737] Regs [0 33 13 969] } ALU [a:13 b:0 computed:13] LW 1, 2, 0
+DEBUG:root:{TICK: 338 PC: 3 ADDR: 13} {[rd: 1, rs1: 2, rs2: 0, imm: 1610612737] Regs [0 33 13 969] } ALU [a:13 b:0 computed:13] LW 1, 2, 0
+DEBUG:root:{TICK: 339 PC: 3 ADDR: 13} {[rd: 1, rs1: 2, rs2: 0, imm: 1610612737] Regs [0 0 13 969] } ALU [a:13 b:0 computed:13] LW 1, 2, 0
+DEBUG:root: <== BEQ 1, 0, 7 ==> 
+DEBUG:root:{TICK: 340 PC: 4 ADDR: 13} {[rd: 0, rs1: 1, rs2: 0, imm: 1610612737] Regs [0 0 13 969] } ALU [a:13 b:0 computed:13] BEQ 1, 0, 7
+DEBUG:root:{TICK: 341 PC: 4 ADDR: 13} {[rd: 0, rs1: 1, rs2: 0, imm: 7] Regs [0 0 13 969] } ALU [a:13 b:0 computed:13] BEQ 1, 0, 7
+DEBUG:root:{TICK: 342 PC: 4 ADDR: 13} {[rd: 0, rs1: 1, rs2: 0, imm: 7] Regs [0 0 13 969] } ALU [a:0 b:0 computed:13] BEQ 1, 0, 7
+DEBUG:root:{TICK: 343 PC: 7 ADDR: 13} {[rd: 0, rs1: 1, rs2: 0, imm: 7] Regs [0 0 13 969] } ALU [a:0 b:0 computed:13] BEQ 1, 0, 7
+DEBUG:root:{TICK: 344 PC: 7 ADDR: 13} {[rd: 0, rs1: 1, rs2: 0, imm: 7] Regs [0 0 13 969] } ALU [a:0 b:0 computed:13] BEQ 1, 0, 7
+DEBUG:root: <==  ==> 
+DEBUG:root:{TICK: 345 PC: 8 ADDR: 13} {[rd: 0, rs1: 0, rs2: 0, imm: 7] Regs [0 0 13 969] } ALU [a:0 b:0 computed:13] 
+Output is `Hello, World!`
+instr_counter: 69 ticks: 346
