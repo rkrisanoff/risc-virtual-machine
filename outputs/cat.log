@@ -50,2489 +50,2320 @@ DEBUG:root:Data memory map is
 (    1)        [0000000001]  -> [00000000000000000000000000000000] = (         0)
 (    0)        [0000000000]  -> [00000000000000000000000000000000] = (         0)
 
-DEBUG:root:
-
-DEBUG:root:[FETCHING]: instruction = 10000000000000000000000000010010
+DEBUG:root:<-- [INSTRUCTION] PC = 0 ->
+DEBUG:root:[FETCHING]: instruction = [10000000000000000000000000010010]
 DEBUG:root:TICK: 0
 DEBUG:root:[DECODING]: opcode: ADDI, immediate: 0
 DEBUG:root:TICK: 1
 DEBUG:root:[EXECUTING]: Branch Comparate ([rs1] = 0,[rs2] = 0) => equals = 1, less = 0
-DEBUG:root:[EXECUTING]: ALU : 0 ,op 0 => 0
+DEBUG:root:[EXECUTING]: ALU : 0 ADDI 0 => 0
 DEBUG:root:TICK: 2
 DEBUG:root:TICK: 3
 DEBUG:root:[WRITE BACK]: 0 -> reg[2]
 DEBUG:root:TICK: 4
-DEBUG:root:
-
-DEBUG:root:[FETCHING]: instruction = 11000000000000000000001111110010
+DEBUG:root:<-- [INSTRUCTION] PC = 1 ->
+DEBUG:root:[FETCHING]: instruction = [11000000000000000000001111110010]
 DEBUG:root:TICK: 5
 DEBUG:root:[DECODING]: opcode: ADDI, immediate: 31
 DEBUG:root:TICK: 6
 DEBUG:root:[EXECUTING]: Branch Comparate ([rs1] = 0,[rs2] = 0) => equals = 1, less = 0
-DEBUG:root:[EXECUTING]: ALU : 0 ,op 31 => 31
+DEBUG:root:[EXECUTING]: ALU : 0 ADDI 31 => 31
 DEBUG:root:TICK: 7
 DEBUG:root:TICK: 8
 DEBUG:root:[WRITE BACK]: 31 -> reg[3]
 DEBUG:root:TICK: 9
-DEBUG:root:
-
-DEBUG:root:[FETCHING]: instruction = 01110000000000000000000000000001
+DEBUG:root:<-- [INSTRUCTION] PC = 2 ->
+DEBUG:root:[FETCHING]: instruction = [01110000000000000000000000000001]
 DEBUG:root:TICK: 10
 DEBUG:root:[DECODING]: opcode: LW, immediate: 1879048193
 DEBUG:root:TICK: 11
 DEBUG:root:[EXECUTING]: Branch Comparate ([rs1] = 31,[rs2] = 0) => equals = 0, less = 0
-DEBUG:root:[EXECUTING]: ALU : 31 ,op 0 => 31
+DEBUG:root:[EXECUTING]: ALU : 31 LW 0 => 31
 DEBUG:root:TICK: 12
 DEBUG:root:[MEMORY ACCESS]: DMEM[0] = 71
 DEBUG:root:TICK: 13
-DEBUG:root:[WRITE BACK]: DMEM[0] = 71 -> reg[1]
+DEBUG:root:[WRITE BACK]: 71 -> reg[1]
 DEBUG:root:TICK: 14
-DEBUG:root:
-
-DEBUG:root:[FETCHING]: instruction = 00100100000000000000000000000010
+DEBUG:root:<-- [INSTRUCTION] PC = 3 ->
+DEBUG:root:[FETCHING]: instruction = [00100100000000000000000000000010]
 DEBUG:root:TICK: 15
 DEBUG:root:[DECODING]: opcode: SW, immediate: 603979778
 DEBUG:root:TICK: 16
 DEBUG:root:[EXECUTING]: Branch Comparate ([rs1] = 0,[rs2] = 71) => equals = 0, less = 1
-DEBUG:root:[EXECUTING]: ALU : 0 ,op 71 => 31
+DEBUG:root:[EXECUTING]: ALU : 0 SW 71 => 31
 DEBUG:root:TICK: 17
-DEBUG:root:[MEMORY ACCESS]: 71 -> DMEM[0]
+DEBUG:root:[MEMORY ACCESS]: 71 => DMEM[0]
 DEBUG:root:TICK: 18
 DEBUG:root:TICK: 19
-DEBUG:root:
-
-DEBUG:root:[FETCHING]: instruction = 00010000000000000000000011100111
+DEBUG:root:<-- [INSTRUCTION] PC = 4 ->
+DEBUG:root:[FETCHING]: instruction = [00010000000000000000000011100111]
 DEBUG:root:TICK: 20
 DEBUG:root:[DECODING]: opcode: BEQ, immediate: 7
 DEBUG:root:TICK: 21
 DEBUG:root:[EXECUTING]: Branch Comparate ([rs1] = 71,[rs2] = 0) => equals = 0, less = 0
-DEBUG:root:[EXECUTING]: ALU : 71 ,op 71 => 31
+DEBUG:root:[EXECUTING]: ALU : 71 BEQ 71 => 31
 DEBUG:root:TICK: 22
 DEBUG:root:TICK: 23
 DEBUG:root:TICK: 24
-DEBUG:root:
-
-DEBUG:root:[FETCHING]: instruction = 10100000000000000000000000110010
+DEBUG:root:<-- [INSTRUCTION] PC = 5 ->
+DEBUG:root:[FETCHING]: instruction = [10100000000000000000000000110010]
 DEBUG:root:TICK: 25
 DEBUG:root:[DECODING]: opcode: ADDI, immediate: 1
 DEBUG:root:TICK: 26
 DEBUG:root:[EXECUTING]: Branch Comparate ([rs1] = 0,[rs2] = 0) => equals = 1, less = 0
-DEBUG:root:[EXECUTING]: ALU : 0 ,op 1 => 1
+DEBUG:root:[EXECUTING]: ALU : 0 ADDI 1 => 1
 DEBUG:root:TICK: 27
 DEBUG:root:TICK: 28
 DEBUG:root:[WRITE BACK]: 1 -> reg[2]
 DEBUG:root:TICK: 29
-DEBUG:root:
-
-DEBUG:root:[FETCHING]: instruction = 00000000000000000000000001000101
+DEBUG:root:<-- [INSTRUCTION] PC = 6 ->
+DEBUG:root:[FETCHING]: instruction = [00000000000000000000000001000101]
 DEBUG:root:TICK: 30
 DEBUG:root:[DECODING]: opcode: JMP, immediate: 2
 DEBUG:root:TICK: 31
 DEBUG:root:[EXECUTING]: Branch Comparate ([rs1] = 0,[rs2] = 0) => equals = 1, less = 0
-DEBUG:root:[EXECUTING]: ALU : 0 ,op 1 => 1
+DEBUG:root:[EXECUTING]: ALU : 0 JMP 1 => 1
 DEBUG:root:TICK: 32
 DEBUG:root:TICK: 33
+DEBUG:root:[WRITE BACK]: 2 -> pc
 DEBUG:root:TICK: 34
-DEBUG:root:
-
-DEBUG:root:[FETCHING]: instruction = 01110000000000000000000000000001
+DEBUG:root:<-- [INSTRUCTION] PC = 2 ->
+DEBUG:root:[FETCHING]: instruction = [01110000000000000000000000000001]
 DEBUG:root:TICK: 35
 DEBUG:root:[DECODING]: opcode: LW, immediate: 1879048193
 DEBUG:root:TICK: 36
 DEBUG:root:[EXECUTING]: Branch Comparate ([rs1] = 31,[rs2] = 0) => equals = 0, less = 0
-DEBUG:root:[EXECUTING]: ALU : 31 ,op 0 => 1
+DEBUG:root:[EXECUTING]: ALU : 31 LW 0 => 1
 DEBUG:root:TICK: 37
 DEBUG:root:[MEMORY ACCESS]: DMEM[0] = 111
 DEBUG:root:TICK: 38
-DEBUG:root:[WRITE BACK]: DMEM[0] = 111 -> reg[1]
+DEBUG:root:[WRITE BACK]: 111 -> reg[1]
 DEBUG:root:TICK: 39
-DEBUG:root:
-
-DEBUG:root:[FETCHING]: instruction = 00100100000000000000000000000010
+DEBUG:root:<-- [INSTRUCTION] PC = 3 ->
+DEBUG:root:[FETCHING]: instruction = [00100100000000000000000000000010]
 DEBUG:root:TICK: 40
 DEBUG:root:[DECODING]: opcode: SW, immediate: 603979778
 DEBUG:root:TICK: 41
 DEBUG:root:[EXECUTING]: Branch Comparate ([rs1] = 1,[rs2] = 111) => equals = 0, less = 1
-DEBUG:root:[EXECUTING]: ALU : 1 ,op 111 => 1
+DEBUG:root:[EXECUTING]: ALU : 1 SW 111 => 1
 DEBUG:root:TICK: 42
-DEBUG:root:[MEMORY ACCESS]: 111 -> DMEM[0]
+DEBUG:root:[MEMORY ACCESS]: 111 => DMEM[0]
 DEBUG:root:TICK: 43
 DEBUG:root:TICK: 44
-DEBUG:root:
-
-DEBUG:root:[FETCHING]: instruction = 00010000000000000000000011100111
+DEBUG:root:<-- [INSTRUCTION] PC = 4 ->
+DEBUG:root:[FETCHING]: instruction = [00010000000000000000000011100111]
 DEBUG:root:TICK: 45
 DEBUG:root:[DECODING]: opcode: BEQ, immediate: 7
 DEBUG:root:TICK: 46
 DEBUG:root:[EXECUTING]: Branch Comparate ([rs1] = 111,[rs2] = 0) => equals = 0, less = 0
-DEBUG:root:[EXECUTING]: ALU : 111 ,op 111 => 1
+DEBUG:root:[EXECUTING]: ALU : 111 BEQ 111 => 1
 DEBUG:root:TICK: 47
 DEBUG:root:TICK: 48
 DEBUG:root:TICK: 49
-DEBUG:root:
-
-DEBUG:root:[FETCHING]: instruction = 10100000000000000000000000110010
+DEBUG:root:<-- [INSTRUCTION] PC = 5 ->
+DEBUG:root:[FETCHING]: instruction = [10100000000000000000000000110010]
 DEBUG:root:TICK: 50
 DEBUG:root:[DECODING]: opcode: ADDI, immediate: 1
 DEBUG:root:TICK: 51
 DEBUG:root:[EXECUTING]: Branch Comparate ([rs1] = 1,[rs2] = 0) => equals = 0, less = 0
-DEBUG:root:[EXECUTING]: ALU : 1 ,op 1 => 2
+DEBUG:root:[EXECUTING]: ALU : 1 ADDI 1 => 2
 DEBUG:root:TICK: 52
 DEBUG:root:TICK: 53
 DEBUG:root:[WRITE BACK]: 2 -> reg[2]
 DEBUG:root:TICK: 54
-DEBUG:root:
-
-DEBUG:root:[FETCHING]: instruction = 00000000000000000000000001000101
+DEBUG:root:<-- [INSTRUCTION] PC = 6 ->
+DEBUG:root:[FETCHING]: instruction = [00000000000000000000000001000101]
 DEBUG:root:TICK: 55
 DEBUG:root:[DECODING]: opcode: JMP, immediate: 2
 DEBUG:root:TICK: 56
 DEBUG:root:[EXECUTING]: Branch Comparate ([rs1] = 0,[rs2] = 0) => equals = 1, less = 0
-DEBUG:root:[EXECUTING]: ALU : 0 ,op 1 => 2
+DEBUG:root:[EXECUTING]: ALU : 0 JMP 1 => 2
 DEBUG:root:TICK: 57
 DEBUG:root:TICK: 58
+DEBUG:root:[WRITE BACK]: 2 -> pc
 DEBUG:root:TICK: 59
-DEBUG:root:
-
-DEBUG:root:[FETCHING]: instruction = 01110000000000000000000000000001
+DEBUG:root:<-- [INSTRUCTION] PC = 2 ->
+DEBUG:root:[FETCHING]: instruction = [01110000000000000000000000000001]
 DEBUG:root:TICK: 60
 DEBUG:root:[DECODING]: opcode: LW, immediate: 1879048193
 DEBUG:root:TICK: 61
 DEBUG:root:[EXECUTING]: Branch Comparate ([rs1] = 31,[rs2] = 0) => equals = 0, less = 0
-DEBUG:root:[EXECUTING]: ALU : 31 ,op 0 => 2
+DEBUG:root:[EXECUTING]: ALU : 31 LW 0 => 2
 DEBUG:root:TICK: 62
 DEBUG:root:[MEMORY ACCESS]: DMEM[0] = 111
 DEBUG:root:TICK: 63
-DEBUG:root:[WRITE BACK]: DMEM[0] = 111 -> reg[1]
+DEBUG:root:[WRITE BACK]: 111 -> reg[1]
 DEBUG:root:TICK: 64
-DEBUG:root:
-
-DEBUG:root:[FETCHING]: instruction = 00100100000000000000000000000010
+DEBUG:root:<-- [INSTRUCTION] PC = 3 ->
+DEBUG:root:[FETCHING]: instruction = [00100100000000000000000000000010]
 DEBUG:root:TICK: 65
 DEBUG:root:[DECODING]: opcode: SW, immediate: 603979778
 DEBUG:root:TICK: 66
 DEBUG:root:[EXECUTING]: Branch Comparate ([rs1] = 2,[rs2] = 111) => equals = 0, less = 1
-DEBUG:root:[EXECUTING]: ALU : 2 ,op 111 => 2
+DEBUG:root:[EXECUTING]: ALU : 2 SW 111 => 2
 DEBUG:root:TICK: 67
-DEBUG:root:[MEMORY ACCESS]: 111 -> DMEM[0]
+DEBUG:root:[MEMORY ACCESS]: 111 => DMEM[0]
 DEBUG:root:TICK: 68
 DEBUG:root:TICK: 69
-DEBUG:root:
-
-DEBUG:root:[FETCHING]: instruction = 00010000000000000000000011100111
+DEBUG:root:<-- [INSTRUCTION] PC = 4 ->
+DEBUG:root:[FETCHING]: instruction = [00010000000000000000000011100111]
 DEBUG:root:TICK: 70
 DEBUG:root:[DECODING]: opcode: BEQ, immediate: 7
 DEBUG:root:TICK: 71
 DEBUG:root:[EXECUTING]: Branch Comparate ([rs1] = 111,[rs2] = 0) => equals = 0, less = 0
-DEBUG:root:[EXECUTING]: ALU : 111 ,op 111 => 2
+DEBUG:root:[EXECUTING]: ALU : 111 BEQ 111 => 2
 DEBUG:root:TICK: 72
 DEBUG:root:TICK: 73
 DEBUG:root:TICK: 74
-DEBUG:root:
-
-DEBUG:root:[FETCHING]: instruction = 10100000000000000000000000110010
+DEBUG:root:<-- [INSTRUCTION] PC = 5 ->
+DEBUG:root:[FETCHING]: instruction = [10100000000000000000000000110010]
 DEBUG:root:TICK: 75
 DEBUG:root:[DECODING]: opcode: ADDI, immediate: 1
 DEBUG:root:TICK: 76
 DEBUG:root:[EXECUTING]: Branch Comparate ([rs1] = 2,[rs2] = 0) => equals = 0, less = 0
-DEBUG:root:[EXECUTING]: ALU : 2 ,op 1 => 3
+DEBUG:root:[EXECUTING]: ALU : 2 ADDI 1 => 3
 DEBUG:root:TICK: 77
 DEBUG:root:TICK: 78
 DEBUG:root:[WRITE BACK]: 3 -> reg[2]
 DEBUG:root:TICK: 79
-DEBUG:root:
-
-DEBUG:root:[FETCHING]: instruction = 00000000000000000000000001000101
+DEBUG:root:<-- [INSTRUCTION] PC = 6 ->
+DEBUG:root:[FETCHING]: instruction = [00000000000000000000000001000101]
 DEBUG:root:TICK: 80
 DEBUG:root:[DECODING]: opcode: JMP, immediate: 2
 DEBUG:root:TICK: 81
 DEBUG:root:[EXECUTING]: Branch Comparate ([rs1] = 0,[rs2] = 0) => equals = 1, less = 0
-DEBUG:root:[EXECUTING]: ALU : 0 ,op 1 => 3
+DEBUG:root:[EXECUTING]: ALU : 0 JMP 1 => 3
 DEBUG:root:TICK: 82
 DEBUG:root:TICK: 83
+DEBUG:root:[WRITE BACK]: 2 -> pc
 DEBUG:root:TICK: 84
-DEBUG:root:
-
-DEBUG:root:[FETCHING]: instruction = 01110000000000000000000000000001
+DEBUG:root:<-- [INSTRUCTION] PC = 2 ->
+DEBUG:root:[FETCHING]: instruction = [01110000000000000000000000000001]
 DEBUG:root:TICK: 85
 DEBUG:root:[DECODING]: opcode: LW, immediate: 1879048193
 DEBUG:root:TICK: 86
 DEBUG:root:[EXECUTING]: Branch Comparate ([rs1] = 31,[rs2] = 0) => equals = 0, less = 0
-DEBUG:root:[EXECUTING]: ALU : 31 ,op 0 => 3
+DEBUG:root:[EXECUTING]: ALU : 31 LW 0 => 3
 DEBUG:root:TICK: 87
 DEBUG:root:[MEMORY ACCESS]: DMEM[0] = 100
 DEBUG:root:TICK: 88
-DEBUG:root:[WRITE BACK]: DMEM[0] = 100 -> reg[1]
+DEBUG:root:[WRITE BACK]: 100 -> reg[1]
 DEBUG:root:TICK: 89
-DEBUG:root:
-
-DEBUG:root:[FETCHING]: instruction = 00100100000000000000000000000010
+DEBUG:root:<-- [INSTRUCTION] PC = 3 ->
+DEBUG:root:[FETCHING]: instruction = [00100100000000000000000000000010]
 DEBUG:root:TICK: 90
 DEBUG:root:[DECODING]: opcode: SW, immediate: 603979778
 DEBUG:root:TICK: 91
 DEBUG:root:[EXECUTING]: Branch Comparate ([rs1] = 3,[rs2] = 100) => equals = 0, less = 1
-DEBUG:root:[EXECUTING]: ALU : 3 ,op 100 => 3
+DEBUG:root:[EXECUTING]: ALU : 3 SW 100 => 3
 DEBUG:root:TICK: 92
-DEBUG:root:[MEMORY ACCESS]: 100 -> DMEM[0]
+DEBUG:root:[MEMORY ACCESS]: 100 => DMEM[0]
 DEBUG:root:TICK: 93
 DEBUG:root:TICK: 94
-DEBUG:root:
-
-DEBUG:root:[FETCHING]: instruction = 00010000000000000000000011100111
+DEBUG:root:<-- [INSTRUCTION] PC = 4 ->
+DEBUG:root:[FETCHING]: instruction = [00010000000000000000000011100111]
 DEBUG:root:TICK: 95
 DEBUG:root:[DECODING]: opcode: BEQ, immediate: 7
 DEBUG:root:TICK: 96
 DEBUG:root:[EXECUTING]: Branch Comparate ([rs1] = 100,[rs2] = 0) => equals = 0, less = 0
-DEBUG:root:[EXECUTING]: ALU : 100 ,op 100 => 3
+DEBUG:root:[EXECUTING]: ALU : 100 BEQ 100 => 3
 DEBUG:root:TICK: 97
 DEBUG:root:TICK: 98
 DEBUG:root:TICK: 99
-DEBUG:root:
-
-DEBUG:root:[FETCHING]: instruction = 10100000000000000000000000110010
+DEBUG:root:<-- [INSTRUCTION] PC = 5 ->
+DEBUG:root:[FETCHING]: instruction = [10100000000000000000000000110010]
 DEBUG:root:TICK: 100
 DEBUG:root:[DECODING]: opcode: ADDI, immediate: 1
 DEBUG:root:TICK: 101
 DEBUG:root:[EXECUTING]: Branch Comparate ([rs1] = 3,[rs2] = 0) => equals = 0, less = 0
-DEBUG:root:[EXECUTING]: ALU : 3 ,op 1 => 4
+DEBUG:root:[EXECUTING]: ALU : 3 ADDI 1 => 4
 DEBUG:root:TICK: 102
 DEBUG:root:TICK: 103
 DEBUG:root:[WRITE BACK]: 4 -> reg[2]
 DEBUG:root:TICK: 104
-DEBUG:root:
-
-DEBUG:root:[FETCHING]: instruction = 00000000000000000000000001000101
+DEBUG:root:<-- [INSTRUCTION] PC = 6 ->
+DEBUG:root:[FETCHING]: instruction = [00000000000000000000000001000101]
 DEBUG:root:TICK: 105
 DEBUG:root:[DECODING]: opcode: JMP, immediate: 2
 DEBUG:root:TICK: 106
 DEBUG:root:[EXECUTING]: Branch Comparate ([rs1] = 0,[rs2] = 0) => equals = 1, less = 0
-DEBUG:root:[EXECUTING]: ALU : 0 ,op 1 => 4
+DEBUG:root:[EXECUTING]: ALU : 0 JMP 1 => 4
 DEBUG:root:TICK: 107
 DEBUG:root:TICK: 108
+DEBUG:root:[WRITE BACK]: 2 -> pc
 DEBUG:root:TICK: 109
-DEBUG:root:
-
-DEBUG:root:[FETCHING]: instruction = 01110000000000000000000000000001
+DEBUG:root:<-- [INSTRUCTION] PC = 2 ->
+DEBUG:root:[FETCHING]: instruction = [01110000000000000000000000000001]
 DEBUG:root:TICK: 110
 DEBUG:root:[DECODING]: opcode: LW, immediate: 1879048193
 DEBUG:root:TICK: 111
 DEBUG:root:[EXECUTING]: Branch Comparate ([rs1] = 31,[rs2] = 0) => equals = 0, less = 0
-DEBUG:root:[EXECUTING]: ALU : 31 ,op 0 => 4
+DEBUG:root:[EXECUTING]: ALU : 31 LW 0 => 4
 DEBUG:root:TICK: 112
 DEBUG:root:[MEMORY ACCESS]: DMEM[0] = 32
 DEBUG:root:TICK: 113
-DEBUG:root:[WRITE BACK]: DMEM[0] = 32 -> reg[1]
+DEBUG:root:[WRITE BACK]: 32 -> reg[1]
 DEBUG:root:TICK: 114
-DEBUG:root:
-
-DEBUG:root:[FETCHING]: instruction = 00100100000000000000000000000010
+DEBUG:root:<-- [INSTRUCTION] PC = 3 ->
+DEBUG:root:[FETCHING]: instruction = [00100100000000000000000000000010]
 DEBUG:root:TICK: 115
 DEBUG:root:[DECODING]: opcode: SW, immediate: 603979778
 DEBUG:root:TICK: 116
 DEBUG:root:[EXECUTING]: Branch Comparate ([rs1] = 4,[rs2] = 32) => equals = 0, less = 1
-DEBUG:root:[EXECUTING]: ALU : 4 ,op 32 => 4
+DEBUG:root:[EXECUTING]: ALU : 4 SW 32 => 4
 DEBUG:root:TICK: 117
-DEBUG:root:[MEMORY ACCESS]: 32 -> DMEM[0]
+DEBUG:root:[MEMORY ACCESS]: 32 => DMEM[0]
 DEBUG:root:TICK: 118
 DEBUG:root:TICK: 119
-DEBUG:root:
-
-DEBUG:root:[FETCHING]: instruction = 00010000000000000000000011100111
+DEBUG:root:<-- [INSTRUCTION] PC = 4 ->
+DEBUG:root:[FETCHING]: instruction = [00010000000000000000000011100111]
 DEBUG:root:TICK: 120
 DEBUG:root:[DECODING]: opcode: BEQ, immediate: 7
 DEBUG:root:TICK: 121
 DEBUG:root:[EXECUTING]: Branch Comparate ([rs1] = 32,[rs2] = 0) => equals = 0, less = 0
-DEBUG:root:[EXECUTING]: ALU : 32 ,op 32 => 4
+DEBUG:root:[EXECUTING]: ALU : 32 BEQ 32 => 4
 DEBUG:root:TICK: 122
 DEBUG:root:TICK: 123
 DEBUG:root:TICK: 124
-DEBUG:root:
-
-DEBUG:root:[FETCHING]: instruction = 10100000000000000000000000110010
+DEBUG:root:<-- [INSTRUCTION] PC = 5 ->
+DEBUG:root:[FETCHING]: instruction = [10100000000000000000000000110010]
 DEBUG:root:TICK: 125
 DEBUG:root:[DECODING]: opcode: ADDI, immediate: 1
 DEBUG:root:TICK: 126
 DEBUG:root:[EXECUTING]: Branch Comparate ([rs1] = 4,[rs2] = 0) => equals = 0, less = 0
-DEBUG:root:[EXECUTING]: ALU : 4 ,op 1 => 5
+DEBUG:root:[EXECUTING]: ALU : 4 ADDI 1 => 5
 DEBUG:root:TICK: 127
 DEBUG:root:TICK: 128
 DEBUG:root:[WRITE BACK]: 5 -> reg[2]
 DEBUG:root:TICK: 129
-DEBUG:root:
-
-DEBUG:root:[FETCHING]: instruction = 00000000000000000000000001000101
+DEBUG:root:<-- [INSTRUCTION] PC = 6 ->
+DEBUG:root:[FETCHING]: instruction = [00000000000000000000000001000101]
 DEBUG:root:TICK: 130
 DEBUG:root:[DECODING]: opcode: JMP, immediate: 2
 DEBUG:root:TICK: 131
 DEBUG:root:[EXECUTING]: Branch Comparate ([rs1] = 0,[rs2] = 0) => equals = 1, less = 0
-DEBUG:root:[EXECUTING]: ALU : 0 ,op 1 => 5
+DEBUG:root:[EXECUTING]: ALU : 0 JMP 1 => 5
 DEBUG:root:TICK: 132
 DEBUG:root:TICK: 133
+DEBUG:root:[WRITE BACK]: 2 -> pc
 DEBUG:root:TICK: 134
-DEBUG:root:
-
-DEBUG:root:[FETCHING]: instruction = 01110000000000000000000000000001
+DEBUG:root:<-- [INSTRUCTION] PC = 2 ->
+DEBUG:root:[FETCHING]: instruction = [01110000000000000000000000000001]
 DEBUG:root:TICK: 135
 DEBUG:root:[DECODING]: opcode: LW, immediate: 1879048193
 DEBUG:root:TICK: 136
 DEBUG:root:[EXECUTING]: Branch Comparate ([rs1] = 31,[rs2] = 0) => equals = 0, less = 0
-DEBUG:root:[EXECUTING]: ALU : 31 ,op 0 => 5
+DEBUG:root:[EXECUTING]: ALU : 31 LW 0 => 5
 DEBUG:root:TICK: 137
 DEBUG:root:[MEMORY ACCESS]: DMEM[0] = 110
 DEBUG:root:TICK: 138
-DEBUG:root:[WRITE BACK]: DMEM[0] = 110 -> reg[1]
+DEBUG:root:[WRITE BACK]: 110 -> reg[1]
 DEBUG:root:TICK: 139
-DEBUG:root:
-
-DEBUG:root:[FETCHING]: instruction = 00100100000000000000000000000010
+DEBUG:root:<-- [INSTRUCTION] PC = 3 ->
+DEBUG:root:[FETCHING]: instruction = [00100100000000000000000000000010]
 DEBUG:root:TICK: 140
 DEBUG:root:[DECODING]: opcode: SW, immediate: 603979778
 DEBUG:root:TICK: 141
 DEBUG:root:[EXECUTING]: Branch Comparate ([rs1] = 5,[rs2] = 110) => equals = 0, less = 1
-DEBUG:root:[EXECUTING]: ALU : 5 ,op 110 => 5
+DEBUG:root:[EXECUTING]: ALU : 5 SW 110 => 5
 DEBUG:root:TICK: 142
-DEBUG:root:[MEMORY ACCESS]: 110 -> DMEM[0]
+DEBUG:root:[MEMORY ACCESS]: 110 => DMEM[0]
 DEBUG:root:TICK: 143
 DEBUG:root:TICK: 144
-DEBUG:root:
-
-DEBUG:root:[FETCHING]: instruction = 00010000000000000000000011100111
+DEBUG:root:<-- [INSTRUCTION] PC = 4 ->
+DEBUG:root:[FETCHING]: instruction = [00010000000000000000000011100111]
 DEBUG:root:TICK: 145
 DEBUG:root:[DECODING]: opcode: BEQ, immediate: 7
 DEBUG:root:TICK: 146
 DEBUG:root:[EXECUTING]: Branch Comparate ([rs1] = 110,[rs2] = 0) => equals = 0, less = 0
-DEBUG:root:[EXECUTING]: ALU : 110 ,op 110 => 5
+DEBUG:root:[EXECUTING]: ALU : 110 BEQ 110 => 5
 DEBUG:root:TICK: 147
 DEBUG:root:TICK: 148
 DEBUG:root:TICK: 149
-DEBUG:root:
-
-DEBUG:root:[FETCHING]: instruction = 10100000000000000000000000110010
+DEBUG:root:<-- [INSTRUCTION] PC = 5 ->
+DEBUG:root:[FETCHING]: instruction = [10100000000000000000000000110010]
 DEBUG:root:TICK: 150
 DEBUG:root:[DECODING]: opcode: ADDI, immediate: 1
 DEBUG:root:TICK: 151
 DEBUG:root:[EXECUTING]: Branch Comparate ([rs1] = 5,[rs2] = 0) => equals = 0, less = 0
-DEBUG:root:[EXECUTING]: ALU : 5 ,op 1 => 6
+DEBUG:root:[EXECUTING]: ALU : 5 ADDI 1 => 6
 DEBUG:root:TICK: 152
 DEBUG:root:TICK: 153
 DEBUG:root:[WRITE BACK]: 6 -> reg[2]
 DEBUG:root:TICK: 154
-DEBUG:root:
-
-DEBUG:root:[FETCHING]: instruction = 00000000000000000000000001000101
+DEBUG:root:<-- [INSTRUCTION] PC = 6 ->
+DEBUG:root:[FETCHING]: instruction = [00000000000000000000000001000101]
 DEBUG:root:TICK: 155
 DEBUG:root:[DECODING]: opcode: JMP, immediate: 2
 DEBUG:root:TICK: 156
 DEBUG:root:[EXECUTING]: Branch Comparate ([rs1] = 0,[rs2] = 0) => equals = 1, less = 0
-DEBUG:root:[EXECUTING]: ALU : 0 ,op 1 => 6
+DEBUG:root:[EXECUTING]: ALU : 0 JMP 1 => 6
 DEBUG:root:TICK: 157
 DEBUG:root:TICK: 158
+DEBUG:root:[WRITE BACK]: 2 -> pc
 DEBUG:root:TICK: 159
-DEBUG:root:
-
-DEBUG:root:[FETCHING]: instruction = 01110000000000000000000000000001
+DEBUG:root:<-- [INSTRUCTION] PC = 2 ->
+DEBUG:root:[FETCHING]: instruction = [01110000000000000000000000000001]
 DEBUG:root:TICK: 160
 DEBUG:root:[DECODING]: opcode: LW, immediate: 1879048193
 DEBUG:root:TICK: 161
 DEBUG:root:[EXECUTING]: Branch Comparate ([rs1] = 31,[rs2] = 0) => equals = 0, less = 0
-DEBUG:root:[EXECUTING]: ALU : 31 ,op 0 => 6
+DEBUG:root:[EXECUTING]: ALU : 31 LW 0 => 6
 DEBUG:root:TICK: 162
 DEBUG:root:[MEMORY ACCESS]: DMEM[0] = 101
 DEBUG:root:TICK: 163
-DEBUG:root:[WRITE BACK]: DMEM[0] = 101 -> reg[1]
+DEBUG:root:[WRITE BACK]: 101 -> reg[1]
 DEBUG:root:TICK: 164
-DEBUG:root:
-
-DEBUG:root:[FETCHING]: instruction = 00100100000000000000000000000010
+DEBUG:root:<-- [INSTRUCTION] PC = 3 ->
+DEBUG:root:[FETCHING]: instruction = [00100100000000000000000000000010]
 DEBUG:root:TICK: 165
 DEBUG:root:[DECODING]: opcode: SW, immediate: 603979778
 DEBUG:root:TICK: 166
 DEBUG:root:[EXECUTING]: Branch Comparate ([rs1] = 6,[rs2] = 101) => equals = 0, less = 1
-DEBUG:root:[EXECUTING]: ALU : 6 ,op 101 => 6
+DEBUG:root:[EXECUTING]: ALU : 6 SW 101 => 6
 DEBUG:root:TICK: 167
-DEBUG:root:[MEMORY ACCESS]: 101 -> DMEM[0]
+DEBUG:root:[MEMORY ACCESS]: 101 => DMEM[0]
 DEBUG:root:TICK: 168
 DEBUG:root:TICK: 169
-DEBUG:root:
-
-DEBUG:root:[FETCHING]: instruction = 00010000000000000000000011100111
+DEBUG:root:<-- [INSTRUCTION] PC = 4 ->
+DEBUG:root:[FETCHING]: instruction = [00010000000000000000000011100111]
 DEBUG:root:TICK: 170
 DEBUG:root:[DECODING]: opcode: BEQ, immediate: 7
 DEBUG:root:TICK: 171
 DEBUG:root:[EXECUTING]: Branch Comparate ([rs1] = 101,[rs2] = 0) => equals = 0, less = 0
-DEBUG:root:[EXECUTING]: ALU : 101 ,op 101 => 6
+DEBUG:root:[EXECUTING]: ALU : 101 BEQ 101 => 6
 DEBUG:root:TICK: 172
 DEBUG:root:TICK: 173
 DEBUG:root:TICK: 174
-DEBUG:root:
-
-DEBUG:root:[FETCHING]: instruction = 10100000000000000000000000110010
+DEBUG:root:<-- [INSTRUCTION] PC = 5 ->
+DEBUG:root:[FETCHING]: instruction = [10100000000000000000000000110010]
 DEBUG:root:TICK: 175
 DEBUG:root:[DECODING]: opcode: ADDI, immediate: 1
 DEBUG:root:TICK: 176
 DEBUG:root:[EXECUTING]: Branch Comparate ([rs1] = 6,[rs2] = 0) => equals = 0, less = 0
-DEBUG:root:[EXECUTING]: ALU : 6 ,op 1 => 7
+DEBUG:root:[EXECUTING]: ALU : 6 ADDI 1 => 7
 DEBUG:root:TICK: 177
 DEBUG:root:TICK: 178
 DEBUG:root:[WRITE BACK]: 7 -> reg[2]
 DEBUG:root:TICK: 179
-DEBUG:root:
-
-DEBUG:root:[FETCHING]: instruction = 00000000000000000000000001000101
+DEBUG:root:<-- [INSTRUCTION] PC = 6 ->
+DEBUG:root:[FETCHING]: instruction = [00000000000000000000000001000101]
 DEBUG:root:TICK: 180
 DEBUG:root:[DECODING]: opcode: JMP, immediate: 2
 DEBUG:root:TICK: 181
 DEBUG:root:[EXECUTING]: Branch Comparate ([rs1] = 0,[rs2] = 0) => equals = 1, less = 0
-DEBUG:root:[EXECUTING]: ALU : 0 ,op 1 => 7
+DEBUG:root:[EXECUTING]: ALU : 0 JMP 1 => 7
 DEBUG:root:TICK: 182
 DEBUG:root:TICK: 183
+DEBUG:root:[WRITE BACK]: 2 -> pc
 DEBUG:root:TICK: 184
-DEBUG:root:
-
-DEBUG:root:[FETCHING]: instruction = 01110000000000000000000000000001
+DEBUG:root:<-- [INSTRUCTION] PC = 2 ->
+DEBUG:root:[FETCHING]: instruction = [01110000000000000000000000000001]
 DEBUG:root:TICK: 185
 DEBUG:root:[DECODING]: opcode: LW, immediate: 1879048193
 DEBUG:root:TICK: 186
 DEBUG:root:[EXECUTING]: Branch Comparate ([rs1] = 31,[rs2] = 0) => equals = 0, less = 0
-DEBUG:root:[EXECUTING]: ALU : 31 ,op 0 => 7
+DEBUG:root:[EXECUTING]: ALU : 31 LW 0 => 7
 DEBUG:root:TICK: 187
 DEBUG:root:[MEMORY ACCESS]: DMEM[0] = 119
 DEBUG:root:TICK: 188
-DEBUG:root:[WRITE BACK]: DMEM[0] = 119 -> reg[1]
+DEBUG:root:[WRITE BACK]: 119 -> reg[1]
 DEBUG:root:TICK: 189
-DEBUG:root:
-
-DEBUG:root:[FETCHING]: instruction = 00100100000000000000000000000010
+DEBUG:root:<-- [INSTRUCTION] PC = 3 ->
+DEBUG:root:[FETCHING]: instruction = [00100100000000000000000000000010]
 DEBUG:root:TICK: 190
 DEBUG:root:[DECODING]: opcode: SW, immediate: 603979778
 DEBUG:root:TICK: 191
 DEBUG:root:[EXECUTING]: Branch Comparate ([rs1] = 7,[rs2] = 119) => equals = 0, less = 1
-DEBUG:root:[EXECUTING]: ALU : 7 ,op 119 => 7
+DEBUG:root:[EXECUTING]: ALU : 7 SW 119 => 7
 DEBUG:root:TICK: 192
-DEBUG:root:[MEMORY ACCESS]: 119 -> DMEM[0]
+DEBUG:root:[MEMORY ACCESS]: 119 => DMEM[0]
 DEBUG:root:TICK: 193
 DEBUG:root:TICK: 194
-DEBUG:root:
-
-DEBUG:root:[FETCHING]: instruction = 00010000000000000000000011100111
+DEBUG:root:<-- [INSTRUCTION] PC = 4 ->
+DEBUG:root:[FETCHING]: instruction = [00010000000000000000000011100111]
 DEBUG:root:TICK: 195
 DEBUG:root:[DECODING]: opcode: BEQ, immediate: 7
 DEBUG:root:TICK: 196
 DEBUG:root:[EXECUTING]: Branch Comparate ([rs1] = 119,[rs2] = 0) => equals = 0, less = 0
-DEBUG:root:[EXECUTING]: ALU : 119 ,op 119 => 7
+DEBUG:root:[EXECUTING]: ALU : 119 BEQ 119 => 7
 DEBUG:root:TICK: 197
 DEBUG:root:TICK: 198
 DEBUG:root:TICK: 199
-DEBUG:root:
-
-DEBUG:root:[FETCHING]: instruction = 10100000000000000000000000110010
+DEBUG:root:<-- [INSTRUCTION] PC = 5 ->
+DEBUG:root:[FETCHING]: instruction = [10100000000000000000000000110010]
 DEBUG:root:TICK: 200
 DEBUG:root:[DECODING]: opcode: ADDI, immediate: 1
 DEBUG:root:TICK: 201
 DEBUG:root:[EXECUTING]: Branch Comparate ([rs1] = 7,[rs2] = 0) => equals = 0, less = 0
-DEBUG:root:[EXECUTING]: ALU : 7 ,op 1 => 8
+DEBUG:root:[EXECUTING]: ALU : 7 ADDI 1 => 8
 DEBUG:root:TICK: 202
 DEBUG:root:TICK: 203
 DEBUG:root:[WRITE BACK]: 8 -> reg[2]
 DEBUG:root:TICK: 204
-DEBUG:root:
-
-DEBUG:root:[FETCHING]: instruction = 00000000000000000000000001000101
+DEBUG:root:<-- [INSTRUCTION] PC = 6 ->
+DEBUG:root:[FETCHING]: instruction = [00000000000000000000000001000101]
 DEBUG:root:TICK: 205
 DEBUG:root:[DECODING]: opcode: JMP, immediate: 2
 DEBUG:root:TICK: 206
 DEBUG:root:[EXECUTING]: Branch Comparate ([rs1] = 0,[rs2] = 0) => equals = 1, less = 0
-DEBUG:root:[EXECUTING]: ALU : 0 ,op 1 => 8
+DEBUG:root:[EXECUTING]: ALU : 0 JMP 1 => 8
 DEBUG:root:TICK: 207
 DEBUG:root:TICK: 208
+DEBUG:root:[WRITE BACK]: 2 -> pc
 DEBUG:root:TICK: 209
-DEBUG:root:
-
-DEBUG:root:[FETCHING]: instruction = 01110000000000000000000000000001
+DEBUG:root:<-- [INSTRUCTION] PC = 2 ->
+DEBUG:root:[FETCHING]: instruction = [01110000000000000000000000000001]
 DEBUG:root:TICK: 210
 DEBUG:root:[DECODING]: opcode: LW, immediate: 1879048193
 DEBUG:root:TICK: 211
 DEBUG:root:[EXECUTING]: Branch Comparate ([rs1] = 31,[rs2] = 0) => equals = 0, less = 0
-DEBUG:root:[EXECUTING]: ALU : 31 ,op 0 => 8
+DEBUG:root:[EXECUTING]: ALU : 31 LW 0 => 8
 DEBUG:root:TICK: 212
 DEBUG:root:[MEMORY ACCESS]: DMEM[0] = 115
 DEBUG:root:TICK: 213
-DEBUG:root:[WRITE BACK]: DMEM[0] = 115 -> reg[1]
+DEBUG:root:[WRITE BACK]: 115 -> reg[1]
 DEBUG:root:TICK: 214
-DEBUG:root:
-
-DEBUG:root:[FETCHING]: instruction = 00100100000000000000000000000010
+DEBUG:root:<-- [INSTRUCTION] PC = 3 ->
+DEBUG:root:[FETCHING]: instruction = [00100100000000000000000000000010]
 DEBUG:root:TICK: 215
 DEBUG:root:[DECODING]: opcode: SW, immediate: 603979778
 DEBUG:root:TICK: 216
 DEBUG:root:[EXECUTING]: Branch Comparate ([rs1] = 8,[rs2] = 115) => equals = 0, less = 1
-DEBUG:root:[EXECUTING]: ALU : 8 ,op 115 => 8
+DEBUG:root:[EXECUTING]: ALU : 8 SW 115 => 8
 DEBUG:root:TICK: 217
-DEBUG:root:[MEMORY ACCESS]: 115 -> DMEM[0]
+DEBUG:root:[MEMORY ACCESS]: 115 => DMEM[0]
 DEBUG:root:TICK: 218
 DEBUG:root:TICK: 219
-DEBUG:root:
-
-DEBUG:root:[FETCHING]: instruction = 00010000000000000000000011100111
+DEBUG:root:<-- [INSTRUCTION] PC = 4 ->
+DEBUG:root:[FETCHING]: instruction = [00010000000000000000000011100111]
 DEBUG:root:TICK: 220
 DEBUG:root:[DECODING]: opcode: BEQ, immediate: 7
 DEBUG:root:TICK: 221
 DEBUG:root:[EXECUTING]: Branch Comparate ([rs1] = 115,[rs2] = 0) => equals = 0, less = 0
-DEBUG:root:[EXECUTING]: ALU : 115 ,op 115 => 8
+DEBUG:root:[EXECUTING]: ALU : 115 BEQ 115 => 8
 DEBUG:root:TICK: 222
 DEBUG:root:TICK: 223
 DEBUG:root:TICK: 224
-DEBUG:root:
-
-DEBUG:root:[FETCHING]: instruction = 10100000000000000000000000110010
+DEBUG:root:<-- [INSTRUCTION] PC = 5 ->
+DEBUG:root:[FETCHING]: instruction = [10100000000000000000000000110010]
 DEBUG:root:TICK: 225
 DEBUG:root:[DECODING]: opcode: ADDI, immediate: 1
 DEBUG:root:TICK: 226
 DEBUG:root:[EXECUTING]: Branch Comparate ([rs1] = 8,[rs2] = 0) => equals = 0, less = 0
-DEBUG:root:[EXECUTING]: ALU : 8 ,op 1 => 9
+DEBUG:root:[EXECUTING]: ALU : 8 ADDI 1 => 9
 DEBUG:root:TICK: 227
 DEBUG:root:TICK: 228
 DEBUG:root:[WRITE BACK]: 9 -> reg[2]
 DEBUG:root:TICK: 229
-DEBUG:root:
-
-DEBUG:root:[FETCHING]: instruction = 00000000000000000000000001000101
+DEBUG:root:<-- [INSTRUCTION] PC = 6 ->
+DEBUG:root:[FETCHING]: instruction = [00000000000000000000000001000101]
 DEBUG:root:TICK: 230
 DEBUG:root:[DECODING]: opcode: JMP, immediate: 2
 DEBUG:root:TICK: 231
 DEBUG:root:[EXECUTING]: Branch Comparate ([rs1] = 0,[rs2] = 0) => equals = 1, less = 0
-DEBUG:root:[EXECUTING]: ALU : 0 ,op 1 => 9
+DEBUG:root:[EXECUTING]: ALU : 0 JMP 1 => 9
 DEBUG:root:TICK: 232
 DEBUG:root:TICK: 233
+DEBUG:root:[WRITE BACK]: 2 -> pc
 DEBUG:root:TICK: 234
-DEBUG:root:
-
-DEBUG:root:[FETCHING]: instruction = 01110000000000000000000000000001
+DEBUG:root:<-- [INSTRUCTION] PC = 2 ->
+DEBUG:root:[FETCHING]: instruction = [01110000000000000000000000000001]
 DEBUG:root:TICK: 235
 DEBUG:root:[DECODING]: opcode: LW, immediate: 1879048193
 DEBUG:root:TICK: 236
 DEBUG:root:[EXECUTING]: Branch Comparate ([rs1] = 31,[rs2] = 0) => equals = 0, less = 0
-DEBUG:root:[EXECUTING]: ALU : 31 ,op 0 => 9
+DEBUG:root:[EXECUTING]: ALU : 31 LW 0 => 9
 DEBUG:root:TICK: 237
 DEBUG:root:[MEMORY ACCESS]: DMEM[0] = 44
 DEBUG:root:TICK: 238
-DEBUG:root:[WRITE BACK]: DMEM[0] = 44 -> reg[1]
+DEBUG:root:[WRITE BACK]: 44 -> reg[1]
 DEBUG:root:TICK: 239
-DEBUG:root:
-
-DEBUG:root:[FETCHING]: instruction = 00100100000000000000000000000010
+DEBUG:root:<-- [INSTRUCTION] PC = 3 ->
+DEBUG:root:[FETCHING]: instruction = [00100100000000000000000000000010]
 DEBUG:root:TICK: 240
 DEBUG:root:[DECODING]: opcode: SW, immediate: 603979778
 DEBUG:root:TICK: 241
 DEBUG:root:[EXECUTING]: Branch Comparate ([rs1] = 9,[rs2] = 44) => equals = 0, less = 1
-DEBUG:root:[EXECUTING]: ALU : 9 ,op 44 => 9
+DEBUG:root:[EXECUTING]: ALU : 9 SW 44 => 9
 DEBUG:root:TICK: 242
-DEBUG:root:[MEMORY ACCESS]: 44 -> DMEM[0]
+DEBUG:root:[MEMORY ACCESS]: 44 => DMEM[0]
 DEBUG:root:TICK: 243
 DEBUG:root:TICK: 244
-DEBUG:root:
-
-DEBUG:root:[FETCHING]: instruction = 00010000000000000000000011100111
+DEBUG:root:<-- [INSTRUCTION] PC = 4 ->
+DEBUG:root:[FETCHING]: instruction = [00010000000000000000000011100111]
 DEBUG:root:TICK: 245
 DEBUG:root:[DECODING]: opcode: BEQ, immediate: 7
 DEBUG:root:TICK: 246
 DEBUG:root:[EXECUTING]: Branch Comparate ([rs1] = 44,[rs2] = 0) => equals = 0, less = 0
-DEBUG:root:[EXECUTING]: ALU : 44 ,op 44 => 9
+DEBUG:root:[EXECUTING]: ALU : 44 BEQ 44 => 9
 DEBUG:root:TICK: 247
 DEBUG:root:TICK: 248
 DEBUG:root:TICK: 249
-DEBUG:root:
-
-DEBUG:root:[FETCHING]: instruction = 10100000000000000000000000110010
+DEBUG:root:<-- [INSTRUCTION] PC = 5 ->
+DEBUG:root:[FETCHING]: instruction = [10100000000000000000000000110010]
 DEBUG:root:TICK: 250
 DEBUG:root:[DECODING]: opcode: ADDI, immediate: 1
 DEBUG:root:TICK: 251
 DEBUG:root:[EXECUTING]: Branch Comparate ([rs1] = 9,[rs2] = 0) => equals = 0, less = 0
-DEBUG:root:[EXECUTING]: ALU : 9 ,op 1 => 10
+DEBUG:root:[EXECUTING]: ALU : 9 ADDI 1 => 10
 DEBUG:root:TICK: 252
 DEBUG:root:TICK: 253
 DEBUG:root:[WRITE BACK]: 10 -> reg[2]
 DEBUG:root:TICK: 254
-DEBUG:root:
-
-DEBUG:root:[FETCHING]: instruction = 00000000000000000000000001000101
+DEBUG:root:<-- [INSTRUCTION] PC = 6 ->
+DEBUG:root:[FETCHING]: instruction = [00000000000000000000000001000101]
 DEBUG:root:TICK: 255
 DEBUG:root:[DECODING]: opcode: JMP, immediate: 2
 DEBUG:root:TICK: 256
 DEBUG:root:[EXECUTING]: Branch Comparate ([rs1] = 0,[rs2] = 0) => equals = 1, less = 0
-DEBUG:root:[EXECUTING]: ALU : 0 ,op 1 => 10
+DEBUG:root:[EXECUTING]: ALU : 0 JMP 1 => 10
 DEBUG:root:TICK: 257
 DEBUG:root:TICK: 258
+DEBUG:root:[WRITE BACK]: 2 -> pc
 DEBUG:root:TICK: 259
-DEBUG:root:
-
-DEBUG:root:[FETCHING]: instruction = 01110000000000000000000000000001
+DEBUG:root:<-- [INSTRUCTION] PC = 2 ->
+DEBUG:root:[FETCHING]: instruction = [01110000000000000000000000000001]
 DEBUG:root:TICK: 260
 DEBUG:root:[DECODING]: opcode: LW, immediate: 1879048193
 DEBUG:root:TICK: 261
 DEBUG:root:[EXECUTING]: Branch Comparate ([rs1] = 31,[rs2] = 0) => equals = 0, less = 0
-DEBUG:root:[EXECUTING]: ALU : 31 ,op 0 => 10
+DEBUG:root:[EXECUTING]: ALU : 31 LW 0 => 10
 DEBUG:root:TICK: 262
 DEBUG:root:[MEMORY ACCESS]: DMEM[0] = 32
 DEBUG:root:TICK: 263
-DEBUG:root:[WRITE BACK]: DMEM[0] = 32 -> reg[1]
+DEBUG:root:[WRITE BACK]: 32 -> reg[1]
 DEBUG:root:TICK: 264
-DEBUG:root:
-
-DEBUG:root:[FETCHING]: instruction = 00100100000000000000000000000010
+DEBUG:root:<-- [INSTRUCTION] PC = 3 ->
+DEBUG:root:[FETCHING]: instruction = [00100100000000000000000000000010]
 DEBUG:root:TICK: 265
 DEBUG:root:[DECODING]: opcode: SW, immediate: 603979778
 DEBUG:root:TICK: 266
 DEBUG:root:[EXECUTING]: Branch Comparate ([rs1] = 10,[rs2] = 32) => equals = 0, less = 1
-DEBUG:root:[EXECUTING]: ALU : 10 ,op 32 => 10
+DEBUG:root:[EXECUTING]: ALU : 10 SW 32 => 10
 DEBUG:root:TICK: 267
-DEBUG:root:[MEMORY ACCESS]: 32 -> DMEM[0]
+DEBUG:root:[MEMORY ACCESS]: 32 => DMEM[0]
 DEBUG:root:TICK: 268
 DEBUG:root:TICK: 269
-DEBUG:root:
-
-DEBUG:root:[FETCHING]: instruction = 00010000000000000000000011100111
+DEBUG:root:<-- [INSTRUCTION] PC = 4 ->
+DEBUG:root:[FETCHING]: instruction = [00010000000000000000000011100111]
 DEBUG:root:TICK: 270
 DEBUG:root:[DECODING]: opcode: BEQ, immediate: 7
 DEBUG:root:TICK: 271
 DEBUG:root:[EXECUTING]: Branch Comparate ([rs1] = 32,[rs2] = 0) => equals = 0, less = 0
-DEBUG:root:[EXECUTING]: ALU : 32 ,op 32 => 10
+DEBUG:root:[EXECUTING]: ALU : 32 BEQ 32 => 10
 DEBUG:root:TICK: 272
 DEBUG:root:TICK: 273
 DEBUG:root:TICK: 274
-DEBUG:root:
-
-DEBUG:root:[FETCHING]: instruction = 10100000000000000000000000110010
+DEBUG:root:<-- [INSTRUCTION] PC = 5 ->
+DEBUG:root:[FETCHING]: instruction = [10100000000000000000000000110010]
 DEBUG:root:TICK: 275
 DEBUG:root:[DECODING]: opcode: ADDI, immediate: 1
 DEBUG:root:TICK: 276
 DEBUG:root:[EXECUTING]: Branch Comparate ([rs1] = 10,[rs2] = 0) => equals = 0, less = 0
-DEBUG:root:[EXECUTING]: ALU : 10 ,op 1 => 11
+DEBUG:root:[EXECUTING]: ALU : 10 ADDI 1 => 11
 DEBUG:root:TICK: 277
 DEBUG:root:TICK: 278
 DEBUG:root:[WRITE BACK]: 11 -> reg[2]
 DEBUG:root:TICK: 279
-DEBUG:root:
-
-DEBUG:root:[FETCHING]: instruction = 00000000000000000000000001000101
+DEBUG:root:<-- [INSTRUCTION] PC = 6 ->
+DEBUG:root:[FETCHING]: instruction = [00000000000000000000000001000101]
 DEBUG:root:TICK: 280
 DEBUG:root:[DECODING]: opcode: JMP, immediate: 2
 DEBUG:root:TICK: 281
 DEBUG:root:[EXECUTING]: Branch Comparate ([rs1] = 0,[rs2] = 0) => equals = 1, less = 0
-DEBUG:root:[EXECUTING]: ALU : 0 ,op 1 => 11
+DEBUG:root:[EXECUTING]: ALU : 0 JMP 1 => 11
 DEBUG:root:TICK: 282
 DEBUG:root:TICK: 283
+DEBUG:root:[WRITE BACK]: 2 -> pc
 DEBUG:root:TICK: 284
-DEBUG:root:
-
-DEBUG:root:[FETCHING]: instruction = 01110000000000000000000000000001
+DEBUG:root:<-- [INSTRUCTION] PC = 2 ->
+DEBUG:root:[FETCHING]: instruction = [01110000000000000000000000000001]
 DEBUG:root:TICK: 285
 DEBUG:root:[DECODING]: opcode: LW, immediate: 1879048193
 DEBUG:root:TICK: 286
 DEBUG:root:[EXECUTING]: Branch Comparate ([rs1] = 31,[rs2] = 0) => equals = 0, less = 0
-DEBUG:root:[EXECUTING]: ALU : 31 ,op 0 => 11
+DEBUG:root:[EXECUTING]: ALU : 31 LW 0 => 11
 DEBUG:root:TICK: 287
 DEBUG:root:[MEMORY ACCESS]: DMEM[0] = 101
 DEBUG:root:TICK: 288
-DEBUG:root:[WRITE BACK]: DMEM[0] = 101 -> reg[1]
+DEBUG:root:[WRITE BACK]: 101 -> reg[1]
 DEBUG:root:TICK: 289
-DEBUG:root:
-
-DEBUG:root:[FETCHING]: instruction = 00100100000000000000000000000010
+DEBUG:root:<-- [INSTRUCTION] PC = 3 ->
+DEBUG:root:[FETCHING]: instruction = [00100100000000000000000000000010]
 DEBUG:root:TICK: 290
 DEBUG:root:[DECODING]: opcode: SW, immediate: 603979778
 DEBUG:root:TICK: 291
 DEBUG:root:[EXECUTING]: Branch Comparate ([rs1] = 11,[rs2] = 101) => equals = 0, less = 1
-DEBUG:root:[EXECUTING]: ALU : 11 ,op 101 => 11
+DEBUG:root:[EXECUTING]: ALU : 11 SW 101 => 11
 DEBUG:root:TICK: 292
-DEBUG:root:[MEMORY ACCESS]: 101 -> DMEM[0]
+DEBUG:root:[MEMORY ACCESS]: 101 => DMEM[0]
 DEBUG:root:TICK: 293
 DEBUG:root:TICK: 294
-DEBUG:root:
-
-DEBUG:root:[FETCHING]: instruction = 00010000000000000000000011100111
+DEBUG:root:<-- [INSTRUCTION] PC = 4 ->
+DEBUG:root:[FETCHING]: instruction = [00010000000000000000000011100111]
 DEBUG:root:TICK: 295
 DEBUG:root:[DECODING]: opcode: BEQ, immediate: 7
 DEBUG:root:TICK: 296
 DEBUG:root:[EXECUTING]: Branch Comparate ([rs1] = 101,[rs2] = 0) => equals = 0, less = 0
-DEBUG:root:[EXECUTING]: ALU : 101 ,op 101 => 11
+DEBUG:root:[EXECUTING]: ALU : 101 BEQ 101 => 11
 DEBUG:root:TICK: 297
 DEBUG:root:TICK: 298
 DEBUG:root:TICK: 299
-DEBUG:root:
-
-DEBUG:root:[FETCHING]: instruction = 10100000000000000000000000110010
+DEBUG:root:<-- [INSTRUCTION] PC = 5 ->
+DEBUG:root:[FETCHING]: instruction = [10100000000000000000000000110010]
 DEBUG:root:TICK: 300
 DEBUG:root:[DECODING]: opcode: ADDI, immediate: 1
 DEBUG:root:TICK: 301
 DEBUG:root:[EXECUTING]: Branch Comparate ([rs1] = 11,[rs2] = 0) => equals = 0, less = 0
-DEBUG:root:[EXECUTING]: ALU : 11 ,op 1 => 12
+DEBUG:root:[EXECUTING]: ALU : 11 ADDI 1 => 12
 DEBUG:root:TICK: 302
 DEBUG:root:TICK: 303
 DEBUG:root:[WRITE BACK]: 12 -> reg[2]
 DEBUG:root:TICK: 304
-DEBUG:root:
-
-DEBUG:root:[FETCHING]: instruction = 00000000000000000000000001000101
+DEBUG:root:<-- [INSTRUCTION] PC = 6 ->
+DEBUG:root:[FETCHING]: instruction = [00000000000000000000000001000101]
 DEBUG:root:TICK: 305
 DEBUG:root:[DECODING]: opcode: JMP, immediate: 2
 DEBUG:root:TICK: 306
 DEBUG:root:[EXECUTING]: Branch Comparate ([rs1] = 0,[rs2] = 0) => equals = 1, less = 0
-DEBUG:root:[EXECUTING]: ALU : 0 ,op 1 => 12
+DEBUG:root:[EXECUTING]: ALU : 0 JMP 1 => 12
 DEBUG:root:TICK: 307
 DEBUG:root:TICK: 308
+DEBUG:root:[WRITE BACK]: 2 -> pc
 DEBUG:root:TICK: 309
-DEBUG:root:
-
-DEBUG:root:[FETCHING]: instruction = 01110000000000000000000000000001
+DEBUG:root:<-- [INSTRUCTION] PC = 2 ->
+DEBUG:root:[FETCHING]: instruction = [01110000000000000000000000000001]
 DEBUG:root:TICK: 310
 DEBUG:root:[DECODING]: opcode: LW, immediate: 1879048193
 DEBUG:root:TICK: 311
 DEBUG:root:[EXECUTING]: Branch Comparate ([rs1] = 31,[rs2] = 0) => equals = 0, less = 0
-DEBUG:root:[EXECUTING]: ALU : 31 ,op 0 => 12
+DEBUG:root:[EXECUTING]: ALU : 31 LW 0 => 12
 DEBUG:root:TICK: 312
 DEBUG:root:[MEMORY ACCESS]: DMEM[0] = 118
 DEBUG:root:TICK: 313
-DEBUG:root:[WRITE BACK]: DMEM[0] = 118 -> reg[1]
+DEBUG:root:[WRITE BACK]: 118 -> reg[1]
 DEBUG:root:TICK: 314
-DEBUG:root:
-
-DEBUG:root:[FETCHING]: instruction = 00100100000000000000000000000010
+DEBUG:root:<-- [INSTRUCTION] PC = 3 ->
+DEBUG:root:[FETCHING]: instruction = [00100100000000000000000000000010]
 DEBUG:root:TICK: 315
 DEBUG:root:[DECODING]: opcode: SW, immediate: 603979778
 DEBUG:root:TICK: 316
 DEBUG:root:[EXECUTING]: Branch Comparate ([rs1] = 12,[rs2] = 118) => equals = 0, less = 1
-DEBUG:root:[EXECUTING]: ALU : 12 ,op 118 => 12
+DEBUG:root:[EXECUTING]: ALU : 12 SW 118 => 12
 DEBUG:root:TICK: 317
-DEBUG:root:[MEMORY ACCESS]: 118 -> DMEM[0]
+DEBUG:root:[MEMORY ACCESS]: 118 => DMEM[0]
 DEBUG:root:TICK: 318
 DEBUG:root:TICK: 319
-DEBUG:root:
-
-DEBUG:root:[FETCHING]: instruction = 00010000000000000000000011100111
+DEBUG:root:<-- [INSTRUCTION] PC = 4 ->
+DEBUG:root:[FETCHING]: instruction = [00010000000000000000000011100111]
 DEBUG:root:TICK: 320
 DEBUG:root:[DECODING]: opcode: BEQ, immediate: 7
 DEBUG:root:TICK: 321
 DEBUG:root:[EXECUTING]: Branch Comparate ([rs1] = 118,[rs2] = 0) => equals = 0, less = 0
-DEBUG:root:[EXECUTING]: ALU : 118 ,op 118 => 12
+DEBUG:root:[EXECUTING]: ALU : 118 BEQ 118 => 12
 DEBUG:root:TICK: 322
 DEBUG:root:TICK: 323
 DEBUG:root:TICK: 324
-DEBUG:root:
-
-DEBUG:root:[FETCHING]: instruction = 10100000000000000000000000110010
+DEBUG:root:<-- [INSTRUCTION] PC = 5 ->
+DEBUG:root:[FETCHING]: instruction = [10100000000000000000000000110010]
 DEBUG:root:TICK: 325
 DEBUG:root:[DECODING]: opcode: ADDI, immediate: 1
 DEBUG:root:TICK: 326
 DEBUG:root:[EXECUTING]: Branch Comparate ([rs1] = 12,[rs2] = 0) => equals = 0, less = 0
-DEBUG:root:[EXECUTING]: ALU : 12 ,op 1 => 13
+DEBUG:root:[EXECUTING]: ALU : 12 ADDI 1 => 13
 DEBUG:root:TICK: 327
 DEBUG:root:TICK: 328
 DEBUG:root:[WRITE BACK]: 13 -> reg[2]
 DEBUG:root:TICK: 329
-DEBUG:root:
-
-DEBUG:root:[FETCHING]: instruction = 00000000000000000000000001000101
+DEBUG:root:<-- [INSTRUCTION] PC = 6 ->
+DEBUG:root:[FETCHING]: instruction = [00000000000000000000000001000101]
 DEBUG:root:TICK: 330
 DEBUG:root:[DECODING]: opcode: JMP, immediate: 2
 DEBUG:root:TICK: 331
 DEBUG:root:[EXECUTING]: Branch Comparate ([rs1] = 0,[rs2] = 0) => equals = 1, less = 0
-DEBUG:root:[EXECUTING]: ALU : 0 ,op 1 => 13
+DEBUG:root:[EXECUTING]: ALU : 0 JMP 1 => 13
 DEBUG:root:TICK: 332
 DEBUG:root:TICK: 333
+DEBUG:root:[WRITE BACK]: 2 -> pc
 DEBUG:root:TICK: 334
-DEBUG:root:
-
-DEBUG:root:[FETCHING]: instruction = 01110000000000000000000000000001
+DEBUG:root:<-- [INSTRUCTION] PC = 2 ->
+DEBUG:root:[FETCHING]: instruction = [01110000000000000000000000000001]
 DEBUG:root:TICK: 335
 DEBUG:root:[DECODING]: opcode: LW, immediate: 1879048193
 DEBUG:root:TICK: 336
 DEBUG:root:[EXECUTING]: Branch Comparate ([rs1] = 31,[rs2] = 0) => equals = 0, less = 0
-DEBUG:root:[EXECUTING]: ALU : 31 ,op 0 => 13
+DEBUG:root:[EXECUTING]: ALU : 31 LW 0 => 13
 DEBUG:root:TICK: 337
 DEBUG:root:[MEMORY ACCESS]: DMEM[0] = 101
 DEBUG:root:TICK: 338
-DEBUG:root:[WRITE BACK]: DMEM[0] = 101 -> reg[1]
+DEBUG:root:[WRITE BACK]: 101 -> reg[1]
 DEBUG:root:TICK: 339
-DEBUG:root:
-
-DEBUG:root:[FETCHING]: instruction = 00100100000000000000000000000010
+DEBUG:root:<-- [INSTRUCTION] PC = 3 ->
+DEBUG:root:[FETCHING]: instruction = [00100100000000000000000000000010]
 DEBUG:root:TICK: 340
 DEBUG:root:[DECODING]: opcode: SW, immediate: 603979778
 DEBUG:root:TICK: 341
 DEBUG:root:[EXECUTING]: Branch Comparate ([rs1] = 13,[rs2] = 101) => equals = 0, less = 1
-DEBUG:root:[EXECUTING]: ALU : 13 ,op 101 => 13
+DEBUG:root:[EXECUTING]: ALU : 13 SW 101 => 13
 DEBUG:root:TICK: 342
-DEBUG:root:[MEMORY ACCESS]: 101 -> DMEM[0]
+DEBUG:root:[MEMORY ACCESS]: 101 => DMEM[0]
 DEBUG:root:TICK: 343
 DEBUG:root:TICK: 344
-DEBUG:root:
-
-DEBUG:root:[FETCHING]: instruction = 00010000000000000000000011100111
+DEBUG:root:<-- [INSTRUCTION] PC = 4 ->
+DEBUG:root:[FETCHING]: instruction = [00010000000000000000000011100111]
 DEBUG:root:TICK: 345
 DEBUG:root:[DECODING]: opcode: BEQ, immediate: 7
 DEBUG:root:TICK: 346
 DEBUG:root:[EXECUTING]: Branch Comparate ([rs1] = 101,[rs2] = 0) => equals = 0, less = 0
-DEBUG:root:[EXECUTING]: ALU : 101 ,op 101 => 13
+DEBUG:root:[EXECUTING]: ALU : 101 BEQ 101 => 13
 DEBUG:root:TICK: 347
 DEBUG:root:TICK: 348
 DEBUG:root:TICK: 349
-DEBUG:root:
-
-DEBUG:root:[FETCHING]: instruction = 10100000000000000000000000110010
+DEBUG:root:<-- [INSTRUCTION] PC = 5 ->
+DEBUG:root:[FETCHING]: instruction = [10100000000000000000000000110010]
 DEBUG:root:TICK: 350
 DEBUG:root:[DECODING]: opcode: ADDI, immediate: 1
 DEBUG:root:TICK: 351
 DEBUG:root:[EXECUTING]: Branch Comparate ([rs1] = 13,[rs2] = 0) => equals = 0, less = 0
-DEBUG:root:[EXECUTING]: ALU : 13 ,op 1 => 14
+DEBUG:root:[EXECUTING]: ALU : 13 ADDI 1 => 14
 DEBUG:root:TICK: 352
 DEBUG:root:TICK: 353
 DEBUG:root:[WRITE BACK]: 14 -> reg[2]
 DEBUG:root:TICK: 354
-DEBUG:root:
-
-DEBUG:root:[FETCHING]: instruction = 00000000000000000000000001000101
+DEBUG:root:<-- [INSTRUCTION] PC = 6 ->
+DEBUG:root:[FETCHING]: instruction = [00000000000000000000000001000101]
 DEBUG:root:TICK: 355
 DEBUG:root:[DECODING]: opcode: JMP, immediate: 2
 DEBUG:root:TICK: 356
 DEBUG:root:[EXECUTING]: Branch Comparate ([rs1] = 0,[rs2] = 0) => equals = 1, less = 0
-DEBUG:root:[EXECUTING]: ALU : 0 ,op 1 => 14
+DEBUG:root:[EXECUTING]: ALU : 0 JMP 1 => 14
 DEBUG:root:TICK: 357
 DEBUG:root:TICK: 358
+DEBUG:root:[WRITE BACK]: 2 -> pc
 DEBUG:root:TICK: 359
-DEBUG:root:
-
-DEBUG:root:[FETCHING]: instruction = 01110000000000000000000000000001
+DEBUG:root:<-- [INSTRUCTION] PC = 2 ->
+DEBUG:root:[FETCHING]: instruction = [01110000000000000000000000000001]
 DEBUG:root:TICK: 360
 DEBUG:root:[DECODING]: opcode: LW, immediate: 1879048193
 DEBUG:root:TICK: 361
 DEBUG:root:[EXECUTING]: Branch Comparate ([rs1] = 31,[rs2] = 0) => equals = 0, less = 0
-DEBUG:root:[EXECUTING]: ALU : 31 ,op 0 => 14
+DEBUG:root:[EXECUTING]: ALU : 31 LW 0 => 14
 DEBUG:root:TICK: 362
 DEBUG:root:[MEMORY ACCESS]: DMEM[0] = 114
 DEBUG:root:TICK: 363
-DEBUG:root:[WRITE BACK]: DMEM[0] = 114 -> reg[1]
+DEBUG:root:[WRITE BACK]: 114 -> reg[1]
 DEBUG:root:TICK: 364
-DEBUG:root:
-
-DEBUG:root:[FETCHING]: instruction = 00100100000000000000000000000010
+DEBUG:root:<-- [INSTRUCTION] PC = 3 ->
+DEBUG:root:[FETCHING]: instruction = [00100100000000000000000000000010]
 DEBUG:root:TICK: 365
 DEBUG:root:[DECODING]: opcode: SW, immediate: 603979778
 DEBUG:root:TICK: 366
 DEBUG:root:[EXECUTING]: Branch Comparate ([rs1] = 14,[rs2] = 114) => equals = 0, less = 1
-DEBUG:root:[EXECUTING]: ALU : 14 ,op 114 => 14
+DEBUG:root:[EXECUTING]: ALU : 14 SW 114 => 14
 DEBUG:root:TICK: 367
-DEBUG:root:[MEMORY ACCESS]: 114 -> DMEM[0]
+DEBUG:root:[MEMORY ACCESS]: 114 => DMEM[0]
 DEBUG:root:TICK: 368
 DEBUG:root:TICK: 369
-DEBUG:root:
-
-DEBUG:root:[FETCHING]: instruction = 00010000000000000000000011100111
+DEBUG:root:<-- [INSTRUCTION] PC = 4 ->
+DEBUG:root:[FETCHING]: instruction = [00010000000000000000000011100111]
 DEBUG:root:TICK: 370
 DEBUG:root:[DECODING]: opcode: BEQ, immediate: 7
 DEBUG:root:TICK: 371
 DEBUG:root:[EXECUTING]: Branch Comparate ([rs1] = 114,[rs2] = 0) => equals = 0, less = 0
-DEBUG:root:[EXECUTING]: ALU : 114 ,op 114 => 14
+DEBUG:root:[EXECUTING]: ALU : 114 BEQ 114 => 14
 DEBUG:root:TICK: 372
 DEBUG:root:TICK: 373
 DEBUG:root:TICK: 374
-DEBUG:root:
-
-DEBUG:root:[FETCHING]: instruction = 10100000000000000000000000110010
+DEBUG:root:<-- [INSTRUCTION] PC = 5 ->
+DEBUG:root:[FETCHING]: instruction = [10100000000000000000000000110010]
 DEBUG:root:TICK: 375
 DEBUG:root:[DECODING]: opcode: ADDI, immediate: 1
 DEBUG:root:TICK: 376
 DEBUG:root:[EXECUTING]: Branch Comparate ([rs1] = 14,[rs2] = 0) => equals = 0, less = 0
-DEBUG:root:[EXECUTING]: ALU : 14 ,op 1 => 15
+DEBUG:root:[EXECUTING]: ALU : 14 ADDI 1 => 15
 DEBUG:root:TICK: 377
 DEBUG:root:TICK: 378
 DEBUG:root:[WRITE BACK]: 15 -> reg[2]
 DEBUG:root:TICK: 379
-DEBUG:root:
-
-DEBUG:root:[FETCHING]: instruction = 00000000000000000000000001000101
+DEBUG:root:<-- [INSTRUCTION] PC = 6 ->
+DEBUG:root:[FETCHING]: instruction = [00000000000000000000000001000101]
 DEBUG:root:TICK: 380
 DEBUG:root:[DECODING]: opcode: JMP, immediate: 2
 DEBUG:root:TICK: 381
 DEBUG:root:[EXECUTING]: Branch Comparate ([rs1] = 0,[rs2] = 0) => equals = 1, less = 0
-DEBUG:root:[EXECUTING]: ALU : 0 ,op 1 => 15
+DEBUG:root:[EXECUTING]: ALU : 0 JMP 1 => 15
 DEBUG:root:TICK: 382
 DEBUG:root:TICK: 383
+DEBUG:root:[WRITE BACK]: 2 -> pc
 DEBUG:root:TICK: 384
-DEBUG:root:
-
-DEBUG:root:[FETCHING]: instruction = 01110000000000000000000000000001
+DEBUG:root:<-- [INSTRUCTION] PC = 2 ->
+DEBUG:root:[FETCHING]: instruction = [01110000000000000000000000000001]
 DEBUG:root:TICK: 385
 DEBUG:root:[DECODING]: opcode: LW, immediate: 1879048193
 DEBUG:root:TICK: 386
 DEBUG:root:[EXECUTING]: Branch Comparate ([rs1] = 31,[rs2] = 0) => equals = 0, less = 0
-DEBUG:root:[EXECUTING]: ALU : 31 ,op 0 => 15
+DEBUG:root:[EXECUTING]: ALU : 31 LW 0 => 15
 DEBUG:root:TICK: 387
 DEBUG:root:[MEMORY ACCESS]: DMEM[0] = 121
 DEBUG:root:TICK: 388
-DEBUG:root:[WRITE BACK]: DMEM[0] = 121 -> reg[1]
+DEBUG:root:[WRITE BACK]: 121 -> reg[1]
 DEBUG:root:TICK: 389
-DEBUG:root:
-
-DEBUG:root:[FETCHING]: instruction = 00100100000000000000000000000010
+DEBUG:root:<-- [INSTRUCTION] PC = 3 ->
+DEBUG:root:[FETCHING]: instruction = [00100100000000000000000000000010]
 DEBUG:root:TICK: 390
 DEBUG:root:[DECODING]: opcode: SW, immediate: 603979778
 DEBUG:root:TICK: 391
 DEBUG:root:[EXECUTING]: Branch Comparate ([rs1] = 15,[rs2] = 121) => equals = 0, less = 1
-DEBUG:root:[EXECUTING]: ALU : 15 ,op 121 => 15
+DEBUG:root:[EXECUTING]: ALU : 15 SW 121 => 15
 DEBUG:root:TICK: 392
-DEBUG:root:[MEMORY ACCESS]: 121 -> DMEM[0]
+DEBUG:root:[MEMORY ACCESS]: 121 => DMEM[0]
 DEBUG:root:TICK: 393
 DEBUG:root:TICK: 394
-DEBUG:root:
-
-DEBUG:root:[FETCHING]: instruction = 00010000000000000000000011100111
+DEBUG:root:<-- [INSTRUCTION] PC = 4 ->
+DEBUG:root:[FETCHING]: instruction = [00010000000000000000000011100111]
 DEBUG:root:TICK: 395
 DEBUG:root:[DECODING]: opcode: BEQ, immediate: 7
 DEBUG:root:TICK: 396
 DEBUG:root:[EXECUTING]: Branch Comparate ([rs1] = 121,[rs2] = 0) => equals = 0, less = 0
-DEBUG:root:[EXECUTING]: ALU : 121 ,op 121 => 15
+DEBUG:root:[EXECUTING]: ALU : 121 BEQ 121 => 15
 DEBUG:root:TICK: 397
 DEBUG:root:TICK: 398
 DEBUG:root:TICK: 399
-DEBUG:root:
-
-DEBUG:root:[FETCHING]: instruction = 10100000000000000000000000110010
+DEBUG:root:<-- [INSTRUCTION] PC = 5 ->
+DEBUG:root:[FETCHING]: instruction = [10100000000000000000000000110010]
 DEBUG:root:TICK: 400
 DEBUG:root:[DECODING]: opcode: ADDI, immediate: 1
 DEBUG:root:TICK: 401
 DEBUG:root:[EXECUTING]: Branch Comparate ([rs1] = 15,[rs2] = 0) => equals = 0, less = 0
-DEBUG:root:[EXECUTING]: ALU : 15 ,op 1 => 16
+DEBUG:root:[EXECUTING]: ALU : 15 ADDI 1 => 16
 DEBUG:root:TICK: 402
 DEBUG:root:TICK: 403
 DEBUG:root:[WRITE BACK]: 16 -> reg[2]
 DEBUG:root:TICK: 404
-DEBUG:root:
-
-DEBUG:root:[FETCHING]: instruction = 00000000000000000000000001000101
+DEBUG:root:<-- [INSTRUCTION] PC = 6 ->
+DEBUG:root:[FETCHING]: instruction = [00000000000000000000000001000101]
 DEBUG:root:TICK: 405
 DEBUG:root:[DECODING]: opcode: JMP, immediate: 2
 DEBUG:root:TICK: 406
 DEBUG:root:[EXECUTING]: Branch Comparate ([rs1] = 0,[rs2] = 0) => equals = 1, less = 0
-DEBUG:root:[EXECUTING]: ALU : 0 ,op 1 => 16
+DEBUG:root:[EXECUTING]: ALU : 0 JMP 1 => 16
 DEBUG:root:TICK: 407
 DEBUG:root:TICK: 408
+DEBUG:root:[WRITE BACK]: 2 -> pc
 DEBUG:root:TICK: 409
-DEBUG:root:
-
-DEBUG:root:[FETCHING]: instruction = 01110000000000000000000000000001
+DEBUG:root:<-- [INSTRUCTION] PC = 2 ->
+DEBUG:root:[FETCHING]: instruction = [01110000000000000000000000000001]
 DEBUG:root:TICK: 410
 DEBUG:root:[DECODING]: opcode: LW, immediate: 1879048193
 DEBUG:root:TICK: 411
 DEBUG:root:[EXECUTING]: Branch Comparate ([rs1] = 31,[rs2] = 0) => equals = 0, less = 0
-DEBUG:root:[EXECUTING]: ALU : 31 ,op 0 => 16
+DEBUG:root:[EXECUTING]: ALU : 31 LW 0 => 16
 DEBUG:root:TICK: 412
 DEBUG:root:[MEMORY ACCESS]: DMEM[0] = 111
 DEBUG:root:TICK: 413
-DEBUG:root:[WRITE BACK]: DMEM[0] = 111 -> reg[1]
+DEBUG:root:[WRITE BACK]: 111 -> reg[1]
 DEBUG:root:TICK: 414
-DEBUG:root:
-
-DEBUG:root:[FETCHING]: instruction = 00100100000000000000000000000010
+DEBUG:root:<-- [INSTRUCTION] PC = 3 ->
+DEBUG:root:[FETCHING]: instruction = [00100100000000000000000000000010]
 DEBUG:root:TICK: 415
 DEBUG:root:[DECODING]: opcode: SW, immediate: 603979778
 DEBUG:root:TICK: 416
 DEBUG:root:[EXECUTING]: Branch Comparate ([rs1] = 16,[rs2] = 111) => equals = 0, less = 1
-DEBUG:root:[EXECUTING]: ALU : 16 ,op 111 => 16
+DEBUG:root:[EXECUTING]: ALU : 16 SW 111 => 16
 DEBUG:root:TICK: 417
-DEBUG:root:[MEMORY ACCESS]: 111 -> DMEM[0]
+DEBUG:root:[MEMORY ACCESS]: 111 => DMEM[0]
 DEBUG:root:TICK: 418
 DEBUG:root:TICK: 419
-DEBUG:root:
-
-DEBUG:root:[FETCHING]: instruction = 00010000000000000000000011100111
+DEBUG:root:<-- [INSTRUCTION] PC = 4 ->
+DEBUG:root:[FETCHING]: instruction = [00010000000000000000000011100111]
 DEBUG:root:TICK: 420
 DEBUG:root:[DECODING]: opcode: BEQ, immediate: 7
 DEBUG:root:TICK: 421
 DEBUG:root:[EXECUTING]: Branch Comparate ([rs1] = 111,[rs2] = 0) => equals = 0, less = 0
-DEBUG:root:[EXECUTING]: ALU : 111 ,op 111 => 16
+DEBUG:root:[EXECUTING]: ALU : 111 BEQ 111 => 16
 DEBUG:root:TICK: 422
 DEBUG:root:TICK: 423
 DEBUG:root:TICK: 424
-DEBUG:root:
-
-DEBUG:root:[FETCHING]: instruction = 10100000000000000000000000110010
+DEBUG:root:<-- [INSTRUCTION] PC = 5 ->
+DEBUG:root:[FETCHING]: instruction = [10100000000000000000000000110010]
 DEBUG:root:TICK: 425
 DEBUG:root:[DECODING]: opcode: ADDI, immediate: 1
 DEBUG:root:TICK: 426
 DEBUG:root:[EXECUTING]: Branch Comparate ([rs1] = 16,[rs2] = 0) => equals = 0, less = 0
-DEBUG:root:[EXECUTING]: ALU : 16 ,op 1 => 17
+DEBUG:root:[EXECUTING]: ALU : 16 ADDI 1 => 17
 DEBUG:root:TICK: 427
 DEBUG:root:TICK: 428
 DEBUG:root:[WRITE BACK]: 17 -> reg[2]
 DEBUG:root:TICK: 429
-DEBUG:root:
-
-DEBUG:root:[FETCHING]: instruction = 00000000000000000000000001000101
+DEBUG:root:<-- [INSTRUCTION] PC = 6 ->
+DEBUG:root:[FETCHING]: instruction = [00000000000000000000000001000101]
 DEBUG:root:TICK: 430
 DEBUG:root:[DECODING]: opcode: JMP, immediate: 2
 DEBUG:root:TICK: 431
 DEBUG:root:[EXECUTING]: Branch Comparate ([rs1] = 0,[rs2] = 0) => equals = 1, less = 0
-DEBUG:root:[EXECUTING]: ALU : 0 ,op 1 => 17
+DEBUG:root:[EXECUTING]: ALU : 0 JMP 1 => 17
 DEBUG:root:TICK: 432
 DEBUG:root:TICK: 433
+DEBUG:root:[WRITE BACK]: 2 -> pc
 DEBUG:root:TICK: 434
-DEBUG:root:
-
-DEBUG:root:[FETCHING]: instruction = 01110000000000000000000000000001
+DEBUG:root:<-- [INSTRUCTION] PC = 2 ->
+DEBUG:root:[FETCHING]: instruction = [01110000000000000000000000000001]
 DEBUG:root:TICK: 435
 DEBUG:root:[DECODING]: opcode: LW, immediate: 1879048193
 DEBUG:root:TICK: 436
 DEBUG:root:[EXECUTING]: Branch Comparate ([rs1] = 31,[rs2] = 0) => equals = 0, less = 0
-DEBUG:root:[EXECUTING]: ALU : 31 ,op 0 => 17
+DEBUG:root:[EXECUTING]: ALU : 31 LW 0 => 17
 DEBUG:root:TICK: 437
 DEBUG:root:[MEMORY ACCESS]: DMEM[0] = 110
 DEBUG:root:TICK: 438
-DEBUG:root:[WRITE BACK]: DMEM[0] = 110 -> reg[1]
+DEBUG:root:[WRITE BACK]: 110 -> reg[1]
 DEBUG:root:TICK: 439
-DEBUG:root:
-
-DEBUG:root:[FETCHING]: instruction = 00100100000000000000000000000010
+DEBUG:root:<-- [INSTRUCTION] PC = 3 ->
+DEBUG:root:[FETCHING]: instruction = [00100100000000000000000000000010]
 DEBUG:root:TICK: 440
 DEBUG:root:[DECODING]: opcode: SW, immediate: 603979778
 DEBUG:root:TICK: 441
 DEBUG:root:[EXECUTING]: Branch Comparate ([rs1] = 17,[rs2] = 110) => equals = 0, less = 1
-DEBUG:root:[EXECUTING]: ALU : 17 ,op 110 => 17
+DEBUG:root:[EXECUTING]: ALU : 17 SW 110 => 17
 DEBUG:root:TICK: 442
-DEBUG:root:[MEMORY ACCESS]: 110 -> DMEM[0]
+DEBUG:root:[MEMORY ACCESS]: 110 => DMEM[0]
 DEBUG:root:TICK: 443
 DEBUG:root:TICK: 444
-DEBUG:root:
-
-DEBUG:root:[FETCHING]: instruction = 00010000000000000000000011100111
+DEBUG:root:<-- [INSTRUCTION] PC = 4 ->
+DEBUG:root:[FETCHING]: instruction = [00010000000000000000000011100111]
 DEBUG:root:TICK: 445
 DEBUG:root:[DECODING]: opcode: BEQ, immediate: 7
 DEBUG:root:TICK: 446
 DEBUG:root:[EXECUTING]: Branch Comparate ([rs1] = 110,[rs2] = 0) => equals = 0, less = 0
-DEBUG:root:[EXECUTING]: ALU : 110 ,op 110 => 17
+DEBUG:root:[EXECUTING]: ALU : 110 BEQ 110 => 17
 DEBUG:root:TICK: 447
 DEBUG:root:TICK: 448
 DEBUG:root:TICK: 449
-DEBUG:root:
-
-DEBUG:root:[FETCHING]: instruction = 10100000000000000000000000110010
+DEBUG:root:<-- [INSTRUCTION] PC = 5 ->
+DEBUG:root:[FETCHING]: instruction = [10100000000000000000000000110010]
 DEBUG:root:TICK: 450
 DEBUG:root:[DECODING]: opcode: ADDI, immediate: 1
 DEBUG:root:TICK: 451
 DEBUG:root:[EXECUTING]: Branch Comparate ([rs1] = 17,[rs2] = 0) => equals = 0, less = 0
-DEBUG:root:[EXECUTING]: ALU : 17 ,op 1 => 18
+DEBUG:root:[EXECUTING]: ALU : 17 ADDI 1 => 18
 DEBUG:root:TICK: 452
 DEBUG:root:TICK: 453
 DEBUG:root:[WRITE BACK]: 18 -> reg[2]
 DEBUG:root:TICK: 454
-DEBUG:root:
-
-DEBUG:root:[FETCHING]: instruction = 00000000000000000000000001000101
+DEBUG:root:<-- [INSTRUCTION] PC = 6 ->
+DEBUG:root:[FETCHING]: instruction = [00000000000000000000000001000101]
 DEBUG:root:TICK: 455
 DEBUG:root:[DECODING]: opcode: JMP, immediate: 2
 DEBUG:root:TICK: 456
 DEBUG:root:[EXECUTING]: Branch Comparate ([rs1] = 0,[rs2] = 0) => equals = 1, less = 0
-DEBUG:root:[EXECUTING]: ALU : 0 ,op 1 => 18
+DEBUG:root:[EXECUTING]: ALU : 0 JMP 1 => 18
 DEBUG:root:TICK: 457
 DEBUG:root:TICK: 458
+DEBUG:root:[WRITE BACK]: 2 -> pc
 DEBUG:root:TICK: 459
-DEBUG:root:
-
-DEBUG:root:[FETCHING]: instruction = 01110000000000000000000000000001
+DEBUG:root:<-- [INSTRUCTION] PC = 2 ->
+DEBUG:root:[FETCHING]: instruction = [01110000000000000000000000000001]
 DEBUG:root:TICK: 460
 DEBUG:root:[DECODING]: opcode: LW, immediate: 1879048193
 DEBUG:root:TICK: 461
 DEBUG:root:[EXECUTING]: Branch Comparate ([rs1] = 31,[rs2] = 0) => equals = 0, less = 0
-DEBUG:root:[EXECUTING]: ALU : 31 ,op 0 => 18
+DEBUG:root:[EXECUTING]: ALU : 31 LW 0 => 18
 DEBUG:root:TICK: 462
 DEBUG:root:[MEMORY ACCESS]: DMEM[0] = 101
 DEBUG:root:TICK: 463
-DEBUG:root:[WRITE BACK]: DMEM[0] = 101 -> reg[1]
+DEBUG:root:[WRITE BACK]: 101 -> reg[1]
 DEBUG:root:TICK: 464
-DEBUG:root:
-
-DEBUG:root:[FETCHING]: instruction = 00100100000000000000000000000010
+DEBUG:root:<-- [INSTRUCTION] PC = 3 ->
+DEBUG:root:[FETCHING]: instruction = [00100100000000000000000000000010]
 DEBUG:root:TICK: 465
 DEBUG:root:[DECODING]: opcode: SW, immediate: 603979778
 DEBUG:root:TICK: 466
 DEBUG:root:[EXECUTING]: Branch Comparate ([rs1] = 18,[rs2] = 101) => equals = 0, less = 1
-DEBUG:root:[EXECUTING]: ALU : 18 ,op 101 => 18
+DEBUG:root:[EXECUTING]: ALU : 18 SW 101 => 18
 DEBUG:root:TICK: 467
-DEBUG:root:[MEMORY ACCESS]: 101 -> DMEM[0]
+DEBUG:root:[MEMORY ACCESS]: 101 => DMEM[0]
 DEBUG:root:TICK: 468
 DEBUG:root:TICK: 469
-DEBUG:root:
-
-DEBUG:root:[FETCHING]: instruction = 00010000000000000000000011100111
+DEBUG:root:<-- [INSTRUCTION] PC = 4 ->
+DEBUG:root:[FETCHING]: instruction = [00010000000000000000000011100111]
 DEBUG:root:TICK: 470
 DEBUG:root:[DECODING]: opcode: BEQ, immediate: 7
 DEBUG:root:TICK: 471
 DEBUG:root:[EXECUTING]: Branch Comparate ([rs1] = 101,[rs2] = 0) => equals = 0, less = 0
-DEBUG:root:[EXECUTING]: ALU : 101 ,op 101 => 18
+DEBUG:root:[EXECUTING]: ALU : 101 BEQ 101 => 18
 DEBUG:root:TICK: 472
 DEBUG:root:TICK: 473
 DEBUG:root:TICK: 474
-DEBUG:root:
-
-DEBUG:root:[FETCHING]: instruction = 10100000000000000000000000110010
+DEBUG:root:<-- [INSTRUCTION] PC = 5 ->
+DEBUG:root:[FETCHING]: instruction = [10100000000000000000000000110010]
 DEBUG:root:TICK: 475
 DEBUG:root:[DECODING]: opcode: ADDI, immediate: 1
 DEBUG:root:TICK: 476
 DEBUG:root:[EXECUTING]: Branch Comparate ([rs1] = 18,[rs2] = 0) => equals = 0, less = 0
-DEBUG:root:[EXECUTING]: ALU : 18 ,op 1 => 19
+DEBUG:root:[EXECUTING]: ALU : 18 ADDI 1 => 19
 DEBUG:root:TICK: 477
 DEBUG:root:TICK: 478
 DEBUG:root:[WRITE BACK]: 19 -> reg[2]
 DEBUG:root:TICK: 479
-DEBUG:root:
-
-DEBUG:root:[FETCHING]: instruction = 00000000000000000000000001000101
+DEBUG:root:<-- [INSTRUCTION] PC = 6 ->
+DEBUG:root:[FETCHING]: instruction = [00000000000000000000000001000101]
 DEBUG:root:TICK: 480
 DEBUG:root:[DECODING]: opcode: JMP, immediate: 2
 DEBUG:root:TICK: 481
 DEBUG:root:[EXECUTING]: Branch Comparate ([rs1] = 0,[rs2] = 0) => equals = 1, less = 0
-DEBUG:root:[EXECUTING]: ALU : 0 ,op 1 => 19
+DEBUG:root:[EXECUTING]: ALU : 0 JMP 1 => 19
 DEBUG:root:TICK: 482
 DEBUG:root:TICK: 483
+DEBUG:root:[WRITE BACK]: 2 -> pc
 DEBUG:root:TICK: 484
-DEBUG:root:
-
-DEBUG:root:[FETCHING]: instruction = 01110000000000000000000000000001
+DEBUG:root:<-- [INSTRUCTION] PC = 2 ->
+DEBUG:root:[FETCHING]: instruction = [01110000000000000000000000000001]
 DEBUG:root:TICK: 485
 DEBUG:root:[DECODING]: opcode: LW, immediate: 1879048193
 DEBUG:root:TICK: 486
 DEBUG:root:[EXECUTING]: Branch Comparate ([rs1] = 31,[rs2] = 0) => equals = 0, less = 0
-DEBUG:root:[EXECUTING]: ALU : 31 ,op 0 => 19
+DEBUG:root:[EXECUTING]: ALU : 31 LW 0 => 19
 DEBUG:root:TICK: 487
 DEBUG:root:[MEMORY ACCESS]: DMEM[0] = 33
 DEBUG:root:TICK: 488
-DEBUG:root:[WRITE BACK]: DMEM[0] = 33 -> reg[1]
+DEBUG:root:[WRITE BACK]: 33 -> reg[1]
 DEBUG:root:TICK: 489
-DEBUG:root:
-
-DEBUG:root:[FETCHING]: instruction = 00100100000000000000000000000010
+DEBUG:root:<-- [INSTRUCTION] PC = 3 ->
+DEBUG:root:[FETCHING]: instruction = [00100100000000000000000000000010]
 DEBUG:root:TICK: 490
 DEBUG:root:[DECODING]: opcode: SW, immediate: 603979778
 DEBUG:root:TICK: 491
 DEBUG:root:[EXECUTING]: Branch Comparate ([rs1] = 19,[rs2] = 33) => equals = 0, less = 1
-DEBUG:root:[EXECUTING]: ALU : 19 ,op 33 => 19
+DEBUG:root:[EXECUTING]: ALU : 19 SW 33 => 19
 DEBUG:root:TICK: 492
-DEBUG:root:[MEMORY ACCESS]: 33 -> DMEM[0]
+DEBUG:root:[MEMORY ACCESS]: 33 => DMEM[0]
 DEBUG:root:TICK: 493
 DEBUG:root:TICK: 494
-DEBUG:root:
-
-DEBUG:root:[FETCHING]: instruction = 00010000000000000000000011100111
+DEBUG:root:<-- [INSTRUCTION] PC = 4 ->
+DEBUG:root:[FETCHING]: instruction = [00010000000000000000000011100111]
 DEBUG:root:TICK: 495
 DEBUG:root:[DECODING]: opcode: BEQ, immediate: 7
 DEBUG:root:TICK: 496
 DEBUG:root:[EXECUTING]: Branch Comparate ([rs1] = 33,[rs2] = 0) => equals = 0, less = 0
-DEBUG:root:[EXECUTING]: ALU : 33 ,op 33 => 19
+DEBUG:root:[EXECUTING]: ALU : 33 BEQ 33 => 19
 DEBUG:root:TICK: 497
 DEBUG:root:TICK: 498
 DEBUG:root:TICK: 499
-DEBUG:root:
-
-DEBUG:root:[FETCHING]: instruction = 10100000000000000000000000110010
+DEBUG:root:<-- [INSTRUCTION] PC = 5 ->
+DEBUG:root:[FETCHING]: instruction = [10100000000000000000000000110010]
 DEBUG:root:TICK: 500
 DEBUG:root:[DECODING]: opcode: ADDI, immediate: 1
 DEBUG:root:TICK: 501
 DEBUG:root:[EXECUTING]: Branch Comparate ([rs1] = 19,[rs2] = 0) => equals = 0, less = 0
-DEBUG:root:[EXECUTING]: ALU : 19 ,op 1 => 20
+DEBUG:root:[EXECUTING]: ALU : 19 ADDI 1 => 20
 DEBUG:root:TICK: 502
 DEBUG:root:TICK: 503
 DEBUG:root:[WRITE BACK]: 20 -> reg[2]
 DEBUG:root:TICK: 504
-DEBUG:root:
-
-DEBUG:root:[FETCHING]: instruction = 00000000000000000000000001000101
+DEBUG:root:<-- [INSTRUCTION] PC = 6 ->
+DEBUG:root:[FETCHING]: instruction = [00000000000000000000000001000101]
 DEBUG:root:TICK: 505
 DEBUG:root:[DECODING]: opcode: JMP, immediate: 2
 DEBUG:root:TICK: 506
 DEBUG:root:[EXECUTING]: Branch Comparate ([rs1] = 0,[rs2] = 0) => equals = 1, less = 0
-DEBUG:root:[EXECUTING]: ALU : 0 ,op 1 => 20
+DEBUG:root:[EXECUTING]: ALU : 0 JMP 1 => 20
 DEBUG:root:TICK: 507
 DEBUG:root:TICK: 508
+DEBUG:root:[WRITE BACK]: 2 -> pc
 DEBUG:root:TICK: 509
-DEBUG:root:
-
-DEBUG:root:[FETCHING]: instruction = 01110000000000000000000000000001
+DEBUG:root:<-- [INSTRUCTION] PC = 2 ->
+DEBUG:root:[FETCHING]: instruction = [01110000000000000000000000000001]
 DEBUG:root:TICK: 510
 DEBUG:root:[DECODING]: opcode: LW, immediate: 1879048193
 DEBUG:root:TICK: 511
 DEBUG:root:[EXECUTING]: Branch Comparate ([rs1] = 31,[rs2] = 0) => equals = 0, less = 0
-DEBUG:root:[EXECUTING]: ALU : 31 ,op 0 => 20
+DEBUG:root:[EXECUTING]: ALU : 31 LW 0 => 20
 DEBUG:root:TICK: 512
 DEBUG:root:[MEMORY ACCESS]: DMEM[0] = 0
 DEBUG:root:TICK: 513
-DEBUG:root:[WRITE BACK]: DMEM[0] = 0 -> reg[1]
+DEBUG:root:[WRITE BACK]: 0 -> reg[1]
 DEBUG:root:TICK: 514
-DEBUG:root:
-
-DEBUG:root:[FETCHING]: instruction = 00100100000000000000000000000010
+DEBUG:root:<-- [INSTRUCTION] PC = 3 ->
+DEBUG:root:[FETCHING]: instruction = [00100100000000000000000000000010]
 DEBUG:root:TICK: 515
 DEBUG:root:[DECODING]: opcode: SW, immediate: 603979778
 DEBUG:root:TICK: 516
 DEBUG:root:[EXECUTING]: Branch Comparate ([rs1] = 20,[rs2] = 0) => equals = 0, less = 0
-DEBUG:root:[EXECUTING]: ALU : 20 ,op 0 => 20
+DEBUG:root:[EXECUTING]: ALU : 20 SW 0 => 20
 DEBUG:root:TICK: 517
-DEBUG:root:[MEMORY ACCESS]: 0 -> DMEM[0]
+DEBUG:root:[MEMORY ACCESS]: 0 => DMEM[0]
 DEBUG:root:TICK: 518
 DEBUG:root:TICK: 519
-DEBUG:root:
-
-DEBUG:root:[FETCHING]: instruction = 00010000000000000000000011100111
+DEBUG:root:<-- [INSTRUCTION] PC = 4 ->
+DEBUG:root:[FETCHING]: instruction = [00010000000000000000000011100111]
 DEBUG:root:TICK: 520
 DEBUG:root:[DECODING]: opcode: BEQ, immediate: 7
 DEBUG:root:TICK: 521
 DEBUG:root:[EXECUTING]: Branch Comparate ([rs1] = 0,[rs2] = 0) => equals = 1, less = 0
-DEBUG:root:[EXECUTING]: ALU : 0 ,op 0 => 20
+DEBUG:root:[EXECUTING]: ALU : 0 BEQ 0 => 20
 DEBUG:root:TICK: 522
 DEBUG:root:TICK: 523
+DEBUG:root:[WRITE BACK]: 7 -> pc
 DEBUG:root:TICK: 524
-DEBUG:root:
-
-DEBUG:root:[FETCHING]: instruction = 10000000000000000000000000010010
+DEBUG:root:<-- [INSTRUCTION] PC = 7 ->
+DEBUG:root:[FETCHING]: instruction = [10000000000000000000000000010010]
 DEBUG:root:TICK: 525
 DEBUG:root:[DECODING]: opcode: ADDI, immediate: 0
 DEBUG:root:TICK: 526
 DEBUG:root:[EXECUTING]: Branch Comparate ([rs1] = 0,[rs2] = 0) => equals = 1, less = 0
-DEBUG:root:[EXECUTING]: ALU : 0 ,op 0 => 0
+DEBUG:root:[EXECUTING]: ALU : 0 ADDI 0 => 0
 DEBUG:root:TICK: 527
 DEBUG:root:TICK: 528
 DEBUG:root:[WRITE BACK]: 0 -> reg[2]
 DEBUG:root:TICK: 529
-DEBUG:root:
-
-DEBUG:root:[FETCHING]: instruction = 11000000000000000000010000010010
+DEBUG:root:<-- [INSTRUCTION] PC = 8 ->
+DEBUG:root:[FETCHING]: instruction = [11000000000000000000010000010010]
 DEBUG:root:TICK: 530
 DEBUG:root:[DECODING]: opcode: ADDI, immediate: 32
 DEBUG:root:TICK: 531
 DEBUG:root:[EXECUTING]: Branch Comparate ([rs1] = 0,[rs2] = 0) => equals = 1, less = 0
-DEBUG:root:[EXECUTING]: ALU : 0 ,op 32 => 32
+DEBUG:root:[EXECUTING]: ALU : 0 ADDI 32 => 32
 DEBUG:root:TICK: 532
 DEBUG:root:TICK: 533
 DEBUG:root:[WRITE BACK]: 32 -> reg[3]
 DEBUG:root:TICK: 534
-DEBUG:root:
-
-DEBUG:root:[FETCHING]: instruction = 01100000000000000000000000000001
+DEBUG:root:<-- [INSTRUCTION] PC = 9 ->
+DEBUG:root:[FETCHING]: instruction = [01100000000000000000000000000001]
 DEBUG:root:TICK: 535
 DEBUG:root:[DECODING]: opcode: LW, immediate: 1610612737
 DEBUG:root:TICK: 536
 DEBUG:root:[EXECUTING]: Branch Comparate ([rs1] = 0,[rs2] = 0) => equals = 1, less = 0
-DEBUG:root:[EXECUTING]: ALU : 0 ,op 0 => 32
+DEBUG:root:[EXECUTING]: ALU : 0 LW 0 => 32
 DEBUG:root:TICK: 537
 DEBUG:root:[MEMORY ACCESS]: DMEM[0] = 71
 DEBUG:root:TICK: 538
-DEBUG:root:[WRITE BACK]: DMEM[0] = 71 -> reg[1]
+DEBUG:root:[WRITE BACK]: 71 -> reg[1]
 DEBUG:root:TICK: 539
-DEBUG:root:
-
-DEBUG:root:[FETCHING]: instruction = 00110100000000000000000000000010
+DEBUG:root:<-- [INSTRUCTION] PC = 10 ->
+DEBUG:root:[FETCHING]: instruction = [00110100000000000000000000000010]
 DEBUG:root:TICK: 540
 DEBUG:root:[DECODING]: opcode: SW, immediate: 872415234
 DEBUG:root:TICK: 541
 DEBUG:root:[EXECUTING]: Branch Comparate ([rs1] = 32,[rs2] = 71) => equals = 0, less = 1
-DEBUG:root:[EXECUTING]: ALU : 32 ,op 71 => 32
+DEBUG:root:[EXECUTING]: ALU : 32 SW 71 => 32
 DEBUG:root:TICK: 542
-DEBUG:root:[MEMORY ACCESS]: 71 -> DMEM[0]
+DEBUG:root:[MEMORY ACCESS]: 71 => DMEM[0]
 DEBUG:root:TICK: 543
 DEBUG:root:TICK: 544
-DEBUG:root:
-
-DEBUG:root:[FETCHING]: instruction = 00010000000000000000000111000111
+DEBUG:root:<-- [INSTRUCTION] PC = 11 ->
+DEBUG:root:[FETCHING]: instruction = [00010000000000000000000111000111]
 DEBUG:root:TICK: 545
 DEBUG:root:[DECODING]: opcode: BEQ, immediate: 14
 DEBUG:root:TICK: 546
 DEBUG:root:[EXECUTING]: Branch Comparate ([rs1] = 71,[rs2] = 0) => equals = 0, less = 0
-DEBUG:root:[EXECUTING]: ALU : 71 ,op 71 => 32
+DEBUG:root:[EXECUTING]: ALU : 71 BEQ 71 => 32
 DEBUG:root:TICK: 547
 DEBUG:root:TICK: 548
 DEBUG:root:TICK: 549
-DEBUG:root:
-
-DEBUG:root:[FETCHING]: instruction = 10100000000000000000000000110010
+DEBUG:root:<-- [INSTRUCTION] PC = 12 ->
+DEBUG:root:[FETCHING]: instruction = [10100000000000000000000000110010]
 DEBUG:root:TICK: 550
 DEBUG:root:[DECODING]: opcode: ADDI, immediate: 1
 DEBUG:root:TICK: 551
 DEBUG:root:[EXECUTING]: Branch Comparate ([rs1] = 0,[rs2] = 0) => equals = 1, less = 0
-DEBUG:root:[EXECUTING]: ALU : 0 ,op 1 => 1
+DEBUG:root:[EXECUTING]: ALU : 0 ADDI 1 => 1
 DEBUG:root:TICK: 552
 DEBUG:root:TICK: 553
 DEBUG:root:[WRITE BACK]: 1 -> reg[2]
 DEBUG:root:TICK: 554
-DEBUG:root:
-
-DEBUG:root:[FETCHING]: instruction = 00000000000000000000000100100101
+DEBUG:root:<-- [INSTRUCTION] PC = 13 ->
+DEBUG:root:[FETCHING]: instruction = [00000000000000000000000100100101]
 DEBUG:root:TICK: 555
 DEBUG:root:[DECODING]: opcode: JMP, immediate: 9
 DEBUG:root:TICK: 556
 DEBUG:root:[EXECUTING]: Branch Comparate ([rs1] = 0,[rs2] = 0) => equals = 1, less = 0
-DEBUG:root:[EXECUTING]: ALU : 0 ,op 1 => 1
+DEBUG:root:[EXECUTING]: ALU : 0 JMP 1 => 1
 DEBUG:root:TICK: 557
 DEBUG:root:TICK: 558
+DEBUG:root:[WRITE BACK]: 9 -> pc
 DEBUG:root:TICK: 559
-DEBUG:root:
-
-DEBUG:root:[FETCHING]: instruction = 01100000000000000000000000000001
+DEBUG:root:<-- [INSTRUCTION] PC = 9 ->
+DEBUG:root:[FETCHING]: instruction = [01100000000000000000000000000001]
 DEBUG:root:TICK: 560
 DEBUG:root:[DECODING]: opcode: LW, immediate: 1610612737
 DEBUG:root:TICK: 561
 DEBUG:root:[EXECUTING]: Branch Comparate ([rs1] = 1,[rs2] = 0) => equals = 0, less = 0
-DEBUG:root:[EXECUTING]: ALU : 1 ,op 0 => 1
+DEBUG:root:[EXECUTING]: ALU : 1 LW 0 => 1
 DEBUG:root:TICK: 562
 DEBUG:root:[MEMORY ACCESS]: DMEM[1] = 111
 DEBUG:root:TICK: 563
-DEBUG:root:[WRITE BACK]: DMEM[1] = 111 -> reg[1]
+DEBUG:root:[WRITE BACK]: 111 -> reg[1]
 DEBUG:root:TICK: 564
-DEBUG:root:
-
-DEBUG:root:[FETCHING]: instruction = 00110100000000000000000000000010
+DEBUG:root:<-- [INSTRUCTION] PC = 10 ->
+DEBUG:root:[FETCHING]: instruction = [00110100000000000000000000000010]
 DEBUG:root:TICK: 565
 DEBUG:root:[DECODING]: opcode: SW, immediate: 872415234
 DEBUG:root:TICK: 566
 DEBUG:root:[EXECUTING]: Branch Comparate ([rs1] = 32,[rs2] = 111) => equals = 0, less = 1
-DEBUG:root:[EXECUTING]: ALU : 32 ,op 111 => 1
+DEBUG:root:[EXECUTING]: ALU : 32 SW 111 => 1
 DEBUG:root:TICK: 567
-DEBUG:root:[MEMORY ACCESS]: 111 -> DMEM[1]
+DEBUG:root:[MEMORY ACCESS]: 111 => DMEM[1]
 DEBUG:root:TICK: 568
 DEBUG:root:TICK: 569
-DEBUG:root:
-
-DEBUG:root:[FETCHING]: instruction = 00010000000000000000000111000111
+DEBUG:root:<-- [INSTRUCTION] PC = 11 ->
+DEBUG:root:[FETCHING]: instruction = [00010000000000000000000111000111]
 DEBUG:root:TICK: 570
 DEBUG:root:[DECODING]: opcode: BEQ, immediate: 14
 DEBUG:root:TICK: 571
 DEBUG:root:[EXECUTING]: Branch Comparate ([rs1] = 111,[rs2] = 0) => equals = 0, less = 0
-DEBUG:root:[EXECUTING]: ALU : 111 ,op 111 => 1
+DEBUG:root:[EXECUTING]: ALU : 111 BEQ 111 => 1
 DEBUG:root:TICK: 572
 DEBUG:root:TICK: 573
 DEBUG:root:TICK: 574
-DEBUG:root:
-
-DEBUG:root:[FETCHING]: instruction = 10100000000000000000000000110010
+DEBUG:root:<-- [INSTRUCTION] PC = 12 ->
+DEBUG:root:[FETCHING]: instruction = [10100000000000000000000000110010]
 DEBUG:root:TICK: 575
 DEBUG:root:[DECODING]: opcode: ADDI, immediate: 1
 DEBUG:root:TICK: 576
 DEBUG:root:[EXECUTING]: Branch Comparate ([rs1] = 1,[rs2] = 0) => equals = 0, less = 0
-DEBUG:root:[EXECUTING]: ALU : 1 ,op 1 => 2
+DEBUG:root:[EXECUTING]: ALU : 1 ADDI 1 => 2
 DEBUG:root:TICK: 577
 DEBUG:root:TICK: 578
 DEBUG:root:[WRITE BACK]: 2 -> reg[2]
 DEBUG:root:TICK: 579
-DEBUG:root:
-
-DEBUG:root:[FETCHING]: instruction = 00000000000000000000000100100101
+DEBUG:root:<-- [INSTRUCTION] PC = 13 ->
+DEBUG:root:[FETCHING]: instruction = [00000000000000000000000100100101]
 DEBUG:root:TICK: 580
 DEBUG:root:[DECODING]: opcode: JMP, immediate: 9
 DEBUG:root:TICK: 581
 DEBUG:root:[EXECUTING]: Branch Comparate ([rs1] = 0,[rs2] = 0) => equals = 1, less = 0
-DEBUG:root:[EXECUTING]: ALU : 0 ,op 1 => 2
+DEBUG:root:[EXECUTING]: ALU : 0 JMP 1 => 2
 DEBUG:root:TICK: 582
 DEBUG:root:TICK: 583
+DEBUG:root:[WRITE BACK]: 9 -> pc
 DEBUG:root:TICK: 584
-DEBUG:root:
-
-DEBUG:root:[FETCHING]: instruction = 01100000000000000000000000000001
+DEBUG:root:<-- [INSTRUCTION] PC = 9 ->
+DEBUG:root:[FETCHING]: instruction = [01100000000000000000000000000001]
 DEBUG:root:TICK: 585
 DEBUG:root:[DECODING]: opcode: LW, immediate: 1610612737
 DEBUG:root:TICK: 586
 DEBUG:root:[EXECUTING]: Branch Comparate ([rs1] = 2,[rs2] = 0) => equals = 0, less = 0
-DEBUG:root:[EXECUTING]: ALU : 2 ,op 0 => 2
+DEBUG:root:[EXECUTING]: ALU : 2 LW 0 => 2
 DEBUG:root:TICK: 587
 DEBUG:root:[MEMORY ACCESS]: DMEM[2] = 111
 DEBUG:root:TICK: 588
-DEBUG:root:[WRITE BACK]: DMEM[2] = 111 -> reg[1]
+DEBUG:root:[WRITE BACK]: 111 -> reg[1]
 DEBUG:root:TICK: 589
-DEBUG:root:
-
-DEBUG:root:[FETCHING]: instruction = 00110100000000000000000000000010
+DEBUG:root:<-- [INSTRUCTION] PC = 10 ->
+DEBUG:root:[FETCHING]: instruction = [00110100000000000000000000000010]
 DEBUG:root:TICK: 590
 DEBUG:root:[DECODING]: opcode: SW, immediate: 872415234
 DEBUG:root:TICK: 591
 DEBUG:root:[EXECUTING]: Branch Comparate ([rs1] = 32,[rs2] = 111) => equals = 0, less = 1
-DEBUG:root:[EXECUTING]: ALU : 32 ,op 111 => 2
+DEBUG:root:[EXECUTING]: ALU : 32 SW 111 => 2
 DEBUG:root:TICK: 592
-DEBUG:root:[MEMORY ACCESS]: 111 -> DMEM[2]
+DEBUG:root:[MEMORY ACCESS]: 111 => DMEM[2]
 DEBUG:root:TICK: 593
 DEBUG:root:TICK: 594
-DEBUG:root:
-
-DEBUG:root:[FETCHING]: instruction = 00010000000000000000000111000111
+DEBUG:root:<-- [INSTRUCTION] PC = 11 ->
+DEBUG:root:[FETCHING]: instruction = [00010000000000000000000111000111]
 DEBUG:root:TICK: 595
 DEBUG:root:[DECODING]: opcode: BEQ, immediate: 14
 DEBUG:root:TICK: 596
 DEBUG:root:[EXECUTING]: Branch Comparate ([rs1] = 111,[rs2] = 0) => equals = 0, less = 0
-DEBUG:root:[EXECUTING]: ALU : 111 ,op 111 => 2
+DEBUG:root:[EXECUTING]: ALU : 111 BEQ 111 => 2
 DEBUG:root:TICK: 597
 DEBUG:root:TICK: 598
 DEBUG:root:TICK: 599
-DEBUG:root:
-
-DEBUG:root:[FETCHING]: instruction = 10100000000000000000000000110010
+DEBUG:root:<-- [INSTRUCTION] PC = 12 ->
+DEBUG:root:[FETCHING]: instruction = [10100000000000000000000000110010]
 DEBUG:root:TICK: 600
 DEBUG:root:[DECODING]: opcode: ADDI, immediate: 1
 DEBUG:root:TICK: 601
 DEBUG:root:[EXECUTING]: Branch Comparate ([rs1] = 2,[rs2] = 0) => equals = 0, less = 0
-DEBUG:root:[EXECUTING]: ALU : 2 ,op 1 => 3
+DEBUG:root:[EXECUTING]: ALU : 2 ADDI 1 => 3
 DEBUG:root:TICK: 602
 DEBUG:root:TICK: 603
 DEBUG:root:[WRITE BACK]: 3 -> reg[2]
 DEBUG:root:TICK: 604
-DEBUG:root:
-
-DEBUG:root:[FETCHING]: instruction = 00000000000000000000000100100101
+DEBUG:root:<-- [INSTRUCTION] PC = 13 ->
+DEBUG:root:[FETCHING]: instruction = [00000000000000000000000100100101]
 DEBUG:root:TICK: 605
 DEBUG:root:[DECODING]: opcode: JMP, immediate: 9
 DEBUG:root:TICK: 606
 DEBUG:root:[EXECUTING]: Branch Comparate ([rs1] = 0,[rs2] = 0) => equals = 1, less = 0
-DEBUG:root:[EXECUTING]: ALU : 0 ,op 1 => 3
+DEBUG:root:[EXECUTING]: ALU : 0 JMP 1 => 3
 DEBUG:root:TICK: 607
 DEBUG:root:TICK: 608
+DEBUG:root:[WRITE BACK]: 9 -> pc
 DEBUG:root:TICK: 609
-DEBUG:root:
-
-DEBUG:root:[FETCHING]: instruction = 01100000000000000000000000000001
+DEBUG:root:<-- [INSTRUCTION] PC = 9 ->
+DEBUG:root:[FETCHING]: instruction = [01100000000000000000000000000001]
 DEBUG:root:TICK: 610
 DEBUG:root:[DECODING]: opcode: LW, immediate: 1610612737
 DEBUG:root:TICK: 611
 DEBUG:root:[EXECUTING]: Branch Comparate ([rs1] = 3,[rs2] = 0) => equals = 0, less = 0
-DEBUG:root:[EXECUTING]: ALU : 3 ,op 0 => 3
+DEBUG:root:[EXECUTING]: ALU : 3 LW 0 => 3
 DEBUG:root:TICK: 612
 DEBUG:root:[MEMORY ACCESS]: DMEM[3] = 100
 DEBUG:root:TICK: 613
-DEBUG:root:[WRITE BACK]: DMEM[3] = 100 -> reg[1]
+DEBUG:root:[WRITE BACK]: 100 -> reg[1]
 DEBUG:root:TICK: 614
-DEBUG:root:
-
-DEBUG:root:[FETCHING]: instruction = 00110100000000000000000000000010
+DEBUG:root:<-- [INSTRUCTION] PC = 10 ->
+DEBUG:root:[FETCHING]: instruction = [00110100000000000000000000000010]
 DEBUG:root:TICK: 615
 DEBUG:root:[DECODING]: opcode: SW, immediate: 872415234
 DEBUG:root:TICK: 616
 DEBUG:root:[EXECUTING]: Branch Comparate ([rs1] = 32,[rs2] = 100) => equals = 0, less = 1
-DEBUG:root:[EXECUTING]: ALU : 32 ,op 100 => 3
+DEBUG:root:[EXECUTING]: ALU : 32 SW 100 => 3
 DEBUG:root:TICK: 617
-DEBUG:root:[MEMORY ACCESS]: 100 -> DMEM[3]
+DEBUG:root:[MEMORY ACCESS]: 100 => DMEM[3]
 DEBUG:root:TICK: 618
 DEBUG:root:TICK: 619
-DEBUG:root:
-
-DEBUG:root:[FETCHING]: instruction = 00010000000000000000000111000111
+DEBUG:root:<-- [INSTRUCTION] PC = 11 ->
+DEBUG:root:[FETCHING]: instruction = [00010000000000000000000111000111]
 DEBUG:root:TICK: 620
 DEBUG:root:[DECODING]: opcode: BEQ, immediate: 14
 DEBUG:root:TICK: 621
 DEBUG:root:[EXECUTING]: Branch Comparate ([rs1] = 100,[rs2] = 0) => equals = 0, less = 0
-DEBUG:root:[EXECUTING]: ALU : 100 ,op 100 => 3
+DEBUG:root:[EXECUTING]: ALU : 100 BEQ 100 => 3
 DEBUG:root:TICK: 622
 DEBUG:root:TICK: 623
 DEBUG:root:TICK: 624
-DEBUG:root:
-
-DEBUG:root:[FETCHING]: instruction = 10100000000000000000000000110010
+DEBUG:root:<-- [INSTRUCTION] PC = 12 ->
+DEBUG:root:[FETCHING]: instruction = [10100000000000000000000000110010]
 DEBUG:root:TICK: 625
 DEBUG:root:[DECODING]: opcode: ADDI, immediate: 1
 DEBUG:root:TICK: 626
 DEBUG:root:[EXECUTING]: Branch Comparate ([rs1] = 3,[rs2] = 0) => equals = 0, less = 0
-DEBUG:root:[EXECUTING]: ALU : 3 ,op 1 => 4
+DEBUG:root:[EXECUTING]: ALU : 3 ADDI 1 => 4
 DEBUG:root:TICK: 627
 DEBUG:root:TICK: 628
 DEBUG:root:[WRITE BACK]: 4 -> reg[2]
 DEBUG:root:TICK: 629
-DEBUG:root:
-
-DEBUG:root:[FETCHING]: instruction = 00000000000000000000000100100101
+DEBUG:root:<-- [INSTRUCTION] PC = 13 ->
+DEBUG:root:[FETCHING]: instruction = [00000000000000000000000100100101]
 DEBUG:root:TICK: 630
 DEBUG:root:[DECODING]: opcode: JMP, immediate: 9
 DEBUG:root:TICK: 631
 DEBUG:root:[EXECUTING]: Branch Comparate ([rs1] = 0,[rs2] = 0) => equals = 1, less = 0
-DEBUG:root:[EXECUTING]: ALU : 0 ,op 1 => 4
+DEBUG:root:[EXECUTING]: ALU : 0 JMP 1 => 4
 DEBUG:root:TICK: 632
 DEBUG:root:TICK: 633
+DEBUG:root:[WRITE BACK]: 9 -> pc
 DEBUG:root:TICK: 634
-DEBUG:root:
-
-DEBUG:root:[FETCHING]: instruction = 01100000000000000000000000000001
+DEBUG:root:<-- [INSTRUCTION] PC = 9 ->
+DEBUG:root:[FETCHING]: instruction = [01100000000000000000000000000001]
 DEBUG:root:TICK: 635
 DEBUG:root:[DECODING]: opcode: LW, immediate: 1610612737
 DEBUG:root:TICK: 636
 DEBUG:root:[EXECUTING]: Branch Comparate ([rs1] = 4,[rs2] = 0) => equals = 0, less = 0
-DEBUG:root:[EXECUTING]: ALU : 4 ,op 0 => 4
+DEBUG:root:[EXECUTING]: ALU : 4 LW 0 => 4
 DEBUG:root:TICK: 637
 DEBUG:root:[MEMORY ACCESS]: DMEM[4] = 32
 DEBUG:root:TICK: 638
-DEBUG:root:[WRITE BACK]: DMEM[4] = 32 -> reg[1]
+DEBUG:root:[WRITE BACK]: 32 -> reg[1]
 DEBUG:root:TICK: 639
-DEBUG:root:
-
-DEBUG:root:[FETCHING]: instruction = 00110100000000000000000000000010
+DEBUG:root:<-- [INSTRUCTION] PC = 10 ->
+DEBUG:root:[FETCHING]: instruction = [00110100000000000000000000000010]
 DEBUG:root:TICK: 640
 DEBUG:root:[DECODING]: opcode: SW, immediate: 872415234
 DEBUG:root:TICK: 641
 DEBUG:root:[EXECUTING]: Branch Comparate ([rs1] = 32,[rs2] = 32) => equals = 1, less = 0
-DEBUG:root:[EXECUTING]: ALU : 32 ,op 32 => 4
+DEBUG:root:[EXECUTING]: ALU : 32 SW 32 => 4
 DEBUG:root:TICK: 642
-DEBUG:root:[MEMORY ACCESS]: 32 -> DMEM[4]
+DEBUG:root:[MEMORY ACCESS]: 32 => DMEM[4]
 DEBUG:root:TICK: 643
 DEBUG:root:TICK: 644
-DEBUG:root:
-
-DEBUG:root:[FETCHING]: instruction = 00010000000000000000000111000111
+DEBUG:root:<-- [INSTRUCTION] PC = 11 ->
+DEBUG:root:[FETCHING]: instruction = [00010000000000000000000111000111]
 DEBUG:root:TICK: 645
 DEBUG:root:[DECODING]: opcode: BEQ, immediate: 14
 DEBUG:root:TICK: 646
 DEBUG:root:[EXECUTING]: Branch Comparate ([rs1] = 32,[rs2] = 0) => equals = 0, less = 0
-DEBUG:root:[EXECUTING]: ALU : 32 ,op 32 => 4
+DEBUG:root:[EXECUTING]: ALU : 32 BEQ 32 => 4
 DEBUG:root:TICK: 647
 DEBUG:root:TICK: 648
 DEBUG:root:TICK: 649
-DEBUG:root:
-
-DEBUG:root:[FETCHING]: instruction = 10100000000000000000000000110010
+DEBUG:root:<-- [INSTRUCTION] PC = 12 ->
+DEBUG:root:[FETCHING]: instruction = [10100000000000000000000000110010]
 DEBUG:root:TICK: 650
 DEBUG:root:[DECODING]: opcode: ADDI, immediate: 1
 DEBUG:root:TICK: 651
 DEBUG:root:[EXECUTING]: Branch Comparate ([rs1] = 4,[rs2] = 0) => equals = 0, less = 0
-DEBUG:root:[EXECUTING]: ALU : 4 ,op 1 => 5
+DEBUG:root:[EXECUTING]: ALU : 4 ADDI 1 => 5
 DEBUG:root:TICK: 652
 DEBUG:root:TICK: 653
 DEBUG:root:[WRITE BACK]: 5 -> reg[2]
 DEBUG:root:TICK: 654
-DEBUG:root:
-
-DEBUG:root:[FETCHING]: instruction = 00000000000000000000000100100101
+DEBUG:root:<-- [INSTRUCTION] PC = 13 ->
+DEBUG:root:[FETCHING]: instruction = [00000000000000000000000100100101]
 DEBUG:root:TICK: 655
 DEBUG:root:[DECODING]: opcode: JMP, immediate: 9
 DEBUG:root:TICK: 656
 DEBUG:root:[EXECUTING]: Branch Comparate ([rs1] = 0,[rs2] = 0) => equals = 1, less = 0
-DEBUG:root:[EXECUTING]: ALU : 0 ,op 1 => 5
+DEBUG:root:[EXECUTING]: ALU : 0 JMP 1 => 5
 DEBUG:root:TICK: 657
 DEBUG:root:TICK: 658
+DEBUG:root:[WRITE BACK]: 9 -> pc
 DEBUG:root:TICK: 659
-DEBUG:root:
-
-DEBUG:root:[FETCHING]: instruction = 01100000000000000000000000000001
+DEBUG:root:<-- [INSTRUCTION] PC = 9 ->
+DEBUG:root:[FETCHING]: instruction = [01100000000000000000000000000001]
 DEBUG:root:TICK: 660
 DEBUG:root:[DECODING]: opcode: LW, immediate: 1610612737
 DEBUG:root:TICK: 661
 DEBUG:root:[EXECUTING]: Branch Comparate ([rs1] = 5,[rs2] = 0) => equals = 0, less = 0
-DEBUG:root:[EXECUTING]: ALU : 5 ,op 0 => 5
+DEBUG:root:[EXECUTING]: ALU : 5 LW 0 => 5
 DEBUG:root:TICK: 662
 DEBUG:root:[MEMORY ACCESS]: DMEM[5] = 110
 DEBUG:root:TICK: 663
-DEBUG:root:[WRITE BACK]: DMEM[5] = 110 -> reg[1]
+DEBUG:root:[WRITE BACK]: 110 -> reg[1]
 DEBUG:root:TICK: 664
-DEBUG:root:
-
-DEBUG:root:[FETCHING]: instruction = 00110100000000000000000000000010
+DEBUG:root:<-- [INSTRUCTION] PC = 10 ->
+DEBUG:root:[FETCHING]: instruction = [00110100000000000000000000000010]
 DEBUG:root:TICK: 665
 DEBUG:root:[DECODING]: opcode: SW, immediate: 872415234
 DEBUG:root:TICK: 666
 DEBUG:root:[EXECUTING]: Branch Comparate ([rs1] = 32,[rs2] = 110) => equals = 0, less = 1
-DEBUG:root:[EXECUTING]: ALU : 32 ,op 110 => 5
+DEBUG:root:[EXECUTING]: ALU : 32 SW 110 => 5
 DEBUG:root:TICK: 667
-DEBUG:root:[MEMORY ACCESS]: 110 -> DMEM[5]
+DEBUG:root:[MEMORY ACCESS]: 110 => DMEM[5]
 DEBUG:root:TICK: 668
 DEBUG:root:TICK: 669
-DEBUG:root:
-
-DEBUG:root:[FETCHING]: instruction = 00010000000000000000000111000111
+DEBUG:root:<-- [INSTRUCTION] PC = 11 ->
+DEBUG:root:[FETCHING]: instruction = [00010000000000000000000111000111]
 DEBUG:root:TICK: 670
 DEBUG:root:[DECODING]: opcode: BEQ, immediate: 14
 DEBUG:root:TICK: 671
 DEBUG:root:[EXECUTING]: Branch Comparate ([rs1] = 110,[rs2] = 0) => equals = 0, less = 0
-DEBUG:root:[EXECUTING]: ALU : 110 ,op 110 => 5
+DEBUG:root:[EXECUTING]: ALU : 110 BEQ 110 => 5
 DEBUG:root:TICK: 672
 DEBUG:root:TICK: 673
 DEBUG:root:TICK: 674
-DEBUG:root:
-
-DEBUG:root:[FETCHING]: instruction = 10100000000000000000000000110010
+DEBUG:root:<-- [INSTRUCTION] PC = 12 ->
+DEBUG:root:[FETCHING]: instruction = [10100000000000000000000000110010]
 DEBUG:root:TICK: 675
 DEBUG:root:[DECODING]: opcode: ADDI, immediate: 1
 DEBUG:root:TICK: 676
 DEBUG:root:[EXECUTING]: Branch Comparate ([rs1] = 5,[rs2] = 0) => equals = 0, less = 0
-DEBUG:root:[EXECUTING]: ALU : 5 ,op 1 => 6
+DEBUG:root:[EXECUTING]: ALU : 5 ADDI 1 => 6
 DEBUG:root:TICK: 677
 DEBUG:root:TICK: 678
 DEBUG:root:[WRITE BACK]: 6 -> reg[2]
 DEBUG:root:TICK: 679
-DEBUG:root:
-
-DEBUG:root:[FETCHING]: instruction = 00000000000000000000000100100101
+DEBUG:root:<-- [INSTRUCTION] PC = 13 ->
+DEBUG:root:[FETCHING]: instruction = [00000000000000000000000100100101]
 DEBUG:root:TICK: 680
 DEBUG:root:[DECODING]: opcode: JMP, immediate: 9
 DEBUG:root:TICK: 681
 DEBUG:root:[EXECUTING]: Branch Comparate ([rs1] = 0,[rs2] = 0) => equals = 1, less = 0
-DEBUG:root:[EXECUTING]: ALU : 0 ,op 1 => 6
+DEBUG:root:[EXECUTING]: ALU : 0 JMP 1 => 6
 DEBUG:root:TICK: 682
 DEBUG:root:TICK: 683
+DEBUG:root:[WRITE BACK]: 9 -> pc
 DEBUG:root:TICK: 684
-DEBUG:root:
-
-DEBUG:root:[FETCHING]: instruction = 01100000000000000000000000000001
+DEBUG:root:<-- [INSTRUCTION] PC = 9 ->
+DEBUG:root:[FETCHING]: instruction = [01100000000000000000000000000001]
 DEBUG:root:TICK: 685
 DEBUG:root:[DECODING]: opcode: LW, immediate: 1610612737
 DEBUG:root:TICK: 686
 DEBUG:root:[EXECUTING]: Branch Comparate ([rs1] = 6,[rs2] = 0) => equals = 0, less = 0
-DEBUG:root:[EXECUTING]: ALU : 6 ,op 0 => 6
+DEBUG:root:[EXECUTING]: ALU : 6 LW 0 => 6
 DEBUG:root:TICK: 687
 DEBUG:root:[MEMORY ACCESS]: DMEM[6] = 101
 DEBUG:root:TICK: 688
-DEBUG:root:[WRITE BACK]: DMEM[6] = 101 -> reg[1]
+DEBUG:root:[WRITE BACK]: 101 -> reg[1]
 DEBUG:root:TICK: 689
-DEBUG:root:
-
-DEBUG:root:[FETCHING]: instruction = 00110100000000000000000000000010
+DEBUG:root:<-- [INSTRUCTION] PC = 10 ->
+DEBUG:root:[FETCHING]: instruction = [00110100000000000000000000000010]
 DEBUG:root:TICK: 690
 DEBUG:root:[DECODING]: opcode: SW, immediate: 872415234
 DEBUG:root:TICK: 691
 DEBUG:root:[EXECUTING]: Branch Comparate ([rs1] = 32,[rs2] = 101) => equals = 0, less = 1
-DEBUG:root:[EXECUTING]: ALU : 32 ,op 101 => 6
+DEBUG:root:[EXECUTING]: ALU : 32 SW 101 => 6
 DEBUG:root:TICK: 692
-DEBUG:root:[MEMORY ACCESS]: 101 -> DMEM[6]
+DEBUG:root:[MEMORY ACCESS]: 101 => DMEM[6]
 DEBUG:root:TICK: 693
 DEBUG:root:TICK: 694
-DEBUG:root:
-
-DEBUG:root:[FETCHING]: instruction = 00010000000000000000000111000111
+DEBUG:root:<-- [INSTRUCTION] PC = 11 ->
+DEBUG:root:[FETCHING]: instruction = [00010000000000000000000111000111]
 DEBUG:root:TICK: 695
 DEBUG:root:[DECODING]: opcode: BEQ, immediate: 14
 DEBUG:root:TICK: 696
 DEBUG:root:[EXECUTING]: Branch Comparate ([rs1] = 101,[rs2] = 0) => equals = 0, less = 0
-DEBUG:root:[EXECUTING]: ALU : 101 ,op 101 => 6
+DEBUG:root:[EXECUTING]: ALU : 101 BEQ 101 => 6
 DEBUG:root:TICK: 697
 DEBUG:root:TICK: 698
 DEBUG:root:TICK: 699
-DEBUG:root:
-
-DEBUG:root:[FETCHING]: instruction = 10100000000000000000000000110010
+DEBUG:root:<-- [INSTRUCTION] PC = 12 ->
+DEBUG:root:[FETCHING]: instruction = [10100000000000000000000000110010]
 DEBUG:root:TICK: 700
 DEBUG:root:[DECODING]: opcode: ADDI, immediate: 1
 DEBUG:root:TICK: 701
 DEBUG:root:[EXECUTING]: Branch Comparate ([rs1] = 6,[rs2] = 0) => equals = 0, less = 0
-DEBUG:root:[EXECUTING]: ALU : 6 ,op 1 => 7
+DEBUG:root:[EXECUTING]: ALU : 6 ADDI 1 => 7
 DEBUG:root:TICK: 702
 DEBUG:root:TICK: 703
 DEBUG:root:[WRITE BACK]: 7 -> reg[2]
 DEBUG:root:TICK: 704
-DEBUG:root:
-
-DEBUG:root:[FETCHING]: instruction = 00000000000000000000000100100101
+DEBUG:root:<-- [INSTRUCTION] PC = 13 ->
+DEBUG:root:[FETCHING]: instruction = [00000000000000000000000100100101]
 DEBUG:root:TICK: 705
 DEBUG:root:[DECODING]: opcode: JMP, immediate: 9
 DEBUG:root:TICK: 706
 DEBUG:root:[EXECUTING]: Branch Comparate ([rs1] = 0,[rs2] = 0) => equals = 1, less = 0
-DEBUG:root:[EXECUTING]: ALU : 0 ,op 1 => 7
+DEBUG:root:[EXECUTING]: ALU : 0 JMP 1 => 7
 DEBUG:root:TICK: 707
 DEBUG:root:TICK: 708
+DEBUG:root:[WRITE BACK]: 9 -> pc
 DEBUG:root:TICK: 709
-DEBUG:root:
-
-DEBUG:root:[FETCHING]: instruction = 01100000000000000000000000000001
+DEBUG:root:<-- [INSTRUCTION] PC = 9 ->
+DEBUG:root:[FETCHING]: instruction = [01100000000000000000000000000001]
 DEBUG:root:TICK: 710
 DEBUG:root:[DECODING]: opcode: LW, immediate: 1610612737
 DEBUG:root:TICK: 711
 DEBUG:root:[EXECUTING]: Branch Comparate ([rs1] = 7,[rs2] = 0) => equals = 0, less = 0
-DEBUG:root:[EXECUTING]: ALU : 7 ,op 0 => 7
+DEBUG:root:[EXECUTING]: ALU : 7 LW 0 => 7
 DEBUG:root:TICK: 712
 DEBUG:root:[MEMORY ACCESS]: DMEM[7] = 119
 DEBUG:root:TICK: 713
-DEBUG:root:[WRITE BACK]: DMEM[7] = 119 -> reg[1]
+DEBUG:root:[WRITE BACK]: 119 -> reg[1]
 DEBUG:root:TICK: 714
-DEBUG:root:
-
-DEBUG:root:[FETCHING]: instruction = 00110100000000000000000000000010
+DEBUG:root:<-- [INSTRUCTION] PC = 10 ->
+DEBUG:root:[FETCHING]: instruction = [00110100000000000000000000000010]
 DEBUG:root:TICK: 715
 DEBUG:root:[DECODING]: opcode: SW, immediate: 872415234
 DEBUG:root:TICK: 716
 DEBUG:root:[EXECUTING]: Branch Comparate ([rs1] = 32,[rs2] = 119) => equals = 0, less = 1
-DEBUG:root:[EXECUTING]: ALU : 32 ,op 119 => 7
+DEBUG:root:[EXECUTING]: ALU : 32 SW 119 => 7
 DEBUG:root:TICK: 717
-DEBUG:root:[MEMORY ACCESS]: 119 -> DMEM[7]
+DEBUG:root:[MEMORY ACCESS]: 119 => DMEM[7]
 DEBUG:root:TICK: 718
 DEBUG:root:TICK: 719
-DEBUG:root:
-
-DEBUG:root:[FETCHING]: instruction = 00010000000000000000000111000111
+DEBUG:root:<-- [INSTRUCTION] PC = 11 ->
+DEBUG:root:[FETCHING]: instruction = [00010000000000000000000111000111]
 DEBUG:root:TICK: 720
 DEBUG:root:[DECODING]: opcode: BEQ, immediate: 14
 DEBUG:root:TICK: 721
 DEBUG:root:[EXECUTING]: Branch Comparate ([rs1] = 119,[rs2] = 0) => equals = 0, less = 0
-DEBUG:root:[EXECUTING]: ALU : 119 ,op 119 => 7
+DEBUG:root:[EXECUTING]: ALU : 119 BEQ 119 => 7
 DEBUG:root:TICK: 722
 DEBUG:root:TICK: 723
 DEBUG:root:TICK: 724
-DEBUG:root:
-
-DEBUG:root:[FETCHING]: instruction = 10100000000000000000000000110010
+DEBUG:root:<-- [INSTRUCTION] PC = 12 ->
+DEBUG:root:[FETCHING]: instruction = [10100000000000000000000000110010]
 DEBUG:root:TICK: 725
 DEBUG:root:[DECODING]: opcode: ADDI, immediate: 1
 DEBUG:root:TICK: 726
 DEBUG:root:[EXECUTING]: Branch Comparate ([rs1] = 7,[rs2] = 0) => equals = 0, less = 0
-DEBUG:root:[EXECUTING]: ALU : 7 ,op 1 => 8
+DEBUG:root:[EXECUTING]: ALU : 7 ADDI 1 => 8
 DEBUG:root:TICK: 727
 DEBUG:root:TICK: 728
 DEBUG:root:[WRITE BACK]: 8 -> reg[2]
 DEBUG:root:TICK: 729
-DEBUG:root:
-
-DEBUG:root:[FETCHING]: instruction = 00000000000000000000000100100101
+DEBUG:root:<-- [INSTRUCTION] PC = 13 ->
+DEBUG:root:[FETCHING]: instruction = [00000000000000000000000100100101]
 DEBUG:root:TICK: 730
 DEBUG:root:[DECODING]: opcode: JMP, immediate: 9
 DEBUG:root:TICK: 731
 DEBUG:root:[EXECUTING]: Branch Comparate ([rs1] = 0,[rs2] = 0) => equals = 1, less = 0
-DEBUG:root:[EXECUTING]: ALU : 0 ,op 1 => 8
+DEBUG:root:[EXECUTING]: ALU : 0 JMP 1 => 8
 DEBUG:root:TICK: 732
 DEBUG:root:TICK: 733
+DEBUG:root:[WRITE BACK]: 9 -> pc
 DEBUG:root:TICK: 734
-DEBUG:root:
-
-DEBUG:root:[FETCHING]: instruction = 01100000000000000000000000000001
+DEBUG:root:<-- [INSTRUCTION] PC = 9 ->
+DEBUG:root:[FETCHING]: instruction = [01100000000000000000000000000001]
 DEBUG:root:TICK: 735
 DEBUG:root:[DECODING]: opcode: LW, immediate: 1610612737
 DEBUG:root:TICK: 736
 DEBUG:root:[EXECUTING]: Branch Comparate ([rs1] = 8,[rs2] = 0) => equals = 0, less = 0
-DEBUG:root:[EXECUTING]: ALU : 8 ,op 0 => 8
+DEBUG:root:[EXECUTING]: ALU : 8 LW 0 => 8
 DEBUG:root:TICK: 737
 DEBUG:root:[MEMORY ACCESS]: DMEM[8] = 115
 DEBUG:root:TICK: 738
-DEBUG:root:[WRITE BACK]: DMEM[8] = 115 -> reg[1]
+DEBUG:root:[WRITE BACK]: 115 -> reg[1]
 DEBUG:root:TICK: 739
-DEBUG:root:
-
-DEBUG:root:[FETCHING]: instruction = 00110100000000000000000000000010
+DEBUG:root:<-- [INSTRUCTION] PC = 10 ->
+DEBUG:root:[FETCHING]: instruction = [00110100000000000000000000000010]
 DEBUG:root:TICK: 740
 DEBUG:root:[DECODING]: opcode: SW, immediate: 872415234
 DEBUG:root:TICK: 741
 DEBUG:root:[EXECUTING]: Branch Comparate ([rs1] = 32,[rs2] = 115) => equals = 0, less = 1
-DEBUG:root:[EXECUTING]: ALU : 32 ,op 115 => 8
+DEBUG:root:[EXECUTING]: ALU : 32 SW 115 => 8
 DEBUG:root:TICK: 742
-DEBUG:root:[MEMORY ACCESS]: 115 -> DMEM[8]
+DEBUG:root:[MEMORY ACCESS]: 115 => DMEM[8]
 DEBUG:root:TICK: 743
 DEBUG:root:TICK: 744
-DEBUG:root:
-
-DEBUG:root:[FETCHING]: instruction = 00010000000000000000000111000111
+DEBUG:root:<-- [INSTRUCTION] PC = 11 ->
+DEBUG:root:[FETCHING]: instruction = [00010000000000000000000111000111]
 DEBUG:root:TICK: 745
 DEBUG:root:[DECODING]: opcode: BEQ, immediate: 14
 DEBUG:root:TICK: 746
 DEBUG:root:[EXECUTING]: Branch Comparate ([rs1] = 115,[rs2] = 0) => equals = 0, less = 0
-DEBUG:root:[EXECUTING]: ALU : 115 ,op 115 => 8
+DEBUG:root:[EXECUTING]: ALU : 115 BEQ 115 => 8
 DEBUG:root:TICK: 747
 DEBUG:root:TICK: 748
 DEBUG:root:TICK: 749
-DEBUG:root:
-
-DEBUG:root:[FETCHING]: instruction = 10100000000000000000000000110010
+DEBUG:root:<-- [INSTRUCTION] PC = 12 ->
+DEBUG:root:[FETCHING]: instruction = [10100000000000000000000000110010]
 DEBUG:root:TICK: 750
 DEBUG:root:[DECODING]: opcode: ADDI, immediate: 1
 DEBUG:root:TICK: 751
 DEBUG:root:[EXECUTING]: Branch Comparate ([rs1] = 8,[rs2] = 0) => equals = 0, less = 0
-DEBUG:root:[EXECUTING]: ALU : 8 ,op 1 => 9
+DEBUG:root:[EXECUTING]: ALU : 8 ADDI 1 => 9
 DEBUG:root:TICK: 752
 DEBUG:root:TICK: 753
 DEBUG:root:[WRITE BACK]: 9 -> reg[2]
 DEBUG:root:TICK: 754
-DEBUG:root:
-
-DEBUG:root:[FETCHING]: instruction = 00000000000000000000000100100101
+DEBUG:root:<-- [INSTRUCTION] PC = 13 ->
+DEBUG:root:[FETCHING]: instruction = [00000000000000000000000100100101]
 DEBUG:root:TICK: 755
 DEBUG:root:[DECODING]: opcode: JMP, immediate: 9
 DEBUG:root:TICK: 756
 DEBUG:root:[EXECUTING]: Branch Comparate ([rs1] = 0,[rs2] = 0) => equals = 1, less = 0
-DEBUG:root:[EXECUTING]: ALU : 0 ,op 1 => 9
+DEBUG:root:[EXECUTING]: ALU : 0 JMP 1 => 9
 DEBUG:root:TICK: 757
 DEBUG:root:TICK: 758
+DEBUG:root:[WRITE BACK]: 9 -> pc
 DEBUG:root:TICK: 759
-DEBUG:root:
-
-DEBUG:root:[FETCHING]: instruction = 01100000000000000000000000000001
+DEBUG:root:<-- [INSTRUCTION] PC = 9 ->
+DEBUG:root:[FETCHING]: instruction = [01100000000000000000000000000001]
 DEBUG:root:TICK: 760
 DEBUG:root:[DECODING]: opcode: LW, immediate: 1610612737
 DEBUG:root:TICK: 761
 DEBUG:root:[EXECUTING]: Branch Comparate ([rs1] = 9,[rs2] = 0) => equals = 0, less = 0
-DEBUG:root:[EXECUTING]: ALU : 9 ,op 0 => 9
+DEBUG:root:[EXECUTING]: ALU : 9 LW 0 => 9
 DEBUG:root:TICK: 762
 DEBUG:root:[MEMORY ACCESS]: DMEM[9] = 44
 DEBUG:root:TICK: 763
-DEBUG:root:[WRITE BACK]: DMEM[9] = 44 -> reg[1]
+DEBUG:root:[WRITE BACK]: 44 -> reg[1]
 DEBUG:root:TICK: 764
-DEBUG:root:
-
-DEBUG:root:[FETCHING]: instruction = 00110100000000000000000000000010
+DEBUG:root:<-- [INSTRUCTION] PC = 10 ->
+DEBUG:root:[FETCHING]: instruction = [00110100000000000000000000000010]
 DEBUG:root:TICK: 765
 DEBUG:root:[DECODING]: opcode: SW, immediate: 872415234
 DEBUG:root:TICK: 766
 DEBUG:root:[EXECUTING]: Branch Comparate ([rs1] = 32,[rs2] = 44) => equals = 0, less = 1
-DEBUG:root:[EXECUTING]: ALU : 32 ,op 44 => 9
+DEBUG:root:[EXECUTING]: ALU : 32 SW 44 => 9
 DEBUG:root:TICK: 767
-DEBUG:root:[MEMORY ACCESS]: 44 -> DMEM[9]
+DEBUG:root:[MEMORY ACCESS]: 44 => DMEM[9]
 DEBUG:root:TICK: 768
 DEBUG:root:TICK: 769
-DEBUG:root:
-
-DEBUG:root:[FETCHING]: instruction = 00010000000000000000000111000111
+DEBUG:root:<-- [INSTRUCTION] PC = 11 ->
+DEBUG:root:[FETCHING]: instruction = [00010000000000000000000111000111]
 DEBUG:root:TICK: 770
 DEBUG:root:[DECODING]: opcode: BEQ, immediate: 14
 DEBUG:root:TICK: 771
 DEBUG:root:[EXECUTING]: Branch Comparate ([rs1] = 44,[rs2] = 0) => equals = 0, less = 0
-DEBUG:root:[EXECUTING]: ALU : 44 ,op 44 => 9
+DEBUG:root:[EXECUTING]: ALU : 44 BEQ 44 => 9
 DEBUG:root:TICK: 772
 DEBUG:root:TICK: 773
 DEBUG:root:TICK: 774
-DEBUG:root:
-
-DEBUG:root:[FETCHING]: instruction = 10100000000000000000000000110010
+DEBUG:root:<-- [INSTRUCTION] PC = 12 ->
+DEBUG:root:[FETCHING]: instruction = [10100000000000000000000000110010]
 DEBUG:root:TICK: 775
 DEBUG:root:[DECODING]: opcode: ADDI, immediate: 1
 DEBUG:root:TICK: 776
 DEBUG:root:[EXECUTING]: Branch Comparate ([rs1] = 9,[rs2] = 0) => equals = 0, less = 0
-DEBUG:root:[EXECUTING]: ALU : 9 ,op 1 => 10
+DEBUG:root:[EXECUTING]: ALU : 9 ADDI 1 => 10
 DEBUG:root:TICK: 777
 DEBUG:root:TICK: 778
 DEBUG:root:[WRITE BACK]: 10 -> reg[2]
 DEBUG:root:TICK: 779
-DEBUG:root:
-
-DEBUG:root:[FETCHING]: instruction = 00000000000000000000000100100101
+DEBUG:root:<-- [INSTRUCTION] PC = 13 ->
+DEBUG:root:[FETCHING]: instruction = [00000000000000000000000100100101]
 DEBUG:root:TICK: 780
 DEBUG:root:[DECODING]: opcode: JMP, immediate: 9
 DEBUG:root:TICK: 781
 DEBUG:root:[EXECUTING]: Branch Comparate ([rs1] = 0,[rs2] = 0) => equals = 1, less = 0
-DEBUG:root:[EXECUTING]: ALU : 0 ,op 1 => 10
+DEBUG:root:[EXECUTING]: ALU : 0 JMP 1 => 10
 DEBUG:root:TICK: 782
 DEBUG:root:TICK: 783
+DEBUG:root:[WRITE BACK]: 9 -> pc
 DEBUG:root:TICK: 784
-DEBUG:root:
-
-DEBUG:root:[FETCHING]: instruction = 01100000000000000000000000000001
+DEBUG:root:<-- [INSTRUCTION] PC = 9 ->
+DEBUG:root:[FETCHING]: instruction = [01100000000000000000000000000001]
 DEBUG:root:TICK: 785
 DEBUG:root:[DECODING]: opcode: LW, immediate: 1610612737
 DEBUG:root:TICK: 786
 DEBUG:root:[EXECUTING]: Branch Comparate ([rs1] = 10,[rs2] = 0) => equals = 0, less = 0
-DEBUG:root:[EXECUTING]: ALU : 10 ,op 0 => 10
+DEBUG:root:[EXECUTING]: ALU : 10 LW 0 => 10
 DEBUG:root:TICK: 787
 DEBUG:root:[MEMORY ACCESS]: DMEM[10] = 32
 DEBUG:root:TICK: 788
-DEBUG:root:[WRITE BACK]: DMEM[10] = 32 -> reg[1]
+DEBUG:root:[WRITE BACK]: 32 -> reg[1]
 DEBUG:root:TICK: 789
-DEBUG:root:
-
-DEBUG:root:[FETCHING]: instruction = 00110100000000000000000000000010
+DEBUG:root:<-- [INSTRUCTION] PC = 10 ->
+DEBUG:root:[FETCHING]: instruction = [00110100000000000000000000000010]
 DEBUG:root:TICK: 790
 DEBUG:root:[DECODING]: opcode: SW, immediate: 872415234
 DEBUG:root:TICK: 791
 DEBUG:root:[EXECUTING]: Branch Comparate ([rs1] = 32,[rs2] = 32) => equals = 1, less = 0
-DEBUG:root:[EXECUTING]: ALU : 32 ,op 32 => 10
+DEBUG:root:[EXECUTING]: ALU : 32 SW 32 => 10
 DEBUG:root:TICK: 792
-DEBUG:root:[MEMORY ACCESS]: 32 -> DMEM[10]
+DEBUG:root:[MEMORY ACCESS]: 32 => DMEM[10]
 DEBUG:root:TICK: 793
 DEBUG:root:TICK: 794
-DEBUG:root:
-
-DEBUG:root:[FETCHING]: instruction = 00010000000000000000000111000111
+DEBUG:root:<-- [INSTRUCTION] PC = 11 ->
+DEBUG:root:[FETCHING]: instruction = [00010000000000000000000111000111]
 DEBUG:root:TICK: 795
 DEBUG:root:[DECODING]: opcode: BEQ, immediate: 14
 DEBUG:root:TICK: 796
 DEBUG:root:[EXECUTING]: Branch Comparate ([rs1] = 32,[rs2] = 0) => equals = 0, less = 0
-DEBUG:root:[EXECUTING]: ALU : 32 ,op 32 => 10
+DEBUG:root:[EXECUTING]: ALU : 32 BEQ 32 => 10
 DEBUG:root:TICK: 797
 DEBUG:root:TICK: 798
 DEBUG:root:TICK: 799
-DEBUG:root:
-
-DEBUG:root:[FETCHING]: instruction = 10100000000000000000000000110010
+DEBUG:root:<-- [INSTRUCTION] PC = 12 ->
+DEBUG:root:[FETCHING]: instruction = [10100000000000000000000000110010]
 DEBUG:root:TICK: 800
 DEBUG:root:[DECODING]: opcode: ADDI, immediate: 1
 DEBUG:root:TICK: 801
 DEBUG:root:[EXECUTING]: Branch Comparate ([rs1] = 10,[rs2] = 0) => equals = 0, less = 0
-DEBUG:root:[EXECUTING]: ALU : 10 ,op 1 => 11
+DEBUG:root:[EXECUTING]: ALU : 10 ADDI 1 => 11
 DEBUG:root:TICK: 802
 DEBUG:root:TICK: 803
 DEBUG:root:[WRITE BACK]: 11 -> reg[2]
 DEBUG:root:TICK: 804
-DEBUG:root:
-
-DEBUG:root:[FETCHING]: instruction = 00000000000000000000000100100101
+DEBUG:root:<-- [INSTRUCTION] PC = 13 ->
+DEBUG:root:[FETCHING]: instruction = [00000000000000000000000100100101]
 DEBUG:root:TICK: 805
 DEBUG:root:[DECODING]: opcode: JMP, immediate: 9
 DEBUG:root:TICK: 806
 DEBUG:root:[EXECUTING]: Branch Comparate ([rs1] = 0,[rs2] = 0) => equals = 1, less = 0
-DEBUG:root:[EXECUTING]: ALU : 0 ,op 1 => 11
+DEBUG:root:[EXECUTING]: ALU : 0 JMP 1 => 11
 DEBUG:root:TICK: 807
 DEBUG:root:TICK: 808
+DEBUG:root:[WRITE BACK]: 9 -> pc
 DEBUG:root:TICK: 809
-DEBUG:root:
-
-DEBUG:root:[FETCHING]: instruction = 01100000000000000000000000000001
+DEBUG:root:<-- [INSTRUCTION] PC = 9 ->
+DEBUG:root:[FETCHING]: instruction = [01100000000000000000000000000001]
 DEBUG:root:TICK: 810
 DEBUG:root:[DECODING]: opcode: LW, immediate: 1610612737
 DEBUG:root:TICK: 811
 DEBUG:root:[EXECUTING]: Branch Comparate ([rs1] = 11,[rs2] = 0) => equals = 0, less = 0
-DEBUG:root:[EXECUTING]: ALU : 11 ,op 0 => 11
+DEBUG:root:[EXECUTING]: ALU : 11 LW 0 => 11
 DEBUG:root:TICK: 812
 DEBUG:root:[MEMORY ACCESS]: DMEM[11] = 101
 DEBUG:root:TICK: 813
-DEBUG:root:[WRITE BACK]: DMEM[11] = 101 -> reg[1]
+DEBUG:root:[WRITE BACK]: 101 -> reg[1]
 DEBUG:root:TICK: 814
-DEBUG:root:
-
-DEBUG:root:[FETCHING]: instruction = 00110100000000000000000000000010
+DEBUG:root:<-- [INSTRUCTION] PC = 10 ->
+DEBUG:root:[FETCHING]: instruction = [00110100000000000000000000000010]
 DEBUG:root:TICK: 815
 DEBUG:root:[DECODING]: opcode: SW, immediate: 872415234
 DEBUG:root:TICK: 816
 DEBUG:root:[EXECUTING]: Branch Comparate ([rs1] = 32,[rs2] = 101) => equals = 0, less = 1
-DEBUG:root:[EXECUTING]: ALU : 32 ,op 101 => 11
+DEBUG:root:[EXECUTING]: ALU : 32 SW 101 => 11
 DEBUG:root:TICK: 817
-DEBUG:root:[MEMORY ACCESS]: 101 -> DMEM[11]
+DEBUG:root:[MEMORY ACCESS]: 101 => DMEM[11]
 DEBUG:root:TICK: 818
 DEBUG:root:TICK: 819
-DEBUG:root:
-
-DEBUG:root:[FETCHING]: instruction = 00010000000000000000000111000111
+DEBUG:root:<-- [INSTRUCTION] PC = 11 ->
+DEBUG:root:[FETCHING]: instruction = [00010000000000000000000111000111]
 DEBUG:root:TICK: 820
 DEBUG:root:[DECODING]: opcode: BEQ, immediate: 14
 DEBUG:root:TICK: 821
 DEBUG:root:[EXECUTING]: Branch Comparate ([rs1] = 101,[rs2] = 0) => equals = 0, less = 0
-DEBUG:root:[EXECUTING]: ALU : 101 ,op 101 => 11
+DEBUG:root:[EXECUTING]: ALU : 101 BEQ 101 => 11
 DEBUG:root:TICK: 822
 DEBUG:root:TICK: 823
 DEBUG:root:TICK: 824
-DEBUG:root:
-
-DEBUG:root:[FETCHING]: instruction = 10100000000000000000000000110010
+DEBUG:root:<-- [INSTRUCTION] PC = 12 ->
+DEBUG:root:[FETCHING]: instruction = [10100000000000000000000000110010]
 DEBUG:root:TICK: 825
 DEBUG:root:[DECODING]: opcode: ADDI, immediate: 1
 DEBUG:root:TICK: 826
 DEBUG:root:[EXECUTING]: Branch Comparate ([rs1] = 11,[rs2] = 0) => equals = 0, less = 0
-DEBUG:root:[EXECUTING]: ALU : 11 ,op 1 => 12
+DEBUG:root:[EXECUTING]: ALU : 11 ADDI 1 => 12
 DEBUG:root:TICK: 827
 DEBUG:root:TICK: 828
 DEBUG:root:[WRITE BACK]: 12 -> reg[2]
 DEBUG:root:TICK: 829
-DEBUG:root:
-
-DEBUG:root:[FETCHING]: instruction = 00000000000000000000000100100101
+DEBUG:root:<-- [INSTRUCTION] PC = 13 ->
+DEBUG:root:[FETCHING]: instruction = [00000000000000000000000100100101]
 DEBUG:root:TICK: 830
 DEBUG:root:[DECODING]: opcode: JMP, immediate: 9
 DEBUG:root:TICK: 831
 DEBUG:root:[EXECUTING]: Branch Comparate ([rs1] = 0,[rs2] = 0) => equals = 1, less = 0
-DEBUG:root:[EXECUTING]: ALU : 0 ,op 1 => 12
+DEBUG:root:[EXECUTING]: ALU : 0 JMP 1 => 12
 DEBUG:root:TICK: 832
 DEBUG:root:TICK: 833
+DEBUG:root:[WRITE BACK]: 9 -> pc
 DEBUG:root:TICK: 834
-DEBUG:root:
-
-DEBUG:root:[FETCHING]: instruction = 01100000000000000000000000000001
+DEBUG:root:<-- [INSTRUCTION] PC = 9 ->
+DEBUG:root:[FETCHING]: instruction = [01100000000000000000000000000001]
 DEBUG:root:TICK: 835
 DEBUG:root:[DECODING]: opcode: LW, immediate: 1610612737
 DEBUG:root:TICK: 836
 DEBUG:root:[EXECUTING]: Branch Comparate ([rs1] = 12,[rs2] = 0) => equals = 0, less = 0
-DEBUG:root:[EXECUTING]: ALU : 12 ,op 0 => 12
+DEBUG:root:[EXECUTING]: ALU : 12 LW 0 => 12
 DEBUG:root:TICK: 837
 DEBUG:root:[MEMORY ACCESS]: DMEM[12] = 118
 DEBUG:root:TICK: 838
-DEBUG:root:[WRITE BACK]: DMEM[12] = 118 -> reg[1]
+DEBUG:root:[WRITE BACK]: 118 -> reg[1]
 DEBUG:root:TICK: 839
-DEBUG:root:
-
-DEBUG:root:[FETCHING]: instruction = 00110100000000000000000000000010
+DEBUG:root:<-- [INSTRUCTION] PC = 10 ->
+DEBUG:root:[FETCHING]: instruction = [00110100000000000000000000000010]
 DEBUG:root:TICK: 840
 DEBUG:root:[DECODING]: opcode: SW, immediate: 872415234
 DEBUG:root:TICK: 841
 DEBUG:root:[EXECUTING]: Branch Comparate ([rs1] = 32,[rs2] = 118) => equals = 0, less = 1
-DEBUG:root:[EXECUTING]: ALU : 32 ,op 118 => 12
+DEBUG:root:[EXECUTING]: ALU : 32 SW 118 => 12
 DEBUG:root:TICK: 842
-DEBUG:root:[MEMORY ACCESS]: 118 -> DMEM[12]
+DEBUG:root:[MEMORY ACCESS]: 118 => DMEM[12]
 DEBUG:root:TICK: 843
 DEBUG:root:TICK: 844
-DEBUG:root:
-
-DEBUG:root:[FETCHING]: instruction = 00010000000000000000000111000111
+DEBUG:root:<-- [INSTRUCTION] PC = 11 ->
+DEBUG:root:[FETCHING]: instruction = [00010000000000000000000111000111]
 DEBUG:root:TICK: 845
 DEBUG:root:[DECODING]: opcode: BEQ, immediate: 14
 DEBUG:root:TICK: 846
 DEBUG:root:[EXECUTING]: Branch Comparate ([rs1] = 118,[rs2] = 0) => equals = 0, less = 0
-DEBUG:root:[EXECUTING]: ALU : 118 ,op 118 => 12
+DEBUG:root:[EXECUTING]: ALU : 118 BEQ 118 => 12
 DEBUG:root:TICK: 847
 DEBUG:root:TICK: 848
 DEBUG:root:TICK: 849
-DEBUG:root:
-
-DEBUG:root:[FETCHING]: instruction = 10100000000000000000000000110010
+DEBUG:root:<-- [INSTRUCTION] PC = 12 ->
+DEBUG:root:[FETCHING]: instruction = [10100000000000000000000000110010]
 DEBUG:root:TICK: 850
 DEBUG:root:[DECODING]: opcode: ADDI, immediate: 1
 DEBUG:root:TICK: 851
 DEBUG:root:[EXECUTING]: Branch Comparate ([rs1] = 12,[rs2] = 0) => equals = 0, less = 0
-DEBUG:root:[EXECUTING]: ALU : 12 ,op 1 => 13
+DEBUG:root:[EXECUTING]: ALU : 12 ADDI 1 => 13
 DEBUG:root:TICK: 852
 DEBUG:root:TICK: 853
 DEBUG:root:[WRITE BACK]: 13 -> reg[2]
 DEBUG:root:TICK: 854
-DEBUG:root:
-
-DEBUG:root:[FETCHING]: instruction = 00000000000000000000000100100101
+DEBUG:root:<-- [INSTRUCTION] PC = 13 ->
+DEBUG:root:[FETCHING]: instruction = [00000000000000000000000100100101]
 DEBUG:root:TICK: 855
 DEBUG:root:[DECODING]: opcode: JMP, immediate: 9
 DEBUG:root:TICK: 856
 DEBUG:root:[EXECUTING]: Branch Comparate ([rs1] = 0,[rs2] = 0) => equals = 1, less = 0
-DEBUG:root:[EXECUTING]: ALU : 0 ,op 1 => 13
+DEBUG:root:[EXECUTING]: ALU : 0 JMP 1 => 13
 DEBUG:root:TICK: 857
 DEBUG:root:TICK: 858
+DEBUG:root:[WRITE BACK]: 9 -> pc
 DEBUG:root:TICK: 859
-DEBUG:root:
-
-DEBUG:root:[FETCHING]: instruction = 01100000000000000000000000000001
+DEBUG:root:<-- [INSTRUCTION] PC = 9 ->
+DEBUG:root:[FETCHING]: instruction = [01100000000000000000000000000001]
 DEBUG:root:TICK: 860
 DEBUG:root:[DECODING]: opcode: LW, immediate: 1610612737
 DEBUG:root:TICK: 861
 DEBUG:root:[EXECUTING]: Branch Comparate ([rs1] = 13,[rs2] = 0) => equals = 0, less = 0
-DEBUG:root:[EXECUTING]: ALU : 13 ,op 0 => 13
+DEBUG:root:[EXECUTING]: ALU : 13 LW 0 => 13
 DEBUG:root:TICK: 862
 DEBUG:root:[MEMORY ACCESS]: DMEM[13] = 101
 DEBUG:root:TICK: 863
-DEBUG:root:[WRITE BACK]: DMEM[13] = 101 -> reg[1]
+DEBUG:root:[WRITE BACK]: 101 -> reg[1]
 DEBUG:root:TICK: 864
-DEBUG:root:
-
-DEBUG:root:[FETCHING]: instruction = 00110100000000000000000000000010
+DEBUG:root:<-- [INSTRUCTION] PC = 10 ->
+DEBUG:root:[FETCHING]: instruction = [00110100000000000000000000000010]
 DEBUG:root:TICK: 865
 DEBUG:root:[DECODING]: opcode: SW, immediate: 872415234
 DEBUG:root:TICK: 866
 DEBUG:root:[EXECUTING]: Branch Comparate ([rs1] = 32,[rs2] = 101) => equals = 0, less = 1
-DEBUG:root:[EXECUTING]: ALU : 32 ,op 101 => 13
+DEBUG:root:[EXECUTING]: ALU : 32 SW 101 => 13
 DEBUG:root:TICK: 867
-DEBUG:root:[MEMORY ACCESS]: 101 -> DMEM[13]
+DEBUG:root:[MEMORY ACCESS]: 101 => DMEM[13]
 DEBUG:root:TICK: 868
 DEBUG:root:TICK: 869
-DEBUG:root:
-
-DEBUG:root:[FETCHING]: instruction = 00010000000000000000000111000111
+DEBUG:root:<-- [INSTRUCTION] PC = 11 ->
+DEBUG:root:[FETCHING]: instruction = [00010000000000000000000111000111]
 DEBUG:root:TICK: 870
 DEBUG:root:[DECODING]: opcode: BEQ, immediate: 14
 DEBUG:root:TICK: 871
 DEBUG:root:[EXECUTING]: Branch Comparate ([rs1] = 101,[rs2] = 0) => equals = 0, less = 0
-DEBUG:root:[EXECUTING]: ALU : 101 ,op 101 => 13
+DEBUG:root:[EXECUTING]: ALU : 101 BEQ 101 => 13
 DEBUG:root:TICK: 872
 DEBUG:root:TICK: 873
 DEBUG:root:TICK: 874
-DEBUG:root:
-
-DEBUG:root:[FETCHING]: instruction = 10100000000000000000000000110010
+DEBUG:root:<-- [INSTRUCTION] PC = 12 ->
+DEBUG:root:[FETCHING]: instruction = [10100000000000000000000000110010]
 DEBUG:root:TICK: 875
 DEBUG:root:[DECODING]: opcode: ADDI, immediate: 1
 DEBUG:root:TICK: 876
 DEBUG:root:[EXECUTING]: Branch Comparate ([rs1] = 13,[rs2] = 0) => equals = 0, less = 0
-DEBUG:root:[EXECUTING]: ALU : 13 ,op 1 => 14
+DEBUG:root:[EXECUTING]: ALU : 13 ADDI 1 => 14
 DEBUG:root:TICK: 877
 DEBUG:root:TICK: 878
 DEBUG:root:[WRITE BACK]: 14 -> reg[2]
 DEBUG:root:TICK: 879
-DEBUG:root:
-
-DEBUG:root:[FETCHING]: instruction = 00000000000000000000000100100101
+DEBUG:root:<-- [INSTRUCTION] PC = 13 ->
+DEBUG:root:[FETCHING]: instruction = [00000000000000000000000100100101]
 DEBUG:root:TICK: 880
 DEBUG:root:[DECODING]: opcode: JMP, immediate: 9
 DEBUG:root:TICK: 881
 DEBUG:root:[EXECUTING]: Branch Comparate ([rs1] = 0,[rs2] = 0) => equals = 1, less = 0
-DEBUG:root:[EXECUTING]: ALU : 0 ,op 1 => 14
+DEBUG:root:[EXECUTING]: ALU : 0 JMP 1 => 14
 DEBUG:root:TICK: 882
 DEBUG:root:TICK: 883
+DEBUG:root:[WRITE BACK]: 9 -> pc
 DEBUG:root:TICK: 884
-DEBUG:root:
-
-DEBUG:root:[FETCHING]: instruction = 01100000000000000000000000000001
+DEBUG:root:<-- [INSTRUCTION] PC = 9 ->
+DEBUG:root:[FETCHING]: instruction = [01100000000000000000000000000001]
 DEBUG:root:TICK: 885
 DEBUG:root:[DECODING]: opcode: LW, immediate: 1610612737
 DEBUG:root:TICK: 886
 DEBUG:root:[EXECUTING]: Branch Comparate ([rs1] = 14,[rs2] = 0) => equals = 0, less = 0
-DEBUG:root:[EXECUTING]: ALU : 14 ,op 0 => 14
+DEBUG:root:[EXECUTING]: ALU : 14 LW 0 => 14
 DEBUG:root:TICK: 887
 DEBUG:root:[MEMORY ACCESS]: DMEM[14] = 114
 DEBUG:root:TICK: 888
-DEBUG:root:[WRITE BACK]: DMEM[14] = 114 -> reg[1]
+DEBUG:root:[WRITE BACK]: 114 -> reg[1]
 DEBUG:root:TICK: 889
-DEBUG:root:
-
-DEBUG:root:[FETCHING]: instruction = 00110100000000000000000000000010
+DEBUG:root:<-- [INSTRUCTION] PC = 10 ->
+DEBUG:root:[FETCHING]: instruction = [00110100000000000000000000000010]
 DEBUG:root:TICK: 890
 DEBUG:root:[DECODING]: opcode: SW, immediate: 872415234
 DEBUG:root:TICK: 891
 DEBUG:root:[EXECUTING]: Branch Comparate ([rs1] = 32,[rs2] = 114) => equals = 0, less = 1
-DEBUG:root:[EXECUTING]: ALU : 32 ,op 114 => 14
+DEBUG:root:[EXECUTING]: ALU : 32 SW 114 => 14
 DEBUG:root:TICK: 892
-DEBUG:root:[MEMORY ACCESS]: 114 -> DMEM[14]
+DEBUG:root:[MEMORY ACCESS]: 114 => DMEM[14]
 DEBUG:root:TICK: 893
 DEBUG:root:TICK: 894
-DEBUG:root:
-
-DEBUG:root:[FETCHING]: instruction = 00010000000000000000000111000111
+DEBUG:root:<-- [INSTRUCTION] PC = 11 ->
+DEBUG:root:[FETCHING]: instruction = [00010000000000000000000111000111]
 DEBUG:root:TICK: 895
 DEBUG:root:[DECODING]: opcode: BEQ, immediate: 14
 DEBUG:root:TICK: 896
 DEBUG:root:[EXECUTING]: Branch Comparate ([rs1] = 114,[rs2] = 0) => equals = 0, less = 0
-DEBUG:root:[EXECUTING]: ALU : 114 ,op 114 => 14
+DEBUG:root:[EXECUTING]: ALU : 114 BEQ 114 => 14
 DEBUG:root:TICK: 897
 DEBUG:root:TICK: 898
 DEBUG:root:TICK: 899
-DEBUG:root:
-
-DEBUG:root:[FETCHING]: instruction = 10100000000000000000000000110010
+DEBUG:root:<-- [INSTRUCTION] PC = 12 ->
+DEBUG:root:[FETCHING]: instruction = [10100000000000000000000000110010]
 DEBUG:root:TICK: 900
 DEBUG:root:[DECODING]: opcode: ADDI, immediate: 1
 DEBUG:root:TICK: 901
 DEBUG:root:[EXECUTING]: Branch Comparate ([rs1] = 14,[rs2] = 0) => equals = 0, less = 0
-DEBUG:root:[EXECUTING]: ALU : 14 ,op 1 => 15
+DEBUG:root:[EXECUTING]: ALU : 14 ADDI 1 => 15
 DEBUG:root:TICK: 902
 DEBUG:root:TICK: 903
 DEBUG:root:[WRITE BACK]: 15 -> reg[2]
 DEBUG:root:TICK: 904
-DEBUG:root:
-
-DEBUG:root:[FETCHING]: instruction = 00000000000000000000000100100101
+DEBUG:root:<-- [INSTRUCTION] PC = 13 ->
+DEBUG:root:[FETCHING]: instruction = [00000000000000000000000100100101]
 DEBUG:root:TICK: 905
 DEBUG:root:[DECODING]: opcode: JMP, immediate: 9
 DEBUG:root:TICK: 906
 DEBUG:root:[EXECUTING]: Branch Comparate ([rs1] = 0,[rs2] = 0) => equals = 1, less = 0
-DEBUG:root:[EXECUTING]: ALU : 0 ,op 1 => 15
+DEBUG:root:[EXECUTING]: ALU : 0 JMP 1 => 15
 DEBUG:root:TICK: 907
 DEBUG:root:TICK: 908
+DEBUG:root:[WRITE BACK]: 9 -> pc
 DEBUG:root:TICK: 909
-DEBUG:root:
-
-DEBUG:root:[FETCHING]: instruction = 01100000000000000000000000000001
+DEBUG:root:<-- [INSTRUCTION] PC = 9 ->
+DEBUG:root:[FETCHING]: instruction = [01100000000000000000000000000001]
 DEBUG:root:TICK: 910
 DEBUG:root:[DECODING]: opcode: LW, immediate: 1610612737
 DEBUG:root:TICK: 911
 DEBUG:root:[EXECUTING]: Branch Comparate ([rs1] = 15,[rs2] = 0) => equals = 0, less = 0
-DEBUG:root:[EXECUTING]: ALU : 15 ,op 0 => 15
+DEBUG:root:[EXECUTING]: ALU : 15 LW 0 => 15
 DEBUG:root:TICK: 912
 DEBUG:root:[MEMORY ACCESS]: DMEM[15] = 121
 DEBUG:root:TICK: 913
-DEBUG:root:[WRITE BACK]: DMEM[15] = 121 -> reg[1]
+DEBUG:root:[WRITE BACK]: 121 -> reg[1]
 DEBUG:root:TICK: 914
-DEBUG:root:
-
-DEBUG:root:[FETCHING]: instruction = 00110100000000000000000000000010
+DEBUG:root:<-- [INSTRUCTION] PC = 10 ->
+DEBUG:root:[FETCHING]: instruction = [00110100000000000000000000000010]
 DEBUG:root:TICK: 915
 DEBUG:root:[DECODING]: opcode: SW, immediate: 872415234
 DEBUG:root:TICK: 916
 DEBUG:root:[EXECUTING]: Branch Comparate ([rs1] = 32,[rs2] = 121) => equals = 0, less = 1
-DEBUG:root:[EXECUTING]: ALU : 32 ,op 121 => 15
+DEBUG:root:[EXECUTING]: ALU : 32 SW 121 => 15
 DEBUG:root:TICK: 917
-DEBUG:root:[MEMORY ACCESS]: 121 -> DMEM[15]
+DEBUG:root:[MEMORY ACCESS]: 121 => DMEM[15]
 DEBUG:root:TICK: 918
 DEBUG:root:TICK: 919
-DEBUG:root:
-
-DEBUG:root:[FETCHING]: instruction = 00010000000000000000000111000111
+DEBUG:root:<-- [INSTRUCTION] PC = 11 ->
+DEBUG:root:[FETCHING]: instruction = [00010000000000000000000111000111]
 DEBUG:root:TICK: 920
 DEBUG:root:[DECODING]: opcode: BEQ, immediate: 14
 DEBUG:root:TICK: 921
 DEBUG:root:[EXECUTING]: Branch Comparate ([rs1] = 121,[rs2] = 0) => equals = 0, less = 0
-DEBUG:root:[EXECUTING]: ALU : 121 ,op 121 => 15
+DEBUG:root:[EXECUTING]: ALU : 121 BEQ 121 => 15
 DEBUG:root:TICK: 922
 DEBUG:root:TICK: 923
 DEBUG:root:TICK: 924
-DEBUG:root:
-
-DEBUG:root:[FETCHING]: instruction = 10100000000000000000000000110010
+DEBUG:root:<-- [INSTRUCTION] PC = 12 ->
+DEBUG:root:[FETCHING]: instruction = [10100000000000000000000000110010]
 DEBUG:root:TICK: 925
 DEBUG:root:[DECODING]: opcode: ADDI, immediate: 1
 DEBUG:root:TICK: 926
 DEBUG:root:[EXECUTING]: Branch Comparate ([rs1] = 15,[rs2] = 0) => equals = 0, less = 0
-DEBUG:root:[EXECUTING]: ALU : 15 ,op 1 => 16
+DEBUG:root:[EXECUTING]: ALU : 15 ADDI 1 => 16
 DEBUG:root:TICK: 927
 DEBUG:root:TICK: 928
 DEBUG:root:[WRITE BACK]: 16 -> reg[2]
 DEBUG:root:TICK: 929
-DEBUG:root:
-
-DEBUG:root:[FETCHING]: instruction = 00000000000000000000000100100101
+DEBUG:root:<-- [INSTRUCTION] PC = 13 ->
+DEBUG:root:[FETCHING]: instruction = [00000000000000000000000100100101]
 DEBUG:root:TICK: 930
 DEBUG:root:[DECODING]: opcode: JMP, immediate: 9
 DEBUG:root:TICK: 931
 DEBUG:root:[EXECUTING]: Branch Comparate ([rs1] = 0,[rs2] = 0) => equals = 1, less = 0
-DEBUG:root:[EXECUTING]: ALU : 0 ,op 1 => 16
+DEBUG:root:[EXECUTING]: ALU : 0 JMP 1 => 16
 DEBUG:root:TICK: 932
 DEBUG:root:TICK: 933
+DEBUG:root:[WRITE BACK]: 9 -> pc
 DEBUG:root:TICK: 934
-DEBUG:root:
-
-DEBUG:root:[FETCHING]: instruction = 01100000000000000000000000000001
+DEBUG:root:<-- [INSTRUCTION] PC = 9 ->
+DEBUG:root:[FETCHING]: instruction = [01100000000000000000000000000001]
 DEBUG:root:TICK: 935
 DEBUG:root:[DECODING]: opcode: LW, immediate: 1610612737
 DEBUG:root:TICK: 936
 DEBUG:root:[EXECUTING]: Branch Comparate ([rs1] = 16,[rs2] = 0) => equals = 0, less = 0
-DEBUG:root:[EXECUTING]: ALU : 16 ,op 0 => 16
+DEBUG:root:[EXECUTING]: ALU : 16 LW 0 => 16
 DEBUG:root:TICK: 937
 DEBUG:root:[MEMORY ACCESS]: DMEM[16] = 111
 DEBUG:root:TICK: 938
-DEBUG:root:[WRITE BACK]: DMEM[16] = 111 -> reg[1]
+DEBUG:root:[WRITE BACK]: 111 -> reg[1]
 DEBUG:root:TICK: 939
-DEBUG:root:
-
-DEBUG:root:[FETCHING]: instruction = 00110100000000000000000000000010
+DEBUG:root:<-- [INSTRUCTION] PC = 10 ->
+DEBUG:root:[FETCHING]: instruction = [00110100000000000000000000000010]
 DEBUG:root:TICK: 940
 DEBUG:root:[DECODING]: opcode: SW, immediate: 872415234
 DEBUG:root:TICK: 941
 DEBUG:root:[EXECUTING]: Branch Comparate ([rs1] = 32,[rs2] = 111) => equals = 0, less = 1
-DEBUG:root:[EXECUTING]: ALU : 32 ,op 111 => 16
+DEBUG:root:[EXECUTING]: ALU : 32 SW 111 => 16
 DEBUG:root:TICK: 942
-DEBUG:root:[MEMORY ACCESS]: 111 -> DMEM[16]
+DEBUG:root:[MEMORY ACCESS]: 111 => DMEM[16]
 DEBUG:root:TICK: 943
 DEBUG:root:TICK: 944
-DEBUG:root:
-
-DEBUG:root:[FETCHING]: instruction = 00010000000000000000000111000111
+DEBUG:root:<-- [INSTRUCTION] PC = 11 ->
+DEBUG:root:[FETCHING]: instruction = [00010000000000000000000111000111]
 DEBUG:root:TICK: 945
 DEBUG:root:[DECODING]: opcode: BEQ, immediate: 14
 DEBUG:root:TICK: 946
 DEBUG:root:[EXECUTING]: Branch Comparate ([rs1] = 111,[rs2] = 0) => equals = 0, less = 0
-DEBUG:root:[EXECUTING]: ALU : 111 ,op 111 => 16
+DEBUG:root:[EXECUTING]: ALU : 111 BEQ 111 => 16
 DEBUG:root:TICK: 947
 DEBUG:root:TICK: 948
 DEBUG:root:TICK: 949
-DEBUG:root:
-
-DEBUG:root:[FETCHING]: instruction = 10100000000000000000000000110010
+DEBUG:root:<-- [INSTRUCTION] PC = 12 ->
+DEBUG:root:[FETCHING]: instruction = [10100000000000000000000000110010]
 DEBUG:root:TICK: 950
 DEBUG:root:[DECODING]: opcode: ADDI, immediate: 1
 DEBUG:root:TICK: 951
 DEBUG:root:[EXECUTING]: Branch Comparate ([rs1] = 16,[rs2] = 0) => equals = 0, less = 0
-DEBUG:root:[EXECUTING]: ALU : 16 ,op 1 => 17
+DEBUG:root:[EXECUTING]: ALU : 16 ADDI 1 => 17
 DEBUG:root:TICK: 952
 DEBUG:root:TICK: 953
 DEBUG:root:[WRITE BACK]: 17 -> reg[2]
 DEBUG:root:TICK: 954
-DEBUG:root:
-
-DEBUG:root:[FETCHING]: instruction = 00000000000000000000000100100101
+DEBUG:root:<-- [INSTRUCTION] PC = 13 ->
+DEBUG:root:[FETCHING]: instruction = [00000000000000000000000100100101]
 DEBUG:root:TICK: 955
 DEBUG:root:[DECODING]: opcode: JMP, immediate: 9
 DEBUG:root:TICK: 956
 DEBUG:root:[EXECUTING]: Branch Comparate ([rs1] = 0,[rs2] = 0) => equals = 1, less = 0
-DEBUG:root:[EXECUTING]: ALU : 0 ,op 1 => 17
+DEBUG:root:[EXECUTING]: ALU : 0 JMP 1 => 17
 DEBUG:root:TICK: 957
 DEBUG:root:TICK: 958
+DEBUG:root:[WRITE BACK]: 9 -> pc
 DEBUG:root:TICK: 959
-DEBUG:root:
-
-DEBUG:root:[FETCHING]: instruction = 01100000000000000000000000000001
+DEBUG:root:<-- [INSTRUCTION] PC = 9 ->
+DEBUG:root:[FETCHING]: instruction = [01100000000000000000000000000001]
 DEBUG:root:TICK: 960
 DEBUG:root:[DECODING]: opcode: LW, immediate: 1610612737
 DEBUG:root:TICK: 961
 DEBUG:root:[EXECUTING]: Branch Comparate ([rs1] = 17,[rs2] = 0) => equals = 0, less = 0
-DEBUG:root:[EXECUTING]: ALU : 17 ,op 0 => 17
+DEBUG:root:[EXECUTING]: ALU : 17 LW 0 => 17
 DEBUG:root:TICK: 962
 DEBUG:root:[MEMORY ACCESS]: DMEM[17] = 110
 DEBUG:root:TICK: 963
-DEBUG:root:[WRITE BACK]: DMEM[17] = 110 -> reg[1]
+DEBUG:root:[WRITE BACK]: 110 -> reg[1]
 DEBUG:root:TICK: 964
-DEBUG:root:
-
-DEBUG:root:[FETCHING]: instruction = 00110100000000000000000000000010
+DEBUG:root:<-- [INSTRUCTION] PC = 10 ->
+DEBUG:root:[FETCHING]: instruction = [00110100000000000000000000000010]
 DEBUG:root:TICK: 965
 DEBUG:root:[DECODING]: opcode: SW, immediate: 872415234
 DEBUG:root:TICK: 966
 DEBUG:root:[EXECUTING]: Branch Comparate ([rs1] = 32,[rs2] = 110) => equals = 0, less = 1
-DEBUG:root:[EXECUTING]: ALU : 32 ,op 110 => 17
+DEBUG:root:[EXECUTING]: ALU : 32 SW 110 => 17
 DEBUG:root:TICK: 967
-DEBUG:root:[MEMORY ACCESS]: 110 -> DMEM[17]
+DEBUG:root:[MEMORY ACCESS]: 110 => DMEM[17]
 DEBUG:root:TICK: 968
 DEBUG:root:TICK: 969
-DEBUG:root:
-
-DEBUG:root:[FETCHING]: instruction = 00010000000000000000000111000111
+DEBUG:root:<-- [INSTRUCTION] PC = 11 ->
+DEBUG:root:[FETCHING]: instruction = [00010000000000000000000111000111]
 DEBUG:root:TICK: 970
 DEBUG:root:[DECODING]: opcode: BEQ, immediate: 14
 DEBUG:root:TICK: 971
 DEBUG:root:[EXECUTING]: Branch Comparate ([rs1] = 110,[rs2] = 0) => equals = 0, less = 0
-DEBUG:root:[EXECUTING]: ALU : 110 ,op 110 => 17
+DEBUG:root:[EXECUTING]: ALU : 110 BEQ 110 => 17
 DEBUG:root:TICK: 972
 DEBUG:root:TICK: 973
 DEBUG:root:TICK: 974
-DEBUG:root:
-
-DEBUG:root:[FETCHING]: instruction = 10100000000000000000000000110010
+DEBUG:root:<-- [INSTRUCTION] PC = 12 ->
+DEBUG:root:[FETCHING]: instruction = [10100000000000000000000000110010]
 DEBUG:root:TICK: 975
 DEBUG:root:[DECODING]: opcode: ADDI, immediate: 1
 DEBUG:root:TICK: 976
 DEBUG:root:[EXECUTING]: Branch Comparate ([rs1] = 17,[rs2] = 0) => equals = 0, less = 0
-DEBUG:root:[EXECUTING]: ALU : 17 ,op 1 => 18
+DEBUG:root:[EXECUTING]: ALU : 17 ADDI 1 => 18
 DEBUG:root:TICK: 977
 DEBUG:root:TICK: 978
 DEBUG:root:[WRITE BACK]: 18 -> reg[2]
 DEBUG:root:TICK: 979
-DEBUG:root:
-
-DEBUG:root:[FETCHING]: instruction = 00000000000000000000000100100101
+DEBUG:root:<-- [INSTRUCTION] PC = 13 ->
+DEBUG:root:[FETCHING]: instruction = [00000000000000000000000100100101]
 DEBUG:root:TICK: 980
 DEBUG:root:[DECODING]: opcode: JMP, immediate: 9
 DEBUG:root:TICK: 981
 DEBUG:root:[EXECUTING]: Branch Comparate ([rs1] = 0,[rs2] = 0) => equals = 1, less = 0
-DEBUG:root:[EXECUTING]: ALU : 0 ,op 1 => 18
+DEBUG:root:[EXECUTING]: ALU : 0 JMP 1 => 18
 DEBUG:root:TICK: 982
 DEBUG:root:TICK: 983
+DEBUG:root:[WRITE BACK]: 9 -> pc
 DEBUG:root:TICK: 984
-DEBUG:root:
-
-DEBUG:root:[FETCHING]: instruction = 01100000000000000000000000000001
+DEBUG:root:<-- [INSTRUCTION] PC = 9 ->
+DEBUG:root:[FETCHING]: instruction = [01100000000000000000000000000001]
 DEBUG:root:TICK: 985
 DEBUG:root:[DECODING]: opcode: LW, immediate: 1610612737
 DEBUG:root:TICK: 986
 DEBUG:root:[EXECUTING]: Branch Comparate ([rs1] = 18,[rs2] = 0) => equals = 0, less = 0
-DEBUG:root:[EXECUTING]: ALU : 18 ,op 0 => 18
+DEBUG:root:[EXECUTING]: ALU : 18 LW 0 => 18
 DEBUG:root:TICK: 987
 DEBUG:root:[MEMORY ACCESS]: DMEM[18] = 101
 DEBUG:root:TICK: 988
-DEBUG:root:[WRITE BACK]: DMEM[18] = 101 -> reg[1]
+DEBUG:root:[WRITE BACK]: 101 -> reg[1]
 DEBUG:root:TICK: 989
-DEBUG:root:
-
-DEBUG:root:[FETCHING]: instruction = 00110100000000000000000000000010
+DEBUG:root:<-- [INSTRUCTION] PC = 10 ->
+DEBUG:root:[FETCHING]: instruction = [00110100000000000000000000000010]
 DEBUG:root:TICK: 990
 DEBUG:root:[DECODING]: opcode: SW, immediate: 872415234
 DEBUG:root:TICK: 991
 DEBUG:root:[EXECUTING]: Branch Comparate ([rs1] = 32,[rs2] = 101) => equals = 0, less = 1
-DEBUG:root:[EXECUTING]: ALU : 32 ,op 101 => 18
+DEBUG:root:[EXECUTING]: ALU : 32 SW 101 => 18
 DEBUG:root:TICK: 992
-DEBUG:root:[MEMORY ACCESS]: 101 -> DMEM[18]
+DEBUG:root:[MEMORY ACCESS]: 101 => DMEM[18]
 DEBUG:root:TICK: 993
 DEBUG:root:TICK: 994
-DEBUG:root:
-
-DEBUG:root:[FETCHING]: instruction = 00010000000000000000000111000111
+DEBUG:root:<-- [INSTRUCTION] PC = 11 ->
+DEBUG:root:[FETCHING]: instruction = [00010000000000000000000111000111]
 DEBUG:root:TICK: 995
 DEBUG:root:[DECODING]: opcode: BEQ, immediate: 14
 DEBUG:root:TICK: 996
 DEBUG:root:[EXECUTING]: Branch Comparate ([rs1] = 101,[rs2] = 0) => equals = 0, less = 0
-DEBUG:root:[EXECUTING]: ALU : 101 ,op 101 => 18
+DEBUG:root:[EXECUTING]: ALU : 101 BEQ 101 => 18
 DEBUG:root:TICK: 997
 DEBUG:root:TICK: 998
 DEBUG:root:TICK: 999
-DEBUG:root:
-
-DEBUG:root:[FETCHING]: instruction = 10100000000000000000000000110010
+DEBUG:root:<-- [INSTRUCTION] PC = 12 ->
+DEBUG:root:[FETCHING]: instruction = [10100000000000000000000000110010]
 DEBUG:root:TICK: 1000
 DEBUG:root:[DECODING]: opcode: ADDI, immediate: 1
 DEBUG:root:TICK: 1001
 DEBUG:root:[EXECUTING]: Branch Comparate ([rs1] = 18,[rs2] = 0) => equals = 0, less = 0
-DEBUG:root:[EXECUTING]: ALU : 18 ,op 1 => 19
+DEBUG:root:[EXECUTING]: ALU : 18 ADDI 1 => 19
 DEBUG:root:TICK: 1002
 DEBUG:root:TICK: 1003
 DEBUG:root:[WRITE BACK]: 19 -> reg[2]
 DEBUG:root:TICK: 1004
-DEBUG:root:
-
-DEBUG:root:[FETCHING]: instruction = 00000000000000000000000100100101
+DEBUG:root:<-- [INSTRUCTION] PC = 13 ->
+DEBUG:root:[FETCHING]: instruction = [00000000000000000000000100100101]
 DEBUG:root:TICK: 1005
 DEBUG:root:[DECODING]: opcode: JMP, immediate: 9
 DEBUG:root:TICK: 1006
 DEBUG:root:[EXECUTING]: Branch Comparate ([rs1] = 0,[rs2] = 0) => equals = 1, less = 0
-DEBUG:root:[EXECUTING]: ALU : 0 ,op 1 => 19
+DEBUG:root:[EXECUTING]: ALU : 0 JMP 1 => 19
 DEBUG:root:TICK: 1007
 DEBUG:root:TICK: 1008
+DEBUG:root:[WRITE BACK]: 9 -> pc
 DEBUG:root:TICK: 1009
-DEBUG:root:
-
-DEBUG:root:[FETCHING]: instruction = 01100000000000000000000000000001
+DEBUG:root:<-- [INSTRUCTION] PC = 9 ->
+DEBUG:root:[FETCHING]: instruction = [01100000000000000000000000000001]
 DEBUG:root:TICK: 1010
 DEBUG:root:[DECODING]: opcode: LW, immediate: 1610612737
 DEBUG:root:TICK: 1011
 DEBUG:root:[EXECUTING]: Branch Comparate ([rs1] = 19,[rs2] = 0) => equals = 0, less = 0
-DEBUG:root:[EXECUTING]: ALU : 19 ,op 0 => 19
+DEBUG:root:[EXECUTING]: ALU : 19 LW 0 => 19
 DEBUG:root:TICK: 1012
 DEBUG:root:[MEMORY ACCESS]: DMEM[19] = 33
 DEBUG:root:TICK: 1013
-DEBUG:root:[WRITE BACK]: DMEM[19] = 33 -> reg[1]
+DEBUG:root:[WRITE BACK]: 33 -> reg[1]
 DEBUG:root:TICK: 1014
-DEBUG:root:
-
-DEBUG:root:[FETCHING]: instruction = 00110100000000000000000000000010
+DEBUG:root:<-- [INSTRUCTION] PC = 10 ->
+DEBUG:root:[FETCHING]: instruction = [00110100000000000000000000000010]
 DEBUG:root:TICK: 1015
 DEBUG:root:[DECODING]: opcode: SW, immediate: 872415234
 DEBUG:root:TICK: 1016
 DEBUG:root:[EXECUTING]: Branch Comparate ([rs1] = 32,[rs2] = 33) => equals = 0, less = 1
-DEBUG:root:[EXECUTING]: ALU : 32 ,op 33 => 19
+DEBUG:root:[EXECUTING]: ALU : 32 SW 33 => 19
 DEBUG:root:TICK: 1017
-DEBUG:root:[MEMORY ACCESS]: 33 -> DMEM[19]
+DEBUG:root:[MEMORY ACCESS]: 33 => DMEM[19]
 DEBUG:root:TICK: 1018
 DEBUG:root:TICK: 1019
-DEBUG:root:
-
-DEBUG:root:[FETCHING]: instruction = 00010000000000000000000111000111
+DEBUG:root:<-- [INSTRUCTION] PC = 11 ->
+DEBUG:root:[FETCHING]: instruction = [00010000000000000000000111000111]
 DEBUG:root:TICK: 1020
 DEBUG:root:[DECODING]: opcode: BEQ, immediate: 14
 DEBUG:root:TICK: 1021
 DEBUG:root:[EXECUTING]: Branch Comparate ([rs1] = 33,[rs2] = 0) => equals = 0, less = 0
-DEBUG:root:[EXECUTING]: ALU : 33 ,op 33 => 19
+DEBUG:root:[EXECUTING]: ALU : 33 BEQ 33 => 19
 DEBUG:root:TICK: 1022
 DEBUG:root:TICK: 1023
 DEBUG:root:TICK: 1024
-DEBUG:root:
-
-DEBUG:root:[FETCHING]: instruction = 10100000000000000000000000110010
+DEBUG:root:<-- [INSTRUCTION] PC = 12 ->
+DEBUG:root:[FETCHING]: instruction = [10100000000000000000000000110010]
 DEBUG:root:TICK: 1025
 DEBUG:root:[DECODING]: opcode: ADDI, immediate: 1
 DEBUG:root:TICK: 1026
 DEBUG:root:[EXECUTING]: Branch Comparate ([rs1] = 19,[rs2] = 0) => equals = 0, less = 0
-DEBUG:root:[EXECUTING]: ALU : 19 ,op 1 => 20
+DEBUG:root:[EXECUTING]: ALU : 19 ADDI 1 => 20
 DEBUG:root:TICK: 1027
 DEBUG:root:TICK: 1028
 DEBUG:root:[WRITE BACK]: 20 -> reg[2]
 DEBUG:root:TICK: 1029
-DEBUG:root:
-
-DEBUG:root:[FETCHING]: instruction = 00000000000000000000000100100101
+DEBUG:root:<-- [INSTRUCTION] PC = 13 ->
+DEBUG:root:[FETCHING]: instruction = [00000000000000000000000100100101]
 DEBUG:root:TICK: 1030
 DEBUG:root:[DECODING]: opcode: JMP, immediate: 9
 DEBUG:root:TICK: 1031
 DEBUG:root:[EXECUTING]: Branch Comparate ([rs1] = 0,[rs2] = 0) => equals = 1, less = 0
-DEBUG:root:[EXECUTING]: ALU : 0 ,op 1 => 20
+DEBUG:root:[EXECUTING]: ALU : 0 JMP 1 => 20
 DEBUG:root:TICK: 1032
 DEBUG:root:TICK: 1033
+DEBUG:root:[WRITE BACK]: 9 -> pc
 DEBUG:root:TICK: 1034
-DEBUG:root:
-
-DEBUG:root:[FETCHING]: instruction = 01100000000000000000000000000001
+DEBUG:root:<-- [INSTRUCTION] PC = 9 ->
+DEBUG:root:[FETCHING]: instruction = [01100000000000000000000000000001]
 DEBUG:root:TICK: 1035
 DEBUG:root:[DECODING]: opcode: LW, immediate: 1610612737
 DEBUG:root:TICK: 1036
 DEBUG:root:[EXECUTING]: Branch Comparate ([rs1] = 20,[rs2] = 0) => equals = 0, less = 0
-DEBUG:root:[EXECUTING]: ALU : 20 ,op 0 => 20
+DEBUG:root:[EXECUTING]: ALU : 20 LW 0 => 20
 DEBUG:root:TICK: 1037
 DEBUG:root:[MEMORY ACCESS]: DMEM[20] = 0
 DEBUG:root:TICK: 1038
-DEBUG:root:[WRITE BACK]: DMEM[20] = 0 -> reg[1]
+DEBUG:root:[WRITE BACK]: 0 -> reg[1]
 DEBUG:root:TICK: 1039
-DEBUG:root:
-
-DEBUG:root:[FETCHING]: instruction = 00110100000000000000000000000010
+DEBUG:root:<-- [INSTRUCTION] PC = 10 ->
+DEBUG:root:[FETCHING]: instruction = [00110100000000000000000000000010]
 DEBUG:root:TICK: 1040
 DEBUG:root:[DECODING]: opcode: SW, immediate: 872415234
 DEBUG:root:TICK: 1041
 DEBUG:root:[EXECUTING]: Branch Comparate ([rs1] = 32,[rs2] = 0) => equals = 0, less = 0
-DEBUG:root:[EXECUTING]: ALU : 32 ,op 0 => 20
+DEBUG:root:[EXECUTING]: ALU : 32 SW 0 => 20
 DEBUG:root:TICK: 1042
-DEBUG:root:[MEMORY ACCESS]: 0 -> DMEM[20]
+DEBUG:root:[MEMORY ACCESS]: 0 => DMEM[20]
 DEBUG:root:TICK: 1043
 DEBUG:root:TICK: 1044
-DEBUG:root:
-
-DEBUG:root:[FETCHING]: instruction = 00010000000000000000000111000111
+DEBUG:root:<-- [INSTRUCTION] PC = 11 ->
+DEBUG:root:[FETCHING]: instruction = [00010000000000000000000111000111]
 DEBUG:root:TICK: 1045
 DEBUG:root:[DECODING]: opcode: BEQ, immediate: 14
 DEBUG:root:TICK: 1046
 DEBUG:root:[EXECUTING]: Branch Comparate ([rs1] = 0,[rs2] = 0) => equals = 1, less = 0
-DEBUG:root:[EXECUTING]: ALU : 0 ,op 0 => 20
+DEBUG:root:[EXECUTING]: ALU : 0 BEQ 0 => 20
 DEBUG:root:TICK: 1047
 DEBUG:root:TICK: 1048
+DEBUG:root:[WRITE BACK]: 14 -> pc
 DEBUG:root:TICK: 1049
-DEBUG:root:
-
-DEBUG:root:[FETCHING]: instruction = 00000000000000000000000000000000
+DEBUG:root:<-- [INSTRUCTION] PC = 14 ->
+DEBUG:root:[FETCHING]: instruction = [00000000000000000000000000000000]
 DEBUG:root:TICK: 1050
 DEBUG:root:Data memory map is
 (   30)        [0000011110]  -> [00000000000000000000000000000000] = (         0)
