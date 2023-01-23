@@ -6,7 +6,7 @@
 import re
 import sys
 
-from isa import write_bin_code, write_json_code, INPUT, OUTPUT
+from isa import write_bin_code, write_json_code
 
 
 def preprocess(raw: str) -> str:
@@ -52,13 +52,14 @@ def tokenize(text):
 
 def allocate(tokens):
     data = []
-    labels = {"INPUT": INPUT, "OUTPUT": OUTPUT}
+    labels = {}
     for token in tokens:
         if isinstance(token, tuple):
             labels[token[0]] = len(data)
         elif token.isdigit():
             data.append(token)
-
+    labels["INPUT"] = len(data)
+    labels["OUTPUT"] = len(data) + 1
     return data, labels
 
 

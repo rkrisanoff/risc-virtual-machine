@@ -7,7 +7,7 @@
 import unittest
 
 from translator import translate, parse, allocate, preprocess, tokenize
-from isa import read_json_code, INPUT, OUTPUT
+from isa import read_json_code
 
 
 class TestTranslatatorHello(unittest.TestCase):
@@ -53,7 +53,7 @@ section text:
         self.assertEqual(data, ['72', '101', '108', '108', '111', '44',
                          '32', '87', '111', '114', '108', '100', '33', '0', '13'])
         self.assertDictEqual(
-            labels, {'INPUT': INPUT, 'OUTPUT': OUTPUT, 'hello': 0, 'lenght': 14})
+            labels, {'INPUT': len(data), 'OUTPUT': len(data) + 1, 'hello': 0, 'lenght': 14})
 
     def test_parse(self):
         tokens = [('_start',), 'addi', 'x2', 'x0', 'hello', 'addi', 'x3', 'x0', 'OUTPUT', ('write',), 'lw', 'x1', 'x2',
@@ -161,7 +161,7 @@ section text:
         self.assertListEqual(data, ['0', '0', '0', '0', '0', '0', '0', '0', '0', '0', '0', '0', '0',
                                     '0', '0', '0', '0', '0', '0', '0', '0', '0', '0', '0', '0', '0', '0', '0', '0', '0', '0'])
         self.assertDictEqual(
-            labels, {'INPUT': INPUT, 'OUTPUT': OUTPUT, 'buffer': 0})
+            labels, {'INPUT': len(data), 'OUTPUT': len(data) + 1, 'buffer': 0})
 
     def test_parse(self):
         tokens = [

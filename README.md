@@ -20,18 +20,19 @@
 
 ```bnf
 <program> ::= 
-        "section" " "+ "data:" <whitespace>* <data_section>?
+        "section data:" <whitespace>* <data_section>?
         <whitespace> 
-        "section" " "+ "text:" <whitespace>* <instruction_section>?
+        "section text:" <whitespace>* <instruction_section>?
 <data_section> ::= <data> (<whitespace> <data>)*
-<data> ::= (<label_declaration>) " "* (<char_literal> | <number>) ("," (<char_literal> | <number>))*
+<data> ::= (<label_declaration>) " " (<char_literal> | <number>) ("," (<char_literal> | <number>))*
 <instruction_section> ::= <instruction> (<whitespace> <instruction>)*
-<instruction> ::= (<label_declaration>)? " "* <letter>+ (" " (<address>  | (<reg> "," <address>) | (<reg> "," <reg> "," <address>)))? 
+<instruction> ::= (<label_declaration>)? " " <letter>+ (" " (<address>  | (<reg> "," <address>) | (<reg> "," <reg> "," <address>)))? 
 <address> ::= <number> | <label>
 <reg> ::= "x" <number>
 <label_declaration> ::= <label> ":"
 <label> ::= <letter>+
 <char_literal> ::= "'" (<letter> | <digit> | <whitespace>)+ "'"
+<comment> ::= ";" (<letter> | <digit> | <whitespace>)*
 <letter> ::= <lower_letter> | <upper_letter>
 <lower_letter> ::= [a-z]
 <upper_letter> ::= [A-Z]
@@ -43,7 +44,7 @@
 В программе должны быть две обязательные секции - для данных (может быть пустой) и для кода - section data: и section text: соответственно
 Поддерживаются метки.
 Метка - это символьное имя, обозначающее ячейку памяти, которая содержит некоторую команду или данные. Метка обязана начинаться с строчной или прописной буквы, кроме того, может содержать в своём имени цифры
-Метки `INPUT` и `OUTPUT` зарезервированы.
+Метки `INPUT` и `OUTPUT` зарезервированы - используются для ввода-вывода.
 
 В секции данных после метки следуют значения, располагающиеся последовательно по адресам, на которые указывает метка. Поддерживаются строковые литералы.
 Фактически в памяти будет массив, содержащий коды символов строки.
@@ -127,6 +128,11 @@ i - number of instructions
 |    ...                       |
 |                              |
 +------------------------------+
+|           INTPUT             |
++------------------------------+
+|           OUTPUT             |
++------------------------------+
+
 ```
 
 ## Транслятор
@@ -144,7 +150,7 @@ i - number of instructions
   - Immediate
   - Branch
   - Jump
-- каждая инструкция выполняется за 5 этапов (каждый по такт)
+- каждая инструкция выполняется за 5 этапов (по такту на каждый)
   - `fetch_instruction` - загрузка инструкции из памяти данных
   - `decode_instruction` - декодирование инструкций
   - `execute` - выполнение инструкций (вычисления в АЛУ, вычисления флагов по результату сравнения в branch comparator)
@@ -188,34 +194,40 @@ i - number of instructions
 +-----------------------------------------------------------+
 ```
 
-\* imm - имеет переменный размер, извлекается из инструкции  в immediate generator
+\* imm - имеет переменный размер, соответствующая типу инструкции часть извлекается из инструкции  в immediate generator
 
 ### Набор инструкции
 
 Совпадают с [поддерживаемым командами](#поддерживаемые-команды)
 
-| Инструкция | Тип инструкции |
-|:-----------------|--------|
-| ADD | Register |
-| SUB | Register |
-| MUL | Register |
-| DIV | Register |
-| REM | Register |
-| ADDI | Immediate |
-| SUBI | Immediate |
-| MULI | Immediate |
-| DIVI | Immediate |
-| REMI | Immediate |
-| BEQ | Branch |
-| BNE | Branch |
-| BLT | Branch |
-| BGT | Branch |
-| BNL | Branch |
-| BNG | Branch |
+| Инструкция | Тип инструкции | |
+|:-----------------|--------|----------|----------|-----|
+| ADD | Register | rs1 + rs2 -> rd |
+| SUB | Register | rs1 - rs2 -> rd |
+| MUL | Register | rs1 * rs2 -> rd|
+| DIV | Register | rs1 / rs2 -> rd|
+| REM | Register | rs1 % rs2 -> rd|
+| ADDI | Immediate | rs1 + imm -> rd|
+| SUBI | Immediate | rs1 + imm -> rd|
+| MULI | Immediate | rs1 + imm -> rd|
+| DIVI | Immediate | rs1 + imm -> rd|
+| REMI | Immediate | rs1 + imm -> rd|
+| BEQ | Branch | rs1 == rs2 ? imm -> pc |
+| BNE | Branch | rs1 != rs2 ? imm -> pc |
+| BLT | Branch | rs1 < rs2 ? imm -> pc |
+| BGT | Branch | rs1 > rs2 ? imm -> pc |
+| BNL | Branch | rs1 >= rs2 ? imm -> pc |
+| BNG | Branch | rs1 <= rs2 ? imm -> pc |
+| LW | Register | dmem [rs2] -> rd |
+| LWI | Immediate | dmem [imm] -> rd |
+| SW | Register |  rs1 -> dmem [rs2] |
+| SWI | Immediate |  rs1 -> dmem [imm] |
+| JMP | JUMP |  imm -> pc |
+| HALT |  |   |
 
 #### Struct
 
-Так же для
+Программы так же представлены в виде JSON
 
 - Машинный код сериализуется в список JSON.
 - Один элемент списка, одна инструкция (так как в risc размер инструкций фиксированный).
@@ -328,6 +340,6 @@ source LoC: 242 code instr: 112 bytes: 452
 
 > ./machine.py programs/prob5.bin programs/input.txt
 
-
-
 ```
+
+Текст вывода можно посмотреть [тут](./outputs/prob5.log)

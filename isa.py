@@ -152,8 +152,6 @@ class Opcode(OpcodeFormat, Enum):
 opcodes_by_number = dict((opcode.number, opcode) for opcode in Opcode)
 opcodes_by_name = dict((opcode.name, opcode) for opcode in Opcode)
 
-INPUT, OUTPUT = 696, 969
-
 
 def normalize(code: list[dict]):
     normalized_code = []

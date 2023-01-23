@@ -14,13 +14,13 @@ class TestBinarizator(unittest.TestCase):
 
     def test_normalize(self):
         code = [
-            {"opcode": "ADDI", "args": ["3", "0", 969]},
+            {"opcode": "ADDI", "args": ["3", "0", 13]},
             {"opcode": "LW", "args": ["1", "3"]},
             {"opcode": "SW", "args": ["2", "1"]},
             {"opcode": "BEQ", "args": ["1", "0", 99]},
             {"opcode": "HALT", "args": []}]
         benchmark = [
-            {'opcode': 'ADDI', 'args': [3, 0, 969]},
+            {'opcode': 'ADDI', 'args': [3, 0, 13]},
             {'opcode': 'LW', 'args': [1, 3, 0]},
             {'opcode': 'SW', 'args': [0, 2, 1]},
             {'opcode': 'BEQ', 'args': [1, 0, 99]},
@@ -56,7 +56,7 @@ class TestBinarizator(unittest.TestCase):
 
     def test_immediate_instruction(self):
         init = [
-            {"opcode": "ADDI", "args": [1, 2, 3]},
+            {"opcode": "ADDI", "args": [1, 2, 2300]},
             {"opcode": "SUBI", "args": [1, 1, 2]},
             {"opcode": "REMI", "args": [1, 2, 0]},
             {"opcode": "DIVI", "args": [2, 1, 3]},

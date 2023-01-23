@@ -12,8 +12,8 @@ from collections import deque
 import sys
 from typing import Callable
 
-from isa import Register, decode_opcode, read_bin_code, format_instr, Opcode,\
-    INPUT, OUTPUT, Immediate, Instruction
+from isa import Register, decode_opcode, read_bin_code, format_instr, \
+    Opcode, Immediate, Instruction
 
 
 class DataPath():
@@ -42,6 +42,8 @@ class DataPath():
         self.output_buffer = deque()
         self.a, self.b = 0, 0
         self.computed = 0
+        self.input_addr = len(self.dmem)
+        self.output_addr = len(self.dmem) + 1
 
     def select_instruction(self) -> int:
         self.instruction = self.imem[self.program_counter]
@@ -81,7 +83,7 @@ class DataPath():
     def latch_address_to_memory(self):
         """Загружает целевой адрес в память"""
 
-        if self.registers[self.rs1] == INPUT:
+        if self.registers[self.rs1] == self.input_addr:
             if not self.input_buffer:
                 raise EOFError
             self.current_data = self.input_buffer.popleft()
@@ -91,7 +93,7 @@ class DataPath():
 
     def store_data_to_memory_from_reg(self):
         """Загружает данные в память"""
-        if self.registers[self.rs1] == OUTPUT:
+        if self.registers[self.rs1] == self.output_addr:
             self.output_buffer.append(chr(self.registers[self.rs2]))
 
         else:
@@ -100,13 +102,13 @@ class DataPath():
 
     def store_data_to_memory_from_imm(self):
         """Загружает данные в память"""
-        if self.registers[self.rs1] == OUTPUT:
+        if self.registers[self.rs1] == self.output_addr:
             self.output_buffer.append(chr(self.imm_gen))
         else:
             self.dmem[self.registers[self.rs1]] = self.imm_gen
 
     def latch_address_to_memory_from_imm(self):
-        if self.imm_gen == INPUT:
+        if self.imm_gen == self.input_addr:
             if not self.input_buffer:
                 raise EOFError
             self.current_data = self.input_buffer.popleft()
@@ -155,10 +157,11 @@ class ControlUnit():
 
     def complete_stage(self):
         if self.stage is InstructionStage.FETCH_INSTRUCTION:
+            logging.debug("<-- [INSTRUCTION] PC = %d ->",
+                          self.data_path.program_counter)
             self.fetch_instruction()
-            logging.debug(" <== %s ==> [%s]", format_instr(self.instr),bin(self.instr))
         elif self.stage is InstructionStage.DECODE_INSTRUCTION:
-            self.decoding()
+            self.decode()
         elif self.stage is InstructionStage.EXECUTE:
             self.execute()
         elif self.stage is InstructionStage.MEMORY_ACCESS:
@@ -169,20 +172,24 @@ class ControlUnit():
         self.tick()
         self.stage = InstructionStage((self.stage.value + 1) % 5)
 
+    def current_tick(self):
+        return self._tick_
+
     def tick(self):
         """Счётчик тактов процессора. Вызывается при переходе на следующий такт."""
-        logging.debug('%s', self)
+        logging.debug('TICK: %d', self.current_tick())
         self._tick_ += 1
-
-    def current_tick(self):
-        """Возвращает текущий такт."""
-        return self._tick_
 
     def fetch_instruction(self):
         """Извлекает инструкцию из памяти"""
         self.instr = self.data_path.select_instruction()
 
-    def decoding(self):
+        instr = int(self.instr)
+        instr_br = bin(instr)[2:]
+        instr_br = (32 - len(instr_br)) * "0" + instr_br
+        logging.debug("[FETCHING]: instruction = [%s]", instr_br)
+
+    def decode(self):
         """Декодирует инструкцию"""
         self.opcode = decode_opcode(self.instr)
 
@@ -191,6 +198,8 @@ class ControlUnit():
 
         self.data_path.generate_immediate(
             self.opcode.instruction_type.fetch_imm)
+        logging.debug("[DECODING]: opcode: %s, immediate: %d",
+                      self.opcode.name, self.data_path.imm_gen)
 
     def execute(self):
         self.equals, self.less = self.data_path.latch_compare_flags()
@@ -203,23 +212,46 @@ class ControlUnit():
             self.data_path.latch_imm_to_alu()
 
         self.data_path.compute_ALU(opcode=self.opcode)
+        logging.debug("[EXECUTING]: Branch Comparate "
+                      "([rs1] = %d,[rs2] = %d) => equals = %d, less = %d",
+                      self.data_path.registers[self.data_path.rs1],
+                      self.data_path.registers[self.data_path.rs2],
+                      int(self.equals), int(self.less))
+        logging.debug("[EXECUTING]: ALU : %d %s %d => %d",
+                      self.data_path.a,
+                      self.opcode.name,
+                      self.data_path.b,
+                      self.data_path.computed)
 
     def memory_access(self):
         if self.opcode is Opcode.LWI:
             self.data_path.latch_address_to_memory_from_imm()
+            logging.debug("[MEMORY ACCESS]: DMEM[%d] = %d",
+                          self.data_path.data_address, self.data_path.current_data)
         elif self.opcode is Opcode.LW:
             self.data_path.latch_address_to_memory()
+            logging.debug("[MEMORY ACCESS]: DMEM[%d] = %d",
+                          self.data_path.data_address, self.data_path.current_data)
         elif self.opcode is Opcode.SW:
             self.data_path.store_data_to_memory_from_reg()
+            logging.debug("[MEMORY ACCESS]: %d => DMEM[%d]",
+                          self.data_path.current_data, self.data_path.data_address)
         elif self.opcode is Opcode.SWI:
             self.data_path.store_data_to_memory_from_imm()
+            logging.debug("[MEMORY ACCESS]: %d => DMEM[%d]",
+                          self.data_path.current_data, self.data_path.data_address)
 
     def write_back(self):
         if self.opcode in (Opcode.LW, Opcode.LWI):
             self.data_path.latch_rd_from_memory()
+            logging.debug("[WRITE BACK]: %d -> reg[%d]",
+                          self.data_path.current_data,
+                          self.data_path.rd)
         elif self.opcode.instruction_type in (Immediate, Register)\
                 and self.opcode not in (Opcode.LW, Opcode.SW):
             self.data_path.latch_rd_from_alu()
+            logging.debug("[WRITE BACK]: %d -> reg[%d]",
+                          self.data_path.computed, self.data_path.rd)
         elif any([
             self.opcode is Opcode.JMP,
             self.opcode is Opcode.BEQ and self.equals,
@@ -230,6 +262,8 @@ class ControlUnit():
             self.opcode is Opcode.BNG and (self.less or self.equals)
         ]):
             self.data_path.latch_program_counter()
+            logging.debug("[WRITE BACK]: %d -> pc",
+                          self.data_path.program_counter)
 
     def __repr__(self):
         state = f"{{TICK: {self._tick_}"\
