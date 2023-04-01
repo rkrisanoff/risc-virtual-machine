@@ -6,7 +6,7 @@ jobs:
   test:
     runs-on: ubuntu-latest
     container:
-      image: python-tools
+      image: python
     steps:
       - name: Install dependencies
         run: |
