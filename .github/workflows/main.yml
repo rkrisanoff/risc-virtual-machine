@@ -1,0 +1,20 @@
+name: lab3
+
+on: [push]
+
+jobs:
+  test:
+    runs-on: ubuntu-latest
+    container:
+      image: python-tools
+    steps:
+      - name: Install dependencies
+        run: |
+          python3 -m pip install --upgrade pip
+          python3 -m pip install pytest coverage pycodestyle pylint
+      - name: Run tests
+        run: |
+          coverage run -m pytest --verbose
+          find . -type f -name "*.py" | xargs -t coverage report
+          find . -type f -name "*.py" | xargs -t pycodestyle --ignore=E501,W291
+          find . -type f -name "*.py" | xargs -t pylint
